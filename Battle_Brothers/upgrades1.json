@@ -15,4 +15,106 @@
       "pre-add" : ["Pistol", "CCW"],
       "remove" : ["CCW"],
       "add" : [["Energy Sword"], ["Energy Fist"]]
+    },{
+      "text" : "Take one Assault Rifle Attachement",
+      "add" : [["Gravity Rifle Add-on"], ["Plasma Rifle Add-on"], ["Flamethrower Add-on"], ["Fusion Rifle Add-on"]]
+}],
+"B" : [{
+      "text" : "Upgrade with one",
+      "add" : [["Jetpacks"], ["Bike"], ["Destroyer Armor"]]
+}],
+"C" : [{
+      "text" : "Upgrade with one",
+      "add" : [["Psy Training"]]
+}],
+"D" : [{
+      "text" : "Upgrade all models with",
+      "all" : true,
+      "add" : [["Veterans"], ["Battle Standard"], ["Medic"]]
+    },{
+      "text" : "Replace one assault Rifle",
+      "remove" : ["Assault Rifles"],
+      "add" : [["Gravity Rifle"], ["Plasma Rifle"], ["Flamethrower"], ["Heavy Flamethrower"], ["Heavy Machinegun"], ["Heavy Fusion Rifle"], ["Gravity Cannon"], ["Plasma Cannon"], ["Missile Launcher AT", "Missile Launcher HE"], ["Laser Cannon"]]
+}],
+"E" : [{
+      "text" : "Upgrade all models with any",
+      "all" : true,
+      "add" : [["Veterans"], ["Jetpacks"]]
+    },{
+      "text" : "Replace up to two Pistols",
+      "remove" : ["Pistols"],
+      "add" : [["Plasma Pistol"], ["Flamethrower"]]
+}],
+"F" : [{
+      "text" : "Upgrade all models with",
+      "all" : true,
+      "add" : [["Stealth Cloaks"]]
+    },{
+      "text" : "Replace any Assault Rifle",
+      "remove" : ["Assault Rifles"],
+      "add" : [["Pistol", "CCW"], ["Shotgun"], ["Sniper Rifle"]]
+    },{
+      "text" : "Replace one Assault Rifle",
+      "remove" : ["Assault Rifles"],
+      "add" : [["Heavy Machinegun"], ["Missile Launcher AT", "Missile Launcher HE"]]
+}],
+"G" : [{
+      "text" : "Replace all Storm Rifles and Energy Fists",
+      "all" : true,
+      "remove" : ["Storm Rifles", "Energy Fists"],
+      "add" : [["Energy Hammer", "Shields"], ["2x Energy Claws"]]
+    },{
+      "text" : "Replace one Storm Rifle",
+      "remove" : ["Storm Rifles"],
+      "add" : [["Heavy Flamethrower"], ["Minigun"]]
+    },{
+      "text" : "Upgrade one model with",
+      "add" : [["Cyclone Missiles AT", "Cyclone Missiles HE"]]
+    },{
+      "text" : "Replace one Energy Fist with",
+      "remove" : ["Energy Fists"],
+      "add" : [["Energy Sword"]]
+}],
+"H" : [{
+      "text" : "Replace all Linked Heavy Machineguns and Heavy Fists",
+      "all" : true,
+      "remove" : ["Linked Heavy Machineguns", "Heavy Fists"],
+      "add" : [["Linked Flamethrowers", "Drills"]]
+    },{
+      "text" : "Replace any Linked Flamethrower",
+      "pre-remove" : ["Linked Heavy Machineguns", "Heavy Fists"],
+      "pre-add" : ["Linked Flamethrowers", "Drills"],
+      "remove" : ["Linked Flamethrowers"],
+      "add" : [["Linked Fusion Rifle"]]
+    },{
+      "text" : "Replace any Linked Flamethrower",
+      "add" : [["Linked Gravity Cannon"], ["Linked Laser Cannon"]]
+    },{
+      "text" : "Upgrade any model with one",
+      "add" : [["Assault Rifle Array"], ["Missile Launcher AT", "Missile Launcher HE"]]
+}],
+"I" : [{
+      "text" : "Upgrade up to two models with one",
+      "add" : [["Gravity Rifle"], ["Plasma Rifle"], ["Flamethrower"], ["Fusion Rifle"]]
+    },{
+      "text" : "Upgrade one model with",
+      "add" : [["Assault Rifle"]]
+}],
+"J" : [{
+      "text" : "Replace any Linked Assault Rifle",
+      "remove" : ["Linked Assault Rifles"],
+      "add" : [["Grenade Launcher HE", "Grenade Launcher AT"]]
+    },{
+      "text" : "Upgrade one model with",
+      "add" : [["Assault Rifle"]]
+}],
+"K" : [{
+      "text" : "Replace Heavy Machinegun",
+      "remove" : ["Heavy Machinegun"],
+      "add" : [["Heavy Fusion Rifle"]]
+}],
+"L" : [{
+      "text" : "Replace any Heavy Flamethrower",
+      "remove" : ["Heavy Flamethrowers"],
+      "add" : [["Heavy Machinegun"], ["Heavy Fusion Rifle"], ["Gravity Cannon"], ["Plasma Cannon"], ["Missile Launcher AT", "Missile Launcher HE"], ["Laser Cannon"]]
 }]}

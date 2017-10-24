@@ -75,7 +75,7 @@
   "count" : 3,
   "quality" : 3,
   "defense" : 7,
-  "equipment" : ["Linked Heavy Machineguns"],
+  "equipment" : ["Linked Heavy Machineguns", "Heavy Fists"],
   "special" : ["Fearless", "Slow", "Tough(3)"],
   "upgrades" : ["H"]
 },{

@@ -1,5 +1,88 @@
 {
 "A" : [{
-      "text" : "Upgrade any model with up to three",
-      "add" : [["Storm Rifle"]]
+      "text" : "Upgrade with any",
+      "add" : [["Dozer Blade"], ["Storm Rifle"], ["Hunter Missile"]]
+}],
+"B" : [{
+      "text" : "Replace Linked Heavy Flamethrower",
+      "remove" : ["Linked Heavy Flamethrower"],
+      "add" : [["Linked Heavy Machinegun"], ["Linked Minigun"], ["Laser Cannon", "Linked Plasma Rifle"], ["Linked Laser Cannon"]]
+}],
+"C" : [{
+      "text" : "Replace Storm Rifle",
+      "remove" : ["Storm Rifle"],
+      "add" : [["Death Launcher"]]
+}],
+"D" : [{
+      "text" : "Replace Autocannon",
+      "remove" : ["Autocannon"],
+      "add" : [["Spear Missile Launcher"], ["Linked Laser Cannon"], ["Linked Storm Cannon"], ["Wind Missile Launcher"], ["Demolition Cannon"]]
+    },{
+      "text" : "Upgrade with one",
+      "add" : [["2x Heavy Machineguns"], ["2x Laser Cannons"]]
+}],
+"E" : [{
+      "text" : "Replace 2x Assault Rifle Arrays",
+      "remove" : ["2x Assault Rifle Arrays"],
+      "add" : [["2x Flamethrower Cannons"], ["2x Linked Laser Cannon"]]
+    },{
+      "text" : "Replace Linked Heavy Machinegun",
+      "remove" : ["Linked Heavy Machinegun"],
+      "add" : [["Linked Minigun"]]
+    },{
+      "text" : "Upgrade with",
+      "add" : [["Heavy Fusion Rifle"]]
+}],
+"F" : [{
+      "text" : "Replace Linked Heavy Machinegun",
+      "remove" : ["Linked Heavy Machinegun"],
+      "add" : [["Linked Laser Cannon"], ["Typhoon Missiles AT", "Typhoon Missiles HE"]]
+}],
+"G" : [{
+      "text" : "Replace Heavy Flamethrower",
+      "remove" : ["Heavy Flamethrower"],
+      "add" : [["Heavy Machinegun"], ["Heavy Fusion Rifle"], ["Minigun"]]
+    },{
+      "text" : "Upgrade with one",
+      "add" : [["Heavy Flamethrower"], ["Heavy Machinegun"], ["Minigun"], ["Heavy Fusion Rifle"], ["Typhoon Missiles AT", "Typhoon Missiles HE"]]
+    },{
+      "text" : "Upgrade with",
+      "add" : [["Open Sides"]]
+}],
+"H" : [{
+      "text" : "Replace any Storm Rifle",
+      "remove" : ["Storm Rifles"],
+      "add" : [["Fusion Rifle"], ["Heavy Flamethrower"]]
+    },{
+      "text" : "Replace Walker Fist and Storm Rifle",
+      "remove" : ["Walker Fist", "Storm Rifles"],
+      "add" : [["Missile Launcher AT", "Missile Launcher HE"], ["Linked Autocannon"]]
+    },{
+      "text" : "Replace Assault Rifle Array",
+      "remove" : ["Assault Rifle Array"],
+      "add" : [["Linked Heavy Flamethrower"], ["Linked Heavy Machinegun"], ["Heavy Fusion Rifle"], ["Minigun"], ["Walker Fist", "Storm Rifle"], ["Plasma Cannon"], ["Linked Autocannon"], ["Linked Laser Cannon"]]
+    },{
+      "text" : "Upgrade with any",
+      "add" : [["Veterans"], ["Hunter Missile"]]
+}],
+"I" : [{
+      "text" : "Replace Laser Talon",
+      "remove" : ["Laser Talon"],
+      "add" : [["Storm Cannon"]]
+    },{
+      "text" : "Replace Linked Heavy Machinegun",
+      "remove" : ["Linked Heavy Machinegun"],
+      "add" : [["Hammer Missiles"], ["Typhoon Missiles AT", "Typhoon Missiles HE"]]
+}],
+"J" : [{
+      "text" : "Replace Linked Minigun",
+      "remove" : ["Linked Minigun"],
+      "add" : [["Linked Plasma Cannon"], ["Linked Laser Cannon"]]
+    },{
+      "text" : "Replace Linked Heavy Machinegun",
+      "remove" : ["Linked Heavy Machinegun"],
+      "add" : [["Linked Heavy Fusion Rifle"], ["Typhoon Missiles AT", "Typhoon Missiles HE"]]
+    },{
+      "text" : "Upgrade with",
+      "add" : [["2x Assault Rifle Arrays"]]
 }]}
