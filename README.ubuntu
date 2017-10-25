@@ -1,0 +1,67 @@
+Ubuntu 16.04 lacks some dependencies necessary for full operation of
+One Page Points. This document explains what you need, where to get
+them, and how to install them. It may work for other distributions.
+
+This is specifically designed to install for a specific user, and thus
+doesn't require root.
+
+=== System things ===
+
+This assumes you have python 3 and latex installed.
+
+WARNING: This is a very "full boat" install of LaTeX. It may also be
+missing things.
+
+sudo apt-get install python3 python3-setuptools
+sudo apt-get install --install-suggests texlive-full 
+
+=== Python things ===
+
+1.) idna (>= 2.5 required by pyexcel-ods3 0.5.1).
+
+Retrieved from: https://pypi.python.org/pypi/idna/2.6#downloads
+
+Untgz it to your favorite location, then cd into that location.
+
+python3 setup.py install --user
+
+2.) chardet ( >= 3.0.2 required by pyexcel-ods3 0.5.1).
+
+Retrieved from: https://pypi.python.org/pypi/chardet/3.0.4#downloads
+
+Untgz it to your favorite location, then cd into that location.
+
+python3 setup.py install --user
+
+3.) pyexcel-ods3
+
+Retreived from: https://pypi.python.org/pypi/pyexcel-ods3/0.5.1#downloads
+
+Untgz it to your favorite location, then cd into that location.
+
+python3 setup.py install --user
+
+=== LaTeX things ===
+
+1.) csvsimple
+
+I'm not sure what version is the minimum required, but 1.20 works:
+
+https://ctan.org/pkg/csvsimple?lang=en
+
+Most likely, the following just puts things in ~/texmf:
+
+mkdir -p `kpsewhich -var-value=TEXMFHOME`/tex/latex
+cd `kpsewhich -var-value=TEXMFHOME`/tex/latex
+
+and then unzip it into the directory where you are.
+
+You can verify this worked with:
+
+kpsewhich csvsimple.sty
+
+It should show the one off of your homedir, not the system one.
+
+
+
+
