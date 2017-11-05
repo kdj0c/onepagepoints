@@ -164,6 +164,11 @@ class Weapon:
             elif s == 'Vibration':
                 # Vibration weapons have AP(D6), so same cost as AP(4) looks fair
                 ap = 4
+            elif s == 'Gravity':
+                # Gravity weapons have AP(D3 + 1), so same cost as AP(3) looks fair
+                ap = 3
+            elif s == 'Anti-Air':
+                sfactor *= 1.10
 
         self.cost = sfactor * attacks * range_cost(wrange, speed) * (ap_cost(ap) * quality_attack_factor(quality) + rending)
         # Impact weapon have automatic hit, but only when charging (so 0.5 cost of the same weapon without quality factor)

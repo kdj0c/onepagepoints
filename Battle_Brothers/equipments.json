@@ -62,6 +62,11 @@
 "Stealth Cloaks"               : {"special": ["Stealth"]},
 "Veterans"                     : {"special": ["Veteran"], "text": "+1A in melee"}
 }, "factionRules" : {
+"Airdrop"                      : 0,
 "Battle Standard"              : 10,
+"Chant"                        : 10,
+"Large Cargo"                  : 10,
+"Rear Grapples"                : 20,
+"Tactics"                      : 40,
 "Veteran"                      : 15
 }}
