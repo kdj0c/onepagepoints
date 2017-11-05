@@ -25,7 +25,8 @@ endef
 
 all: $(OUT_PDF)
 
-clean: $(CLEAN)
+.PHONY: clean
+clean:
 	@echo Removing $(CLEAN)
 	@rm -f $(CLEAN)
 	@rm -rf out
