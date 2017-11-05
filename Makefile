@@ -5,6 +5,7 @@ TEMPLATE := $(wildcard template/*.sty)
 PDF := $(TEX:.tex=.pdf)
 OUT_PDF := $(addprefix out/,$(notdir $(PDF)))
 PYTHONS := $(wildcard *.py)
+COMMON := $(wildcard Common/*.json)
 
 CLEAN := $(foreach d,$(FACTIONS),$(wildcard $(d)/*.csv) $(wildcard $(d)/*.pdf))
 
@@ -32,16 +33,17 @@ clean:
 	@rm -rf out
 
 indent:
-	@python3 indentjson.py $(FACTIONS)
+	@python3 indentjson.py $(FACTIONS) Common
 
 out:
 	@mkdir out
 
 # pdf dependency is the tex file, all faction json files, all python scripts, and latex templates
-%.pdf : %.tex $(PYTHONS) $(TEMPLATE) | out
+%.pdf : %.tex $(PYTHONS) $(COMMON) $(TEMPLATE) | out
 	@rm -f $(@D)/*.csv
 	@python3 onepagebatch.py $(@D)
-	@cd $(@D) && xelatex -interaction=batchmode -halt-on-error $(notdir $<)
+	@ echo Generating $@
+	@cd $(@D) && xelatex -interaction=batchmode -halt-on-error $(notdir $<) 2>&1 > /dev/null
 
 # copy all pdf to out/ directory
 $(foreach f,$(PDF),$(eval $(call copy_out,$(addprefix out/,$(notdir $(f))),$(f))))

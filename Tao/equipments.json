@@ -1,6 +1,4 @@
 {"weapons" : {
-"Assault Rifle"                : { "range" : 24, "attacks" :  1, "ap" :  0, "special" : []},
-"Autocannon"                   : { "range" : 48, "attacks" :  2, "ap" :  3, "special" : []},
 "Captain Energy Sword"         : { "range" :  0, "attacks" :  4, "ap" :  3, "special" : []},
 "Captain Suit Fists"           : { "range" :  0, "attacks" :  4, "ap" :  1, "special" : []},
 "Claw"                         : { "range" :  0, "attacks" :  3, "ap" :  0, "special" : []},
@@ -10,7 +8,6 @@
 "Dual-Spear"                   : { "range" :  0, "attacks" :  3, "ap" :  2, "special" : []},
 "EMP Grenade"                  : { "range" :  0, "attacks" :  1, "ap" :  0, "special" : ["EMP"]},
 "Energy Sword"                 : { "range" :  0, "attacks" :  2, "ap" :  3, "special" : []},
-"Flamethrower"                 : { "range" : 12, "attacks" :  6, "ap" :  0, "special" : []},
 "Frag Pod"                     : { "range" : 18, "attacks" :  1, "ap" :  1, "special" : ["Blast(6)", "Indirect"]},
 "Fusion Carbine"               : { "range" : 18, "attacks" :  1, "ap" :  7, "special" : ["Deadly"]},
 "Gatling Carbine"              : { "range" : 18, "attacks" :  4, "ap" :  1, "special" : []},
@@ -31,7 +28,6 @@
 "Marksman Rifle"               : { "range" : 24, "attacks" :  1, "ap" :  2, "special" : ["Sniper"]},
 "Missile Pod"                  : { "range" : 36, "attacks" :  2, "ap" :  3, "special" : []},
 "Neutron Carbine"              : { "range" : 18, "attacks" :  1, "ap" :  1, "special" : []},
-"Plasma Rifle"                 : { "range" : 24, "attacks" :  1, "ap" :  3, "special" : []},
 "Pulse Bomb"                   : { "range" :  6, "attacks" :  1, "ap" :  1, "special" : ["Blast(6)"]},
 "Pulse Cannon"                 : { "range" : 24, "attacks" :  2, "ap" :  6, "special" : ["Blast(3)"]},
 "Pulse Carbine"                : { "range" : 18, "attacks" :  2, "ap" :  1, "special" : []},

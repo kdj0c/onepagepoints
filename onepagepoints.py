@@ -184,6 +184,7 @@ class Armory(dict):
     def __init__(self, *args):
         dict.__init__(self, args)
 
+    # get one equipment from the armory.
     def getOne(self, name):
         if name in self:
             return self[name]
@@ -198,8 +199,8 @@ class Armory(dict):
         print('Error equipment {0} Not found !'.format(name))
         return None
 
-# Return the list of equipments objects, from their names.
-# if the name start with "2x ", return twice the same object in the list.
+    # Return the list of equipments objects, from their names.
+    # if the name start with "2x ", return twice the same object in the list.
     def get(self, names):
         for name in names:
             if ' ' in name:
@@ -213,8 +214,13 @@ class Armory(dict):
 
         return [self.getOne(name) for name in names]
 
+    # Add an equipments to the armory
+    # if it's a weapon, also add the Linked variant
     def add(self, equipments):
         for equipment in equipments:
+            if equipment.name in self:
+                print('Error {} is defined twice'.format(equipment.name))
+                continue
             self[equipment.name] = equipment
 
             if isinstance(equipment, Weapon):

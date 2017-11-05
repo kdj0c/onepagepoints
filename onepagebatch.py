@@ -111,18 +111,19 @@ def calculate_unit_cost(junit, jupgrades):
             print("Missing upgrade_group {0} in upgrades.json".format(upgrade_group))
 
 
-def write_unit_csv(junits, outfile):
+def get_unit_line(junit):
     global armory
 
-    with open(outfile, 'w') as f:
-        for junit in junits:
-            unit = Unit.from_dict(junit, armory)
-            cost = unit.cost + getFactionCost(unit)
-            equ = ", ".join([ '\mbox{' + e + '}' for e in  prettyEquipments(unit.equipments)])
-            sp = ", ".join(unit.specialRules)
-            up = ", ".join(junit['upgrades'])
-            line = '{0};{1};{2};{3};{4};{5};{6};{7}\n'.format(unit.name, unit.count, unit.quality, unit.basedefense, equ, sp, up, points(cost))
-            f.write(line)
+    unit = Unit.from_dict(junit, armory)
+    cost = unit.cost + getFactionCost(unit)
+    equ = ", ".join(['\mbox{' + e + '}' for e in prettyEquipments(unit.equipments)])
+    sp = ", ".join(unit.specialRules)
+    up = ", ".join(junit['upgrades'])
+    return '{0};{1};{2};{3};{4};{5};{6};{7}'.format(unit.name, unit.count, unit.quality, unit.basedefense, equ, sp, up, points(cost))
+
+
+def get_units_csv(junits):
+    return '\n'.join([get_unit_line(junit) for junit in junits])
 
 
 # an upgrade group cost is calculated for all units who have access to this
@@ -139,50 +140,66 @@ def calculate_mean_upgrade_cost(costs):
     return ret
 
 
-def write_upgrade_csv(jupgrades, upgradeFile):
+def get_upgrade_group(group, upgrades):
     global armory
 
-    with open(upgradeFile, 'w') as f:
-        for group, upgrades in jupgrades.items():
-            f.write(group + ' | ')
-            for up in upgrades:
-                f.write(up['text'] + ':;;' + group + '\n')
-                cost = calculate_mean_upgrade_cost(up['cost'])
-                for i, addEqu in enumerate(up['add']):
-                    f.write('{0};{1};{2}\n'.format('\\newline '.join(prettyEquipments(armory.get(addEqu))), points(cost[i]), group))
+    data = group + ' | '
+    for up in upgrades:
+        data += up['text'] + ':;;' + group + '\n'
+        cost = calculate_mean_upgrade_cost(up['cost'])
+        for i, addEqu in enumerate(up['add']):
+            data += '{0};{1};{2}\n'.format('\\newline '.join(prettyEquipments(armory.get(addEqu))), points(cost[i]), group)
+    return data
 
 
-def generateFaction():
+def get_upgrade_csv(jupgrades):
+    return ''.join([get_upgrade_group(group, upgrades) for group, upgrades in jupgrades.items()])
+
+
+def write_csv(filename, path, data):
+    fname = os.path.join(path, filename)
+    with open(fname, "w") as f:
+        print('  Writing {}'.format(fname))
+        f.write(data)
+
+
+def read_json(filename, path):
+    fname = os.path.join(path, filename)
+    with open(fname, "r") as f:
+        print('  Processing {}'.format(fname))
+        return json.loads(f.read())
+
+
+def generateFaction(faction):
     global armory
     global factionRules
 
-    with open("equipments.json", "r") as f:
-        print('Processing {}'.format(f.name))
-        jequipments = json.loads(f.read())
-
     armory = Armory()
+
+    if os.path.exists(os.path.join('Common', 'equipments.json')):
+        jequipments = read_json('equipments.json', 'Common')
+        armory.add([Weapon(name, w['range'], w['attacks'], w['ap'], w['special']) for name, w in jequipments['weapons'].items()])
+
+    jequipments = read_json("equipments.json", faction)
     armory.add([Weapon(name, w['range'], w['attacks'], w['ap'], w['special']) for name, w in jequipments['weapons'].items()])
     armory.add([WarGear(name, wargear.get('special', []), armory.get(wargear.get('weapons', [])), wargear.get('text', '')) for name, wargear in jequipments['wargear'].items()])
 
     factionRules = jequipments['factionRules']
 
-    allFiles = os.listdir(".")
+    allFiles = os.listdir(faction)
+
     for i in ['', 1, 2, 3, 4, 5]:
         unitFile = 'units' + str(i) + '.json'
         upgradeFile = 'upgrades' + str(i) + '.json'
         if unitFile in allFiles and upgradeFile in allFiles:
-            with open(unitFile, "r") as f:
-                print('Processing {}'.format(unitFile))
-                junits = json.loads(f.read())
-            with open(upgradeFile, "r") as f:
-                print('Processing {}'.format(upgradeFile))
-                jupgrades = json.loads(f.read())
+            junits = read_json(unitFile, faction)
+            jupgrades = read_json(upgradeFile, faction)
 
             for junit in junits:
                 calculate_unit_cost(junit, jupgrades)
 
-            write_unit_csv(junits, unitFile[:-4] + 'csv')
-            write_upgrade_csv(jupgrades, upgradeFile[:-4] + 'csv')
+            write_csv(unitFile[:-4] + 'csv', faction, get_units_csv(junits))
+            write_csv(upgradeFile[:-4] + 'csv', faction, get_upgrade_csv(jupgrades))
 
 
 def main():
@@ -192,12 +209,9 @@ def main():
 
     args = parser.parse_args()
 
-    current_dir = os.getcwd()
     for faction in args.path:
         print("Building faction {}".format(faction))
-        os.chdir(faction)
-        generateFaction()
-        os.chdir(current_dir)
+        generateFaction(faction)
 
 
 if __name__ == "__main__":
