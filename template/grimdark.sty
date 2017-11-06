@@ -42,8 +42,8 @@
 
 \chead{
 	\LARGE \textbf{Grimdark Future - #1}\\
-	\normalsize by \textbf{Gaetano Ferrara} (\small\url{http://onepagerules.wordpress.com/}\normalsize)\\
-	and  \textbf{Jocelyn Falempe} (\small\url{https://github.com/kdj0c/onepagepoints}\normalsize)}
+	\small by \textbf{Gaetano Ferrara} (\footnotesize\url{http://onepagerules.wordpress.com/}\small)\\
+	and  \textbf{Jocelyn Falempe} (\footnotesize\url{https://github.com/kdj0c/onepagepoints}\small)}
 }
 
 \newcommand{\UpgradeGroup}[2]{
@@ -53,9 +53,9 @@
 
 	\vspace{1pt}
 	\rowcolors{1}{white}{lgrey}
-	\begin{tabu} to \linewidth {Xc}
-		\csvreader[no head,before first line = \bf, late after line = \\,filter strcmp={#2}{\csvcoliii}, /csv/separator=semicolon ]{upgrades#1.csv}{}
-		{\ifthenelse{\equal{\csvcolii}{}}{\bf}{}\raggedright\csvcoli&\csvcolii}
+	\begin{tabu} to \linewidth {X[l]c}
+		\csvreader[no head, late after line = \\, filter strcmp={#2}{\csvcoliii}, /csv/separator=semicolon]{upgrades#1.csv}{}
+		{\ifthenelse{\equal{\csvcolii}{}}{\bf}{}\csvcoli&\csvcolii}
 	\end{tabu}
 }
 
@@ -73,7 +73,7 @@
 		\setlength\tabcolsep{2 pt}
 		\rowcolors{1}{white}{lgrey}
 		\footnotesize
-		\begin{tabu} to \linewidth {lccX[3]>{\raggedright}X[2]cc}
+		\begin{tabu} to \linewidth {lccX[4]>{\raggedright}X[3]cc}
 			\bf Name [size]& \bf Qua& \bf Def& \bf Equipment& \bf Special Rules& \bf Upgrades& \bf Cost\\
 			\csvreader[no head, late after line=\\, /csv/separator=semicolon ]{units#1.csv}{}
 			{\csvcoli\space[\csvcolii]&\csvcoliii+&\csvcoliv+&\raggedright\csvcolv&\csvcolvi&\csvcolvii&\csvcolviii}
