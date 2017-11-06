@@ -38,25 +38,20 @@ def format_weapon(w):
     return s
 
 
-def format_equipments(jsonFile):
-    print('processing {0}'.format(os.path.abspath(jsonFile)))
-    with open(jsonFile, "r") as f:
-        data = json.loads(f.read())
-
-    os.rename(jsonFile, jsonFile + "~")
-
+def format_equipments(data):
     weapons = data['weapons']
     wargear = data['wargear']
     factionrules = data['factionRules']
 
-    with open(jsonFile, "w") as f:
-        f.write('{"weapons" : {\n')
-        f.write(",\n".join(['{:<30} : '.format('"' + w + '"') + format_weapon(weapons[w]) for w in sorted(weapons)]))
-        f.write('\n}, "wargear" : {\n')
-        f.write(",\n".join(['{:<30} : '.format('"' + w + '"') + json.dumps(wargear[w]) for w in sorted(wargear)]))
-        f.write('\n}, "factionRules" : {\n')
-        f.write(",\n".join(['{:<30} : '.format('"' + r + '"') + json.dumps(factionrules[r]) for r in sorted(factionrules)]))
-        f.write('\n}}\n')
+    ret = '{"weapons" : {\n'
+    ret += ",\n".join(['{:<30} : '.format('"' + w + '"') + format_weapon(weapons[w]) for w in sorted(weapons)])
+    ret += '\n}, "wargear" : {\n'
+    ret += ",\n".join(['{:<30} : '.format('"' + w + '"') + json.dumps(wargear[w]) for w in sorted(wargear)])
+    ret += '\n}, "factionRules" : {\n'
+    ret += ",\n".join(['{:<30} : '.format('"' + r + '"') + json.dumps(factionrules[r]) for r in sorted(factionrules)])
+    ret += '\n}}\n'
+
+    return ret
 
 
 def format_unit(unit):
@@ -70,17 +65,8 @@ def format_unit(unit):
     return s
 
 
-def format_units(jsonFile):
-    print('processing {0}'.format(os.path.abspath(jsonFile)))
-    with open(jsonFile, "r") as f:
-        data = json.loads(f.read())
-
-    os.rename(jsonFile, jsonFile + "~")
-
-    with open(jsonFile, "w") as f:
-        f.write('[{\n')
-        f.write('},{\n'.join([format_unit(unit) for unit in data]))
-        f.write('}]\n')
+def format_units(data):
+    return '[{\n' + '},{\n'.join([format_unit(unit) for unit in data]) + '}]\n'
 
 
 def format_batch(batch):
@@ -104,31 +90,36 @@ def format_group(groupName, group):
     return s
 
 
-def format_upgrades(jsonFile):
-    print('processing {0}'.format(os.path.abspath(jsonFile)))
-    with open(jsonFile, "r") as f:
-        data = json.loads(f.read())
-
-    os.rename(jsonFile, jsonFile + "~")
-
-    with open(jsonFile, "w") as f:
-        f.write('{\n')
-        f.write('}],\n'.join([format_group(group, data[group]) for group in sorted(data)]))
-        f.write('}]}\n')
+def format_upgrades(data):
+    return '{\n' + '}],\n'.join([format_group(group, data[group]) for group in sorted(data)]) + '}]}\n'
 
 
-def format_faction():
-    allFiles = os.listdir(".")
+def format_file(filename, path, format_func):
+    floc = os.path.join(path, filename)
+    print('processing {0}'.format(floc))
+    with open(floc, "r") as f:
+        rawdata = f.read()
+        data = json.loads(rawdata)
 
-    equFile = 'equipments.json'
-    if equFile in allFiles:
-        format_equipments(equFile)
+    newdata = format_func(data)
 
-    for f in allFiles:
-        if f.startswith('units') and f.endswith('.json'):
-            format_units(f)
-        if f.startswith('upgrades') and f.endswith('.json'):
-            format_upgrades(f)
+    if newdata != rawdata:
+
+        os.rename(floc, floc + '~')
+        with open(floc, "w") as f:
+            f.write(newdata)
+
+
+def format_faction(faction):
+    jsonFiles = [f for f in os.listdir(faction) if f.endswith('.json')]
+
+    for f in jsonFiles:
+        if f == 'equipments.json':
+            format_file(f, faction, format_equipments)
+        elif f.startswith('unit'):
+            format_file(f, faction, format_units)
+        elif f.startswith('upgrades'):
+            format_file(f, faction, format_upgrades)
 
 
 def main():
@@ -139,11 +130,9 @@ def main():
 
     args = parser.parse_args()
 
-    current_dir = os.getcwd()
+
     for path in args.path:
-        os.chdir(path)
-        format_faction()
-        os.chdir(current_dir)
+        format_faction(path)
 
 
 if __name__ == "__main__":
