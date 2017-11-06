@@ -22,7 +22,7 @@ If you want to create a new faction, you need also pyexcel-ods3 (you can install
  * indentjson.py : script to indent and force format for all .json files.
  * generate_faction.py : script that is only used once to create a new faction
  * testpoints.py : a small pytest script, I didn't put much unit test here. It can be used to check for regression.
- * template/grimdark.sty : latex template to generate beautiful tables, and avoid to much duplication in all Faction.tex
+ * Template/grimdark.sty : latex template to generate beautiful tables, and avoid to much duplication in all Faction.tex
  * Faction/Faction.tex : latex source file for the Faction
  * Makefile : simple script to generate all pdf at once !
  * Faction/Faction.ods : source file used by generate_faction.py. it's used only once, I keep them here only for example.

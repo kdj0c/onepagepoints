@@ -1,7 +1,7 @@
 FACTIONS = Battle_Brothers Tao Robot_Legions High_Elf_Fleets
 
 TEX := $(foreach d,$(FACTIONS),$(wildcard $(d)/*.tex))
-TEMPLATE := $(wildcard template/*.sty)
+TEMPLATE := $(wildcard Template/*.sty)
 PDF := $(TEX:.tex=.pdf)
 OUT_PDF := $(addprefix out/,$(notdir $(PDF)))
 PYTHONS := $(wildcard *.py)
