@@ -71,13 +71,14 @@ class WarGear:
         self.weapons = weapons
         self.text = text
 
-    def __str__(self):
-        s = self.name + ' ('
+    def Profile(self):
         if self.text:
-            s += self.text
+            return '(' + self.text + ')'
         else:
-            s += ', '.join(self.specialRules + [str(w) for w in self.weapons])
-        return s + ')'
+            return '(' + ', '.join(self.specialRules + [str(w) for w in self.weapons]) + ')'
+
+    def __str__(self):
+        s = self.name + ' ' + self.Profile()
 
     def Cost(self, speed, quality):
         cost = 0
@@ -100,19 +101,19 @@ class Weapon:
     def __repr__(self):
         return "{0}({1})".format(self.name, self.__dict__)
 
-    def __str__(self):
-        s = self.name + ' ('
-        if self.range > 0:
-            s += '{0}", '.format(self.range)
-        s += 'A{0}'.format(self.attacks)
-        if self.armorPiercing:
-            s += ', AP({0})'.format(self.armorPiercing)
+    def Profile(self):
+        def fmtnz(value, fmt):
+            if value:
+                return [fmt.format(value)]
+            return []
+
+        prof = fmtnz(self.range, '{0}"') + ['A{0}'.format(self.attacks)] + fmtnz(self.armorPiercing, 'AP({0})')
         # Remove "Linked" special rule if the name contain "Linked"
-        weaponRules = [wr for wr in self.weaponRules if wr != 'Linked' or 'Linked' not in self.name.split()]
-        if weaponRules:
-            s += ', ' + ', '.join(weaponRules)
-        s += ')'
-        return s
+        prof += [wr for wr in self.weaponRules if wr != 'Linked' or 'Linked' not in self.name.split()]
+        return '(' + ', '.join(prof) + ')'
+
+    def __str__(self):
+        return self.name + ' ' + self.Profile()
 
     def Pretty(self):
         if self.cost:

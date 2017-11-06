@@ -50,11 +50,17 @@ def pCount(n):
     return '{}x '.format(n)
 
 
-# Return a pretty string of the list of equipments
+def prettyProfile(equipment):
+    if isinstance(equipment, Weapon):
+        return equipment.Profile().replace(' ', '~')
+    return equipment.Profile()
+
+
+# Return a pretty string for latex of the list of equipments
 # And prefix with 2x if the equipment is present twice.
 def prettyEquipments(equipments):
     equWithCount = list(OrderedDict.fromkeys([(equ, equipments.count(equ)) for equ in equipments]))
-    return [pCount(c) + str(e) for e, c in equWithCount]
+    return [pCount(c) + e.name.replace(' ', '~') + ' ' + prettyProfile(e) for e, c in equWithCount]
 
 
 # Calculate the cost of an upgrade on a unit
@@ -148,7 +154,7 @@ def get_upgrade_group(group, upgrades):
         data += up['text'] + ':;;' + group + '\n'
         cost = calculate_mean_upgrade_cost(up['cost'])
         for i, addEqu in enumerate(up['add']):
-            data += '{0};{1};{2}\n'.format('\\newline '.join(prettyEquipments(armory.get(addEqu))), points(cost[i]), group)
+            data += '{0};{1};{2}\n'.format(', '.join(prettyEquipments(armory.get(addEqu))), points(cost[i]), group)
     return data
 
 
