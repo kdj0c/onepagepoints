@@ -1,7 +1,7 @@
 \ProvidesPackage{grimdark}
 
 \usepackage{comment}
-\usepackage[includeheadfoot,margin=0.7cm,top=0.3cm,bottom=0.7cm,headsep=0.2cm]{geometry}
+\usepackage[includeheadfoot,margin=0.6cm,top=0.3cm,bottom=0.6cm,headsep=0.2cm]{geometry}
 
 \usepackage{tabu}
 \usepackage[table]{xcolor}
@@ -23,8 +23,18 @@
 }
 \makeatother
 
+% LaTeX counter interface for \rownum
+\makeatletter
+\@ifundefined{c@rownum}{%
+  \let\c@rownum\rownum
+}{}
+\@ifundefined{therownum}{%
+  \def\therownum{\@arabic\rownum}%
+}{}
+\makeatother
+
 % Reduce vertical spacing before and after Special Rules/Psychic title
-\titlespacing*{\subsection}{0pt}{4pt plus 1pt minus 2pt}{4pt plus 1pt minus 2pt}
+\titlespacing*{\subsubsection}{0pt}{1pt plus 1pt minus 1pt}{1pt plus 1pt minus 1pt}
 
 \setmainfont{Carlito}
 
@@ -37,7 +47,12 @@
 
 \newcommand{\mytitle}[1]{
 \renewcommand{\headrulewidth}{0pt}
-\setlength{\headheight}{40pt}
+\setlength{\headheight}{41 pt}
+\setlength{\parskip}{1 pt}
+
+% Add an extra thick white hline at end of table to have better spacing between upgrade table
+\setlength{\arrayrulewidth}{3 pt}
+\arrayrulecolor{white}
 
 \chead{
 	\LARGE \textbf{Grimdark Future - #1}\\
@@ -48,37 +63,33 @@
 % Generate the table with all units and their stats.
 % First parameter is the page number, for faction with more than 1 page.
 \newcommand{\UnitTable}[1]{
-	\begin{center}
-		\hyphenpenalty=100000
-		\setlength\tabcolsep{2 pt}
-		\rowcolors{1}{white}{lgrey}
-		\footnotesize
-		\begin{tabu} to \linewidth {lccX[4l]X[3l]cc}
-			\bf Name [size]& \bf Qua& \bf Def& \bf Equipment& \bf Special Rules& \bf Upgrades& \bf Cost\\
-			\input{units#1}
-		\end{tabu}
-	\end{center}
+	\centering
+	\hyphenpenalty=100000
+	\setlength\tabcolsep{2 pt}
+	\rowcolors{1}{white}{lgrey}
+	\footnotesize
+	\begin{tabu} to \linewidth {lccX[4l]X[3l]cc}
+		\bf Name [size]& \bf Qua& \bf Def& \bf Equipment& \bf Special Rules& \bf Upgrades& \bf Cost\\
+		\input{units#1}
+	\end{tabu}
 }
 
 % Generate the table for one upgrade group
 \newcommand{\UpgradeTable}[1]{
 	\hyphenpenalty=100000
 	\setlength\tabcolsep{1 pt}
+	\centering
 	\footnotesize
-
-	\vspace{1pt}
-	\rowcolors{1}{white}{lgrey}
+	\rowcolors{1}{lgrey}{white}
 	\begin{tabu} to \linewidth {X[l]c}
-	#1
+	#1 \setcounter{rownum}{0} \\ \hline%
 	\end{tabu}
 }
 
 % Start a section with special rules
 \newcommand{\specialrules}{
-	\centering
-	\subsection*{Special Rules \hfill}
+	\subsubsection*{Special Rules \hfill}
 	\raggedright
-	\raggedbottom
 	\footnotesize
 }
 
@@ -86,19 +97,18 @@
 % First parameter is rule name.
 % Second parameter is rule explanations.
 \newcommand{\sprule}[2]{
-	\vbox{\textbf{#1:} #2 \newline}
+	\textbf{#1:} #2
+
 }
 
 % Start a section with psychic spells
 % #1 is list of spell, using \psychic
 \newcommand{\startpsychic}[1]{
 	\centering
-	\subsection*{Psychic Spells \hfill}
+	\subsubsection*{Psychic Spells \hfill}
 	\raggedright
-	\raggedbottom
 	\hyphenpenalty=100000
 	\footnotesize
-
 	\tabulinesep=2pt
 	\setlength\tabcolsep{2 pt}
 	\rowcolors{1}{lgrey}{white}
