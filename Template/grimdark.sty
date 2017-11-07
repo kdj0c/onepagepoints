@@ -4,7 +4,6 @@
 \usepackage[includeheadfoot,margin=0.7cm,top=0.3cm,bottom=0.7cm,headsep=0.2cm]{geometry}
 
 \usepackage{tabu}
-\usepackage{csvsimple}
 \usepackage[table]{xcolor}
 \usepackage{multicol}
 \usepackage{fontspec}
@@ -46,25 +45,6 @@
 	and  \textbf{Jocelyn Falempe} (\footnotesize\url{https://github.com/kdj0c/onepagepoints}\small)}
 }
 
-\newcommand{\UpgradeGroup}[2]{
-	\hyphenpenalty=100000
-	\setlength\tabcolsep{1 pt}
-	\footnotesize
-
-	\vspace{1pt}
-	\rowcolors{1}{white}{lgrey}
-	\begin{tabu} to \linewidth {X[l]c}
-		\csvreader[no head, late after line = \\, filter strcmp={#2}{\csvcoliii}, /csv/separator=semicolon]{upgrades#1.csv}{}
-		{\ifthenelse{\equal{\csvcolii}{}}{\bf}{}\csvcoli&\csvcolii}
-	\end{tabu}
-}
-
-% Generate the table for all upgrade groups, from A to #2 (second parameter).
-% First parameter is the page number, for faction with more than 1 page.
-\newcommand{\UpgradeGroups}[2]{
-\foreach \x in {A,...,#2} {\UpgradeGroup{#1}{\x}}
-}
-
 % Generate the table with all units and their stats.
 % First parameter is the page number, for faction with more than 1 page.
 \newcommand{\UnitTable}[1]{
@@ -73,12 +53,24 @@
 		\setlength\tabcolsep{2 pt}
 		\rowcolors{1}{white}{lgrey}
 		\footnotesize
-		\begin{tabu} to \linewidth {lccX[4]>{\raggedright}X[3]cc}
+		\begin{tabu} to \linewidth {lccX[4l]X[3l]cc}
 			\bf Name [size]& \bf Qua& \bf Def& \bf Equipment& \bf Special Rules& \bf Upgrades& \bf Cost\\
-			\csvreader[no head, late after line=\\, /csv/separator=semicolon ]{units#1.csv}{}
-			{\csvcoli\space[\csvcolii]&\csvcoliii+&\csvcoliv+&\raggedright\csvcolv&\csvcolvi&\csvcolvii&\csvcolviii}
+			\input{units#1}
 		\end{tabu}
 	\end{center}
+}
+
+% Generate the table for one upgrade group
+\newcommand{\UpgradeTable}[1]{
+	\hyphenpenalty=100000
+	\setlength\tabcolsep{1 pt}
+	\footnotesize
+
+	\vspace{1pt}
+	\rowcolors{1}{white}{lgrey}
+	\begin{tabu} to \linewidth {X[l]c}
+	#1
+	\end{tabu}
 }
 
 % Start a section with special rules

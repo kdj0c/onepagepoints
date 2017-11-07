@@ -50,6 +50,12 @@ def pCount(n):
     return '{}x '.format(n)
 
 
+def prettyName(unit):
+    if unit.count > 1:
+        return unit.name + ' [{0}]'.format(unit.count)
+    return unit.name
+
+
 def prettyProfile(equipment):
     if isinstance(equipment, Weapon):
         return equipment.Profile().replace(' ', '~')
@@ -125,11 +131,11 @@ def get_unit_line(junit):
     equ = ", ".join(['\mbox{' + e + '}' for e in prettyEquipments(unit.equipments)])
     sp = ", ".join(unit.specialRules)
     up = ", ".join(junit['upgrades'])
-    return '{0};{1};{2};{3};{4};{5};{6};{7}'.format(unit.name, unit.count, unit.quality, unit.basedefense, equ, sp, up, points(cost))
+    return ' & '.join([prettyName(unit), str(unit.quality), str(unit.basedefense) + '+', equ, sp, up, points(cost)])
 
 
-def get_units_csv(junits):
-    return '\n'.join([get_unit_line(junit) for junit in junits])
+def get_units_tex(junits):
+    return '\\\\ \n'.join([get_unit_line(junit) for junit in junits])
 
 
 # an upgrade group cost is calculated for all units who have access to this
@@ -146,23 +152,29 @@ def calculate_mean_upgrade_cost(costs):
     return ret
 
 
-def get_upgrade_group(group, upgrades):
+def get_upgrade_line(equ, cost):
     global armory
+    return ', '.join(prettyEquipments(armory.get(equ))) + ' & ' + points(cost)
 
-    data = group + ' | '
+
+def get_upgrade_group(group, upgrades):
+
+    data = '\\UpgradeTable{ \\bf ' + group + ' | '
+
+    ret = []
     for up in upgrades:
-        data += up['text'] + ':;;' + group + '\n'
+        ret += [up['text'] + ': &']
         cost = calculate_mean_upgrade_cost(up['cost'])
-        for i, addEqu in enumerate(up['add']):
-            data += '{0};{1};{2}\n'.format(', '.join(prettyEquipments(armory.get(addEqu))), points(cost[i]), group)
-    return data
+        ret += [get_upgrade_line(addEqu, cost[i]) for i, addEqu in enumerate(up['add'])]
+
+    return data + ' \\\\ \n'.join(ret) + '}\n'
 
 
-def get_upgrade_csv(jupgrades):
+def get_upgrade_tex(jupgrades):
     return ''.join([get_upgrade_group(group, upgrades) for group, upgrades in jupgrades.items()])
 
 
-def write_csv(filename, path, data):
+def write_tex(filename, path, data):
     fname = os.path.join(path, filename)
     with open(fname, "w") as f:
         print('  Writing {}'.format(fname))
@@ -204,12 +216,12 @@ def generateFaction(faction):
             for junit in junits:
                 calculate_unit_cost(junit, jupgrades)
 
-            write_csv(unitFile[:-4] + 'csv', faction, get_units_csv(junits))
-            write_csv(upgradeFile[:-4] + 'csv', faction, get_upgrade_csv(jupgrades))
+            write_tex(unitFile[:-4] + 'tex', faction, get_units_tex(junits))
+            write_tex(upgradeFile[:-4] + 'tex', faction, get_upgrade_tex(jupgrades))
 
 
 def main():
-    parser = argparse.ArgumentParser(description='This script will compute the Unit costs and upgrade costs for a faction, and write the .csv files for LaTeX')
+    parser = argparse.ArgumentParser(description='This script will compute the Unit costs and upgrade costs for a faction, and write the .tex files for LaTeX')
     parser.add_argument('path', metavar='path', type=str, nargs='+',
                         help='path to the faction (should contain at list equipments.json, units1.json, upgrades1.json)')
 

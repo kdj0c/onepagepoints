@@ -126,5 +126,8 @@ ENV/
 *.pdf
 *.synctex.gz
 *.csv
+# generated tex files
+unit*.tex
+upgrades*.tex
 # indentjson.py temporary backup
 *.json~

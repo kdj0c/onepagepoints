@@ -9,7 +9,7 @@ Tested only with python 3.7 on Archlinux. It should work everywhere you can run 
 
 # Dependencies :
 
-To generate the pdf, you need xelatex, with a few plugins, a recent version of csvsimple (1.12 is too old, 1.20 works), If you get an error about "I do not know the key '/csv/filter strcmp'", then you need a newer csvsimple.
+To generate the pdf, you need xelatex, with a few plugins. csvsimple is not needed anymore.
 The best is to install from ctan at https://www.tug.org/texlive/quickinstall.html)
 You also need make, to build everything
 
@@ -18,7 +18,7 @@ If you want to create a new faction, you need also pyexcel-ods3 (you can install
 # Files details
 
  * onepagepoints.py : library to calculate individual cost of weapons/units, also a main() to do unit tests
- * onepagebatch.py : script which read each faction .json files (equipments.json, units.json, upgrades.json), and generate units.csv and upgrades.csv which will be integrated into Latex to generate the pdf table.
+ * onepagebatch.py : script which read each faction .json files (equipments.json, units.json, upgrades.json), and generate units.tex and upgrades.tex which will be integrated into Latex to generate the pdf table.
  * indentjson.py : script to indent and force format for all .json files.
  * generate_faction.py : script that is only used once to create a new faction
  * testpoints.py : a small pytest script, I didn't put much unit test here. It can be used to check for regression.
@@ -30,7 +30,7 @@ If you want to create a new faction, you need also pyexcel-ods3 (you can install
 # commands :
 
 to build all factions pdf (they are generated in out/Faction.pdf):
-$ `make`
+$ `make -j4`
 
 to build only 'Tao' pdf :
 $ `make Tao`

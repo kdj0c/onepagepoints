@@ -1,13 +1,13 @@
 FACTIONS = Battle_Brothers Tao Robot_Legions High_Elf_Fleets
 
-TEX := $(foreach d,$(FACTIONS),$(wildcard $(d)/*.tex))
+TEX := $(foreach d,$(FACTIONS),$(d)/$(d).tex)
 TEMPLATE := $(wildcard Template/*.sty)
 PDF := $(TEX:.tex=.pdf)
 OUT_PDF := $(addprefix out/,$(notdir $(PDF)))
 PYTHONS := $(wildcard *.py)
 COMMON := $(wildcard Common/*.json)
 
-CLEAN := $(foreach d,$(FACTIONS),$(wildcard $(d)/*.csv) $(wildcard $(d)/*.pdf)) $(wildcard out/tmp/*) $(wildcard out/*)
+CLEAN := $(foreach d,$(FACTIONS),$(wildcard $(d)/unit*.tex) $(wildcard $(d)/upgrades*.tex) $(wildcard $(d)/*.pdf)) $(wildcard out/tmp/*) $(wildcard out/*)
 
 #don't use built-in rules
 .SUFFIXES:
@@ -17,7 +17,7 @@ CLEAN := $(foreach d,$(FACTIONS),$(wildcard $(d)/*.csv) $(wildcard $(d)/*.pdf)) 
 # and Faction will depend on out/Faction.pdf
 define build_pdf =
 out/$(1).pdf: $(1)/$(1).tex $(2) $(PYTHONS) $(COMMON) $(TEMPLATE) | out out/tmp
-	@rm -f $(1)/*.csv
+	@rm -f $(1)/unit*.tex $(1)/upgrades*.tex
 	@python3 onepagebatch.py $(1)
 	@echo Generating $$@
 	@cd $(1) && xelatex -interaction=batchmode -halt-on-error -output-directory=../out $(1).tex 2>&1 > /dev/null
