@@ -17,7 +17,7 @@
       "add" : [["Energy Sword"], ["Energy Fist"]]
     },{
       "text" : "Take one Assault Rifle Attachement",
-      "add" : [["Gravity Rifle Add-on"], ["Plasma Rifle Add-on"], ["Flamethrower Add-on"], ["Fusion Rifle Add-on"]]
+      "add" : [["Gravity Add-on"], ["Plasma Add-on"], ["Flamethrower Add-on"], ["Fusion Add-on"]]
 }],
 "B" : [{
       "text" : "Upgrade with one",
