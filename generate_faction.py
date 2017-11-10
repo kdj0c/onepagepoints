@@ -21,10 +21,10 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-from pyexcel_ods3 import get_data, save_data
 import json
 import argparse
 import string
+import os
 from collections import OrderedDict
 
 """
@@ -132,26 +132,31 @@ def parse_weapons(data):
         parse_equipment(row[0])
 
 
+def csv_to_list(data):
+    return [row.split(';') for row in data.split('\n')]
+
+
 def main():
     global alljweapons
 
-    parser = argparse.ArgumentParser(description='Parse ods file to help import pdf into json')
-    parser.add_argument('fname', metavar='fname', type=str,
-                        help='file to parse')
+    parser = argparse.ArgumentParser(description='Parse csv file to help import pdf into json')
+    parser.add_argument('fnames', metavar='fnames', type=str, nargs='+',
+                        help='files to parse')
 
     args = parser.parse_args()
-
-    data = get_data(args.fname)
-
     alljweapons = {}
-    unitpage = 1
 
-    for sheet in data:
-        if sheet.startswith('units'):
-            parse_units(sheet, data[sheet])
+    for fname in args.fnames:
+        with open(fname, 'r') as f:
+            data = csv_to_list(f.read())
 
+        # filename without extension
+        bname = os.path.basename(fname).split('.')[0]
+
+        if bname.startswith('units'):
+            parse_units(bname, data)
         else:
-            parse_weapons(data[sheet])
+            parse_weapons(data)
 
     with open('equipments.json', 'w') as f:
         f.write('{"weapons" : {\n')
