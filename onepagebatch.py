@@ -164,7 +164,7 @@ def get_upgrade_group(group, upgrades):
 
     ret = []
     for up in upgrades:
-        ret += ['\\multicolumn{2}{p{\\dimexpr \\linewidth - 1pt \\relax}}{\\bf ' + preamble + up['text'] + ': } ']
+        ret += ['\\multicolumn{2}{p{\\dimexpr \\linewidth - 2pt \\relax}}{\\bf ' + preamble + up['text'] + ': } ']
         cost = calculate_mean_upgrade_cost(up['cost'])
         ret += [get_upgrade_line(addEqu, cost[i]) for i, addEqu in enumerate(up['add'])]
         preamble = ''
