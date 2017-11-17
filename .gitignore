@@ -131,3 +131,5 @@ unit*.tex
 upgrades*.tex
 # indentjson.py temporary backup
 *.json~
+# text files, to have better diff between releases
+*.txt
