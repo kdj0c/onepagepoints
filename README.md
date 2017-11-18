@@ -13,8 +13,6 @@ To generate the pdf, you need xelatex, with a few plugins. csvsimple is not need
 The best is to install from ctan at https://www.tug.org/texlive/quickinstall.html)
 You also need make, to build everything
 
-If you want to create a new faction, you need also pyexcel-ods3 (you can install it with "sudo pip install pyexcel-ods3")
-
 # Files details
 
  * onepagepoints.py : library to calculate individual cost of weapons/units, also a main() to do unit tests
