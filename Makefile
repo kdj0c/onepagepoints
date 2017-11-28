@@ -1,3 +1,7 @@
+# for reproducible build
+SOURCE_DATE_EPOCH := 0
+export SOURCE_DATE_EPOCH
+
 FACTIONS = Battle_Brothers Tao Robot_Legions High_Elf_Fleets
 
 TEX := $(foreach d,$(FACTIONS),$(d)/$(d).tex)
