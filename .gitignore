@@ -129,7 +129,7 @@ ENV/
 # generated tex files
 unit*.tex
 upgrades*.tex
-# indentjson.py temporary backup
-*.json~
+# indentyaml.py temporary backup
+*.yml~
 # text files, to have better diff between releases
 *.txt

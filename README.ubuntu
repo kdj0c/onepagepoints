@@ -7,7 +7,7 @@ them, and how to install them. It may work for other distributions.
 You need to install support for Makefile, python3 and latex, with this 3 commands
 
 sudo apt-get install build-essential
-sudo apt-get install python3 python3-setuptools
+sudo apt-get install python3 python3-setuptools python3-yaml
 sudo apt-get install --install-suggests texlive-full
 
 pyexcel-ods3 and csvsimple are no more needed. So that should be enough to run the scripts

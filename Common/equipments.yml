@@ -1,0 +1,55 @@
+weapons:
+  Assault Rifle:
+    range: 24
+    attacks: 1
+  Autocannon:
+    range: 48
+    attacks: 2
+    ap: 3
+  Flamethrower:
+    range: 12
+    attacks: 6
+  Fusion Rifle:
+    range: 12
+    attacks: 1
+    ap: 7
+    special: [Deadly]
+  Heavy Flamethrower:
+    range: 12
+    attacks: 6
+    ap: 1
+  Heavy Fusion Rifle:
+    range: 24
+    attacks: 1
+    ap: 7
+    special: [Deadly]
+  Heavy Machinegun:
+    range: 36
+    attacks: 3
+    ap: 1
+  Missile Launcher AT:
+    range: 48
+    attacks: 1
+    ap: 4
+    special: [Deadly]
+  Missile Launcher HE:
+    range: 48
+    attacks: 1
+    special: [Blast(3), Secondary]
+  Pistol:
+    range: 12
+    attacks: 1
+  Plasma Rifle:
+    range: 24
+    attacks: 1
+    ap: 3
+  Shotgun:
+    range: 12
+    attacks: 2
+  Sniper Rifle:
+    range: 36
+    attacks: 1
+    ap: 2
+    special: [Sniper]
+wargear: {}
+factionRules: {}

@@ -21,14 +21,14 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-import json
+import yaml
 import argparse
 import string
 import os
 from collections import OrderedDict
 
 """
-This scripts helps to generate the json files for a faction.
+This scripts helps to generate the yaml files for a faction.
 It takes a libreoffice calc ".ods" file, and generate the list
 of weapons, and units.
 The libreoffice calc file can be done with just copy/paste from the original pdf,
@@ -123,8 +123,8 @@ def parse_units(name, data):
         ju = OrderedDict([('name', dunit['name']), ('count', dunit['count']), ('quality', dunit['qua']), ('defense', dunit['def']), ('equipment', equipment), ('special', parse_special(dunit['special'])), ('upgrades', parse_upgrades(dunit['upgrades']))])
         alljunits.append(ju)
 
-    with open(name + '.json', 'w') as f:
-        f.write(json.dumps(alljunits, indent=2))
+    with open(name + '.yml', 'w') as f:
+        f.write(yaml.dump(alljunits))
 
 
 def parse_weapons(data):
@@ -139,7 +139,7 @@ def csv_to_list(data):
 def main():
     global alljweapons
 
-    parser = argparse.ArgumentParser(description='Parse csv file to help import pdf into json')
+    parser = argparse.ArgumentParser(description='Parse csv file to help import pdf into yaml')
     parser.add_argument('fnames', metavar='fnames', type=str, nargs='+',
                         help='files to parse')
 
@@ -158,11 +158,11 @@ def main():
         else:
             parse_weapons(data)
 
-    with open('equipments.json', 'w') as f:
-        f.write('{"weapons" : {\n')
-        f.write(',\n'.join(['{:<30} : '.format(k) + json.dumps(alljweapons[k]) for k in alljweapons]))
-        f.write('\n}, "wargear" : {\n')
-        f.write('\n}, "factionRules" : {\n}}\n')
+    with open('equipments.yml', 'w') as f:
+        data = {"weapons": alljweapons,
+                "wargear": {},
+                "factionRules": {}}
+        f.write(yaml.dump(data))
 
 
 if __name__ == "__main__":

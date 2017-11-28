@@ -5,15 +5,15 @@ TEMPLATE := $(wildcard Template/*.sty)
 PDF := $(TEX:.tex=.pdf)
 OUT_PDF := $(addprefix out/,$(notdir $(PDF)))
 PYTHONS := $(wildcard *.py)
-COMMON := $(wildcard Common/*.json)
+COMMON := $(wildcard Common/*.yml)
 
 CLEAN := $(foreach d,$(FACTIONS),$(wildcard $(d)/unit*.tex) $(wildcard $(d)/upgrades*.tex) $(wildcard $(d)/*.pdf)) $(wildcard out/tmp/*) $(wildcard out/*)
 
 #don't use built-in rules
 .SUFFIXES:
 
-# $(1) is Faction, $(2) is Faction/*.json
-# so out/Faction.pdf will depend on Faction/Faction.tex Faction/*.json *.py Common/*.json template/*.sty
+# $(1) is Faction, $(2) is Faction/*.yml
+# so out/Faction.pdf will depend on Faction/Faction.tex Faction/*.yml *.py Common/*.yml template/*.sty
 # and Faction will depend on out/Faction.pdf
 define build_pdf =
 out/$(1).pdf: $(1)/$(1).tex $(2) $(PYTHONS) $(COMMON) $(TEMPLATE) | out out/tmp
@@ -38,7 +38,7 @@ clean:
 
 .PHONY: indent
 indent:
-	@python3 indentjson.py $(FACTIONS) Common
+	@python3 indentyaml.py $(FACTIONS) Common
 
 out:
 	@mkdir $@
@@ -47,4 +47,4 @@ out/tmp:
 	@mkdir $@
 
 # rules to build a pdf for each faction
-$(foreach d,$(FACTIONS),$(eval $(call build_pdf,$(d),$(wildcard $(d)/*.json))))
+$(foreach d,$(FACTIONS),$(eval $(call build_pdf,$(d),$(wildcard $(d)/*.yml))))

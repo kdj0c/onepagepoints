@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for f in `find . -name "*.json" -o -name "*.tex"` ; do
+for f in `find . -name "*.yml" -o -name "*.tex"` ; do
   echo "Processing ${f}"
   mv "${f}" "${f}_"
   iconv -f utf8 -t ascii//TRANSLIT "${f}_" -o "${f}"

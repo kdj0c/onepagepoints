@@ -23,7 +23,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 from onepagepoints import *
-import json
+import yaml
 import os
 import copy
 import argparse
@@ -134,7 +134,7 @@ def calculate_unit_cost(junit, jupgrades):
         if upgrade_group in jupgrades:
             calculate_upgrade_group_cost(unit, jupgrades[upgrade_group])
         else:
-            print("Missing upgrade_group {0} in upgrades.json".format(upgrade_group))
+            print("Missing upgrade_group {0} in upgrades.yml".format(upgrade_group))
 
 
 # an upgrade group cost is calculated for all units who have access to this
@@ -240,11 +240,11 @@ def write_file(filename, path, data):
         f.write(data)
 
 
-def read_json(filename, path):
+def read_yaml(filename, path):
     fname = os.path.join(path, filename)
     with open(fname, "r") as f:
         print('  Processing {}'.format(fname))
-        return json.loads(f.read())
+        return yaml.load(f.read())
 
 
 def generateFaction(faction):
@@ -253,12 +253,12 @@ def generateFaction(faction):
 
     armory = Armory()
 
-    if os.path.exists(os.path.join('Common', 'equipments.json')):
-        jequipments = read_json('equipments.json', 'Common')
-        armory.add([Weapon(name, w['range'], w['attacks'], w['ap'], w['special']) for name, w in jequipments['weapons'].items()])
+    if os.path.exists(os.path.join('Common', 'equipments.yml')):
+        jequipments = read_yaml('equipments.yml', 'Common')
+        armory.add([Weapon(name, w.get('range', 0), w['attacks'], w.get('ap', 0), w.get('special', [])) for name, w in jequipments['weapons'].items()])
 
-    jequipments = read_json("equipments.json", faction)
-    armory.add([Weapon(name, w['range'], w['attacks'], w['ap'], w['special']) for name, w in jequipments['weapons'].items()])
+    jequipments = read_yaml("equipments.yml", faction)
+    armory.add([Weapon(name, w.get('range', 0), w['attacks'], w.get('ap', 0), w.get('special', [])) for name, w in jequipments['weapons'].items()])
     armory.add([WarGear(name, wargear.get('special', []), armory.get(wargear.get('weapons', [])), wargear.get('text', '')) for name, wargear in jequipments['wargear'].items()])
 
     factionRules = jequipments['factionRules']
@@ -267,11 +267,11 @@ def generateFaction(faction):
     data_txt = ''
 
     for i in ['', 1, 2, 3, 4, 5]:
-        unitFile = 'units' + str(i) + '.json'
-        upgradeFile = 'upgrades' + str(i) + '.json'
+        unitFile = 'units' + str(i) + '.yml'
+        upgradeFile = 'upgrades' + str(i) + '.yml'
         if unitFile in allFiles and upgradeFile in allFiles:
-            junits = read_json(unitFile, faction)
-            jupgrades = read_json(upgradeFile, faction)
+            junits = read_yaml(unitFile, faction)
+            jupgrades = read_yaml(upgradeFile, faction)
 
             for junit in junits:
                 calculate_unit_cost(junit, jupgrades)
@@ -279,8 +279,8 @@ def generateFaction(faction):
                 for up in upgrades:
                     up['cost'] = calculate_mean_upgrade_cost(up['cost'])
 
-            write_file(unitFile[:-4] + 'tex', faction, get_units_tex(junits))
-            write_file(upgradeFile[:-4] + 'tex', faction, get_upgrade_tex(jupgrades))
+            write_file(unitFile[:-3] + 'tex', faction, get_units_tex(junits))
+            write_file(upgradeFile[:-3] + 'tex', faction, get_upgrade_tex(jupgrades))
 
             data_txt += '\n\n' + get_units_stats(junits)
             data_txt += '\n\n' + get_upgrade_txt(jupgrades)
@@ -291,7 +291,7 @@ def generateFaction(faction):
 def main():
     parser = argparse.ArgumentParser(description='This script will compute the Unit costs and upgrade costs for a faction, and write the .tex files for LaTeX')
     parser.add_argument('path', metavar='path', type=str, nargs='+',
-                        help='path to the faction (should contain at list equipments.json, units1.json, upgrades1.json)')
+                        help='path to the faction (should contain at list equipments.yml, units1.yml, upgrades1.yml)')
 
     args = parser.parse_args()
 

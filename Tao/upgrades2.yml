@@ -1,0 +1,84 @@
+A:
+- text: Replace 2x Linked Pulse Carbines
+  remove: [2x Linked Pulse Carbines]
+  add:
+  - [Linked Gatling Carbine]
+  - [Linked Smart Missiles]
+B:
+- text: Upgrade with up to two
+  add:
+  - [Homing Missile]
+C:
+- text: Upgrade with any
+  add:
+  - [Distortion Engine]
+  - [Anti-Charge System]
+D:
+- text: Replace Railgun
+  remove: [Railgun]
+  add:
+  - [6x Homing Missiles]
+  - [Sub-Railgun]
+  - [Ion Cannon]
+E:
+- text: Replace Gatling Carbine
+  remove: [Gatling Carbine]
+  add:
+  - [Fusion Carbine]
+F:
+- text: Replace Ion Carbine
+  remove: [Ion Carbine]
+  add:
+  - [Heavy Fusion Carbine]
+- text: Replace Linked Flamethrower
+  remove: [Linked Flamethrower]
+  add:
+  - [Linked Gatling Carbine]
+  - [Linked Fusion Carbine]
+- text: Upgrade with up to two
+  add:
+  - [Stealth Drone]
+G:
+- text: Replace Linked Heavy Rail Rifle
+  remove: [Linked Heavy Rail Rifle]
+  add:
+  - [Linked Heavy Missile Pod]
+- text: Replace Linked Plasma Rifle
+  remove: [Linked Plasma Rifle]
+  add:
+  - [Linked Smart Missiles]
+- text: Upgrade with up to two
+  add:
+  - [Gun Drone]
+  - [Shield Drone]
+  - [Missile Drone]
+H:
+- text: Replace Gatling Carbine
+  remove: [Gatling Carbine]
+  add:
+  - [Missile Pod]
+I:
+- text: Replace Missile Pod
+  remove: [Missile Pod]
+  add:
+  - [Linked Missile Pod]
+J:
+- text: Replace Heavy Gatling Carbine
+  remove: [Heavy Gatling Carbine]
+  add:
+  - [Heavy Ion Cannon]
+- text: Replace Linked Plasma Rifle
+  remove: [Linked Plasma Rifle]
+  add:
+  - [Linked Fusion Carbine]
+  - [Linked Smart Missiles]
+K:
+- text: Replace Pulse Cannon
+  remove: [Pulse Cannon]
+  add:
+  - [Heavy Pulse Cannon]
+- text: Replace Linked Flamethrower
+  remove: [Linked Flamethrower]
+  add:
+  - [Linked Frag Pod]
+  - [Heavy Gatling Carbine]

@@ -1,0 +1,197 @@
+weapons:
+  Biting Sword:
+    attacks: 2
+    ap: 4
+  CCWs:
+    attacks: 2
+  Dire Sword:
+    attacks: 2
+    ap: 2
+    special: [Rending]
+  Distortion Cannon:
+    range: 24
+    attacks: 1
+    ap: 6
+    special: [Blast(3), Indirect, Rending]
+  Distortion Scythes:
+    range: 12
+    attacks: 6
+    special: [Rending]
+  Doom Cannon AT:
+    range: 48
+    attacks: 1
+    ap: 3
+    special: [Blast(6), Rending]
+  Doom Cannon HE:
+    range: 18
+    attacks: 6
+    ap: 3
+    special: [Rending, Secondary]
+  Energy Blade:
+    attacks: 3
+    ap: 2
+  Energy Dagger:
+    attacks: 1
+    ap: 2
+  Energy Spear:
+    attacks: 1
+    ap: 5
+    special: [Poison(3)]
+  Energy Sword:
+    attacks: 2
+    ap: 2
+  Execution Sword:
+    attacks: 2
+    ap: 4
+  Flaming Sword:
+    attacks: 5
+    ap: 3
+  Fusion Pike:
+    range: 18
+    attacks: 1
+    ap: 7
+    special: [Deadly]
+  Gaze of Doom:
+    range: 12
+    attacks: 1
+    ap: 8
+  Ghost Sword:
+    attacks: 3
+    ap: 4
+  Hawk Laser:
+    range: 24
+    attacks: 3
+    ap: 1
+  Heavy Wraith Cannons:
+    range: 36
+    attacks: 1
+    ap: 6
+    special: [Rending]
+  Laser Blaster:
+    range: 24
+    attacks: 3
+  Laser Lance:
+    range: 36
+    attacks: 1
+    ap: 7
+    special: [Deadly]
+  Laser Rifle:
+    range: 24
+    attacks: 3
+    ap: 2
+  Mirror Sword:
+    attacks: 2
+    special: [Linked]
+  Prism Cannon:
+    range: 48
+    attacks: 1
+    ap: 8
+    special: [Deadly]
+  Pulse Lance:
+    attacks: 1
+    ap: 5
+    special: [Impact(1)]
+  Pulse Laser:
+    range: 48
+    attacks: 2
+    ap: 4
+  Scatter Laser:
+    range: 36
+    attacks: 4
+    ap: 1
+  Scorpion Fist:
+    range: 12
+    attacks: 3
+    special: [Rending]
+  Shadow Cannon:
+    range: 48
+    attacks: 1
+    ap: 2
+    special: [Blast(3), Indirect, Rending]
+  Shard Cannon:
+    range: 24
+    attacks: 3
+    ap: 2
+    special: [Rending]
+  Shard Carbine:
+    range: 18
+    attacks: 2
+    special: [Rending]
+  Shard Pistol:
+    range: 12
+    attacks: 1
+    special: [Rending]
+  Shardgun:
+    range: 12
+    attacks: 2
+    special: [Rending]
+  Shot Missiles:
+    range: 48
+    attacks: 1
+    ap: 4
+    special: [Deadly]
+  Sniper Rifles:
+    range: 36
+    attacks: 1
+    ap: 2
+    special: [Sniper]
+  Star Cannon:
+    range: 36
+    attacks: 2
+    ap: 2
+  Sun Cannon:
+    range: 48
+    attacks: 3
+    ap: 2
+    special: [Blast(3)]
+  Swarm Missiles:
+    range: 48
+    attacks: 2
+    ap: 1
+  Tempest Missiles:
+    range: 36
+    attacks: 2
+    special: [Blast(3), Indirect]
+  Tri-Sling:
+    range: 12
+    attacks: 3
+  Vibration Cannon:
+    range: 48
+    attacks: 1
+    special: [Vibration]
+  Walker Stomp:
+    attacks: 2
+    ap: 1
+  Web Spinner:
+    range: 12
+    attacks: 2
+    ap: 2
+    special: [Rending]
+  Web Spinner Rifle:
+    range: 18
+    attacks: 2
+    ap: 2
+    special: [Rending]
+  Wraith Cannon:
+    range: 12
+    attacks: 1
+    ap: 6
+    special: [Rending]
+wargear:
+  Banshee Helmet:
+    special: [Fear]
+  Hawk Wings:
+    special: [Ambush, Flying]
+  Hologram Field:
+    special: [Stealth]
+  Jetbike:
+    special: [Strider, Very Fast]
+    weapons: [Linked Shardgun]
+  Psy Helmet:
+    special: [Psychic+1]
+  Shield:
+    special: [Regeneration]
+  Spider Suit:
+    special: [Teleport]
+factionRules:
+  Council: 15

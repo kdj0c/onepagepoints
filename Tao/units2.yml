@@ -1,0 +1,64 @@
+- name: Hover Transport
+  count: 1
+  quality: 4
+  defense: 7
+  equipment: [Gatling Carbine, 2x Linked Pulse Carbines]
+  special: [Fast, Strider, Tough(3), Transport(11), Vehicle]
+  upgrades: [A, B, C]
+- name: Hover Tank
+  count: 1
+  quality: 4
+  defense: 8
+  equipment: [Railgun, 2x Linked Pulse Carbines]
+  special: [Fast, Strider, Tough(6), Vehicle]
+  upgrades: [A, B, C, D]
+- name: Hover Attack Bike
+  count: 1
+  quality: 4
+  defense: 6
+  equipment: [Gatling Carbine, 2x Linked Pulse Carbines]
+  special: [Fast, Strider, Tough(3), Vehicle]
+  upgrades: [B, C, E]
+- name: Heavy Stealth Suit
+  count: 1
+  quality: 4
+  defense: 7
+  equipment: [Heavy Suit Fists, Linked Flamethrower, Ion Carbine]
+  special: [Ambush, Flying, Tough(3), Stealth, Vehicle]
+  upgrades: [F]
+- name: Heavy Battle Suit
+  count: 1
+  quality: 4
+  defense: 7
+  equipment: [Suit Fists, Linked Plasma Rifle, Linked Heavy Rail Rifle]
+  special: [Tough(3), Vehicle]
+  upgrades: [B, G]
+- name: Razor Fighter
+  count: 1
+  quality: 4
+  defense: 6
+  equipment: [Gatling Carbine, Ion Tailgun]
+  special: [Flyer, Tough(3), Vehicle]
+  upgrades: [B, H]
+- name: Sun Bomber
+  count: 1
+  quality: 4
+  defense: 6
+  equipment: [Missile Pod, Pulse Bombs, 2x Linked Ion Rifle]
+  special: [Flyer, Tough(3), Vehicle]
+  upgrades: [B, I]
+- name: Tide Titan
+  count: 1
+  quality: 4
+  defense: 9
+  equipment: [Titan Stomp, Linked Plasma Rifle, Heavy Gatling Carbine]
+  special: [Titan, Tough(6), Vehicle]
+  upgrades: [J]
+- name: Surge Titan
+  count: 1
+  quality: 4
+  defense: 8
+  equipment: [Titan Stomp, Linked Flamethrower, Cluster Rockets, Pulse Cannon, Linked
+      Smart Missiles, 4x Destroyer Missiles]
+  special: [Titan, Tough(9), Vehicle]
+  upgrades: [K]

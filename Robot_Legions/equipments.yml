@@ -1,0 +1,187 @@
+weapons:
+  Anti-Matter Cannon:
+    range: 24
+    attacks: 1
+    ap: 3
+    special: [Blast(6)]
+  Anti-Matter Pistol:
+    range: 12
+    attacks: 1
+    ap: 2
+  Anti-Matter Rifle:
+    range: 24
+    attacks: 1
+    ap: 2
+    special: [Blast(3)]
+  Death Beam:
+    range: 24
+    attacks: 1
+    ap: 8
+    special: [Blast(3)]
+  Death Gaze:
+    range: 12
+    attacks: 1
+    special: [Deadly, Rending]
+  Doom Cannon:
+    range: 48
+    attacks: 1
+    ap: 6
+    special: [Blast(3)]
+  EMP Pulse:
+    range: 30
+    attacks: 1
+    special: [Anti-Air, Deadly, EMP]
+  Energy Blade:
+    attacks: 2
+    ap: 2
+  Energy Halberd:
+    attacks: 2
+    ap: 5
+  Energy Rods:
+    range: 12
+    attacks: 1
+    ap: 1
+  Energy Scythe:
+    attacks: 3
+    ap: 5
+  Energy Staff:
+    range: 12
+    attacks: 3
+    ap: 1
+  Energy Sword:
+    attacks: 3
+    ap: 2
+  Flux Cannon:
+    range: 24
+    attacks: 4
+    ap: 3
+    special: [Flux]
+  Flux Rifle:
+    range: 24
+    attacks: 1
+    ap: 1
+    special: [Flux]
+  Fusion Ray:
+    range: 24
+    attacks: 2
+    ap: 7
+    special: [Deadly]
+  Gauss Blade:
+    attacks: 2
+    ap: 1
+    special: [Rending]
+  Gauss Cannon:
+    range: 24
+    attacks: 2
+    ap: 1
+    special: [Rending]
+  Gauss Machinegun:
+    range: 24
+    attacks: 3
+    ap: 1
+    special: [Rending]
+  Gauss Rifle:
+    range: 24
+    attacks: 1
+    special: [Rending]
+  Gauss Rifle Array:
+    range: 24
+    attacks: 5
+    special: [Rending]
+  Gauss Sword:
+    attacks: 3
+    ap: 1
+    special: [Rending]
+  Heavy Anti-Matter Cannon:
+    range: 24
+    attacks: 1
+    ap: 4
+    special: [Blast(6)]
+  Heavy Flux Cannon:
+    range: 24
+    attacks: 5
+    ap: 3
+    special: [Flux]
+  Heavy Gauss Cannon:
+    range: 36
+    attacks: 1
+    ap: 5
+    special: [Deadly, Rending]
+  Metal Claws:
+    attacks: 3
+    special: [Rending]
+  Metal Fangs:
+    attacks: 3
+    ap: 2
+    special: [Rending]
+  Sniper Carbines:
+    range: 24
+    attacks: 1
+    ap: 2
+    special: [Sniper]
+  Spider Fangs:
+    attacks: 2
+    ap: 2
+  Spirit Attack:
+    attacks: 4
+    ap: 3
+    special: [Rending]
+  Swarm Attack:
+    attacks: 4
+    special: [Rending]
+  Walker Stomp:
+    attacks: 3
+    ap: 3
+  Whip Coil:
+    attacks: 3
+    ap: 2
+    special: [Linked, Rending]
+  Wrist-Mounted Flamer:
+    range: 12
+    attacks: 6
+  Wrist-Mounted Laser Cannon:
+    range: 48
+    attacks: 1
+    ap: 6
+    special: [Deadly, Limited]
+wargear:
+  Bot Fabricator:
+    special: [Bot Fabricator]
+  Darkness Protocol:
+    special: [Darkness]
+    text: The hero and his unit get the Ambush special rule
+  Dread Protocol:
+    special: [Dread]
+    text: When the hero is activated, target enemy unit within 18" must take a morale
+      test
+  Flame Protocol:
+    special: [Flame]
+    text: When activated target enemy unit within 12" takes D6 automatic hits with
+      AP(3)
+  Gloom Protocol:
+    special: [Gloom]
+    text: The hero and his unit get the Fearless special rule
+  Jetpacks:
+    special: [Ambush, Flying]
+  Nightmare Protocol:
+    special: [Nightmare]
+    text: The hero and his unit get the Fear special rule
+  Repair Protocol:
+    special: [Repair Protocol]
+  Shields:
+    special: [Defense+1]
+  Solar Protocol:
+    special: [Solar]
+    text: When activated target enemy unit within 12" takes D3 automatic hits with
+      AP(1)
+factionRules:
+  Bot Fabricator: 100
+  Darkness: 30
+  Dread: 10
+  Flame: 55
+  Gloom: 10
+  Hunter: 30
+  Nightmare: 15
+  Regen-Protocol: 40
+  Repair Protocol: 10
+  Solar: 15

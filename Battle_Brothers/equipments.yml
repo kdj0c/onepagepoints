@@ -1,0 +1,190 @@
+weapons:
+  Assault Rifle Array:
+    range: 24
+    attacks: 3
+    special: [Linked]
+  CCW:
+    attacks: 2
+  Cyclone Missiles AT:
+    range: 48
+    attacks: 2
+    ap: 4
+    special: [Deadly]
+  Cyclone Missiles HE:
+    range: 48
+    attacks: 2
+    special: [Blast(3), Secondary]
+  Death Launcher:
+    range: 12
+    attacks: 1
+    ap: 1
+    special: [Blast(6)]
+  Demolition Cannon:
+    range: 24
+    attacks: 1
+    ap: 6
+    special: [Blast(6)]
+  Drill:
+    attacks: 2
+    ap: 9
+  Energy Claw:
+    attacks: 2
+    ap: 2
+    special: [Rending]
+  Energy Fist:
+    attacks: 2
+    ap: 4
+  Energy Hammer:
+    attacks: 2
+    ap: 5
+  Energy Sword:
+    attacks: 2
+    ap: 2
+  Flamethrower Add-on:
+    range: 12
+    attacks: 6
+    special: [Limited]
+  Flamethrower Cannons:
+    range: 12
+    attacks: 6
+    ap: 2
+  Fusion Add-on:
+    range: 12
+    attacks: 1
+    ap: 7
+    special: [Deadly, Limited]
+  Gravity Add-on:
+    range: 18
+    attacks: 1
+    special: [Gravity, Limited]
+  Gravity Cannon:
+    range: 24
+    attacks: 4
+    special: [Gravity]
+  Gravity Pistol:
+    range: 12
+    attacks: 1
+    special: [Gravity]
+  Gravity Rifle:
+    range: 18
+    attacks: 1
+    special: [Gravity]
+  Grenade Launcher AT:
+    range: 24
+    attacks: 1
+    ap: 2
+    special: [Secondary]
+  Grenade Launcher HE:
+    range: 24
+    attacks: 1
+    special: [Blast(3)]
+  Hammer Missiles:
+    range: 48
+    attacks: 3
+    ap: 3
+  Heavy Fist:
+    attacks: 1
+    ap: 1
+  Hunter Missile:
+    range: 48
+    attacks: 1
+    ap: 4
+    special: [Deadly, Limited]
+  Laser Cannon:
+    range: 48
+    attacks: 1
+    ap: 5
+    special: [Deadly]
+  Laser Talon:
+    range: 24
+    attacks: 2
+    ap: 5
+    special: [Deadly]
+  Minigun:
+    range: 24
+    attacks: 4
+    ap: 2
+    special: [Rending]
+  Plasma Add-on:
+    range: 24
+    attacks: 1
+    ap: 3
+    special: [Limited]
+  Plasma Cannon:
+    range: 36
+    attacks: 1
+    ap: 3
+    special: [Blast(3)]
+  Plasma Pistol:
+    range: 12
+    attacks: 1
+    ap: 3
+  Spear Missile Launcher:
+    range: 48
+    attacks: 1
+    ap: 6
+    special: [Anti-Air]
+  Storm Cannon:
+    range: 48
+    attacks: 3
+    ap: 3
+  Storm Missile:
+    range: 48
+    attacks: 1
+    ap: 4
+    special: [Deadly, Limited]
+  Storm Rifle:
+    range: 24
+    attacks: 2
+  Typhoon Missiles AT:
+    range: 48
+    attacks: 2
+    ap: 4
+    special: [Deadly]
+  Typhoon Missiles HE:
+    range: 48
+    attacks: 2
+    ap: 2
+    special: [Blast(3), Secondary]
+  Walker Fist:
+    attacks: 4
+    ap: 6
+  Wind Missile Launcher:
+    range: 48
+    attacks: 1
+    ap: 1
+    special: [Blast(6), Indirect]
+wargear:
+  Battle Standard:
+    special: [Battle Standard]
+    text: unit can ignore being Pinned on 4+
+  Bike:
+    special: [Fast]
+    weapons: [Linked Assault Rifle]
+  Destroyer Armor:
+    special: [Ambush, Defense+1]
+  Dozer Blade:
+    special: [Strider]
+  Jetpacks:
+    special: [Ambush, Flying]
+  Medic:
+    special: [Regeneration]
+  Open Sides:
+    special: [Transport(6)]
+  Psy Training:
+    special: [Psychic+1]
+  Shields:
+    special: [Defense+1]
+  Stealth Cloaks:
+    special: [Stealth]
+  Veterans:
+    special: [Veteran]
+    text: +1A in melee
+factionRules:
+  Airdrop: 0
+  Battle Standard: 10
+  Chant: 10
+  Large Cargo: 10
+  Rear Grapples: 20
+  Tactics: 40
+  Veteran: 15

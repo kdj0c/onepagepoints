@@ -1,0 +1,208 @@
+weapons:
+  Captain Energy Sword:
+    attacks: 4
+    ap: 3
+  Captain Suit Fists:
+    attacks: 4
+    ap: 1
+  Claw:
+    attacks: 3
+  Cluster Rocket:
+    range: 48
+    attacks: 14
+    ap: 1
+  Destroyer Missile:
+    range: 48
+    attacks: 1
+    ap: 4
+    special: [Deadly, Limited]
+  Dual Combat Baton:
+    attacks: 4
+    special: [Linked]
+  Dual-Spear:
+    attacks: 3
+    ap: 2
+  EMP Grenade:
+    attacks: 1
+    special: [EMP]
+  Energy Sword:
+    attacks: 2
+    ap: 3
+  Frag Pod:
+    range: 18
+    attacks: 1
+    ap: 1
+    special: [Blast(6), Indirect]
+  Fusion Carbine:
+    range: 18
+    attacks: 1
+    ap: 7
+    special: [Deadly]
+  Gatling Carbine:
+    range: 18
+    attacks: 4
+    ap: 1
+  Heavy Fusion Carbine:
+    range: 18
+    attacks: 1
+    ap: 7
+    special: [Blast(3), Deadly]
+  Heavy Gatling Carbine:
+    range: 36
+    attacks: 8
+    ap: 2
+  Heavy Ion Cannon:
+    range: 48
+    attacks: 1
+    ap: 3
+    special: [Blast(6)]
+  Heavy Missile Pod:
+    range: 36
+    attacks: 4
+    ap: 3
+  Heavy Pulse Cannon:
+    range: 48
+    attacks: 1
+    ap: 6
+    special: [Blast(6)]
+  Heavy Rail Rifle:
+    range: 48
+    attacks: 1
+    ap: 4
+    special: [Deadly]
+  Heavy Suit Fists:
+    attacks: 3
+    ap: 2
+  High Output Gatling Carbine:
+    range: 18
+    attacks: 6
+    ap: 1
+    special: [Linked]
+  Homing Missile:
+    range: 48
+    attacks: 1
+    ap: 4
+    special: [Deadly, Indirect, Limited]
+  Ion Cannon:
+    range: 48
+    attacks: 1
+    ap: 3
+    special: [Blast(6)]
+  Ion Carbine:
+    range: 18
+    attacks: 1
+    ap: 3
+    special: [Blast(3)]
+  Ion Rifle:
+    range: 30
+    attacks: 1
+    ap: 3
+    special: [Blast(3)]
+  Ion Tailgun:
+    range: 30
+    attacks: 1
+    ap: 3
+    special: [Blast(6)]
+  Jackal's Bayonet:
+    attacks: 2
+  Marksman Rifle:
+    range: 24
+    attacks: 1
+    ap: 2
+    special: [Sniper]
+  Missile Pod:
+    range: 36
+    attacks: 2
+    ap: 3
+  Neutron Carbine:
+    range: 18
+    attacks: 1
+    ap: 1
+  Pulse Bomb:
+    range: 6
+    attacks: 1
+    ap: 1
+    special: [Blast(6)]
+  Pulse Cannon:
+    range: 24
+    attacks: 2
+    ap: 6
+    special: [Blast(3)]
+  Pulse Carbine:
+    range: 18
+    attacks: 2
+    ap: 1
+  Pulse Rifle:
+    range: 30
+    attacks: 1
+    ap: 1
+  Pulse Shotgun:
+    range: 12
+    attacks: 2
+    ap: 1
+  Rail Rifle:
+    range: 30
+    attacks: 1
+    ap: 2
+  Railgun:
+    range: 48
+    attacks: 1
+    ap: 6
+    special: [Deadly]
+  Ritual Dagger:
+    attacks: 3
+  Sacred Spear:
+    attacks: 3
+  Smart Missiles:
+    range: 30
+    attacks: 4
+    ap: 1
+    special: [Indirect]
+  Sniper Pulse Rifle:
+    range: 30
+    attacks: 1
+    ap: 1
+    special: [Sniper]
+  Spotting Laser:
+    range: 36
+    attacks: 1
+    special: [Spotting]
+  Sub-Railgun:
+    range: 48
+    attacks: 1
+    ap: 2
+    special: [Blast(6)]
+  Suit Fists:
+    attacks: 2
+    ap: 1
+  Titan Stomp:
+    attacks: 3
+    ap: 2
+wargear:
+  Accelerator Drone:
+    special: [Accelerator]
+  Anti-Charge System:
+    special: [Anti-Charge System]
+  Distortion Engine:
+    special: [Stealth]
+  Gun Drone:
+    weapons: [Linked Pulse Carbine]
+  Inhibitor Drone:
+    special: [Inhibitor]
+  Missile Drone:
+    weapons: [Missile Pod]
+  Recon Drone:
+    special: [Beacon]
+  Shield Drone:
+    special: [Regeneration]
+  Spotter Drone:
+    weapons: [Spotting Laser]
+  Stealth Drone:
+    special: [Stealth+]
+factionRules:
+  Accelerator: 15
+  Anti-Charge System: 10
+  Inhibitor: 10
+  Inspiring: 30
+  Stealth+: 15
+  Volley Fire: 30

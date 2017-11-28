@@ -1,0 +1,89 @@
+A:
+- text: Upgrade any model with up to three
+  add:
+  - [Pulse Rifle]
+  - [Plasma Rifle]
+  - [Flamethrower]
+  - [Gatling Carbine]
+  - [Frag Pod]
+  - [Ion Carbine]
+  - [Fusion Carbine]
+  - [Missile Pod]
+  - [High Output Gatling Carbine]
+B:
+- text: Upgrade any model with one
+  add:
+  - [Recon Drone]
+  - [Inhibitor Drone]
+  - [Spotter Drone]
+  - [Gun Drone]
+  - [Shield Drone]
+  - [Accelerator Drone]
+  - [Missile Drone]
+C:
+- text: Replace Sacred Spear
+  remove: [Sacred Spear]
+  add:
+  - [Dual-Spear]
+  - [Dual Combat Baton]
+D:
+- text: Replace all Pulse Shotguns
+  all: true
+  remove: [Pulse Shotguns]
+  add:
+  - [Pulse Rifles]
+  - [Pulse Carbines]
+- text: Upgrade all models with
+  all: true
+  add:
+  - [EMP Grenades]
+- text: Add one support turret with
+  add:
+  - [Missile Pod]
+  - [Smart Missiles]
+E:
+- text: Replace up to three Pulse Carbines
+  remove: [Pulse Carbines]
+  add:
+  - [Rail Rifle]
+  - [Ion Rifle]
+F:
+- text: Replace all Pulse Rifles
+  all: true
+  remove: [Pulse Rifles]
+  add:
+  - [Sniper Pulse Rifles]
+G:
+- text: Replace one Gatling Carbine
+  remove: [Gatling Carbines]
+  add:
+  - [Fusion Carbine]
+H:
+- text: Replace all Assault Rifles
+  all: true
+  remove: [Assault Rifles]
+  add:
+  - [Marksman Rifles]
+- text: Replace one Assault Rifle
+  remove: [Assault Rifles]
+  add:
+  - [Pulse Rifle]
+  - [Pulse Carbine]
+- text: Upgrade all models with
+  all: true
+  add:
+  - [Jackal's Bayonets]
+- text: Upgrade one model with
+  add:
+  - [Ritual Dagger]
+I:
+- text: Replace Captain Suit Fists
+  remove: [Captain Suit Fists]
+  add:
+  - [Captain Energy Sword]
+J:
+- text: Replace all Suit Fists
+  all: true
+  remove: [Suit Fists]
+  add:
+  - [Energy Swords]

@@ -16,8 +16,8 @@ You also need make, to build everything
 # Files details
 
  * onepagepoints.py : library to calculate individual cost of weapons/units, also a main() to do unit tests
- * onepagebatch.py : script which read each faction .json files (equipments.json, units.json, upgrades.json), and generate units.tex and upgrades.tex which will be integrated into Latex to generate the pdf table.
- * indentjson.py : script to indent and force format for all .json files.
+ * onepagebatch.py : script which read each faction .yml files (equipments.yml, units.yml, upgrades.yml), and generate units.tex and upgrades.tex which will be integrated into Latex to generate the pdf table.
+ * indentyaml.py : script to indent and force format for all .yml files.
  * generate_faction.py : script that is only used once to create a new faction
  * testpoints.py : a small pytest script, I didn't put much unit test here. It can be used to check for regression.
  * Template/grimdark.sty : latex template to generate beautiful tables, and avoid to much duplication in all Faction.tex
@@ -33,7 +33,7 @@ $ `make -j4`
 to build only 'Tao' pdf :
 $ `make Tao`
 
-to indent all json files :
+to indent all yaml files :
 $ `make indent`
 
 # Tricks
