@@ -247,7 +247,7 @@ def read_yaml(filename, path):
         return yaml.load(f.read())
 
 
-def generateFaction(faction):
+def generateFaction(faction, txtdir):
     global armory
     global factionRules
 
@@ -285,19 +285,23 @@ def generateFaction(faction):
             data_txt += '\n\n' + get_units_stats(junits)
             data_txt += '\n\n' + get_upgrade_txt(jupgrades)
 
-    write_file(faction + '.txt', faction, data_txt)
+    if txtdir == '':
+        txtdir = faction
+    write_file(faction + '.txt', txtdir, data_txt)
 
 
 def main():
     parser = argparse.ArgumentParser(description='This script will compute the Unit costs and upgrade costs for a faction, and write the .tex files for LaTeX')
-    parser.add_argument('path', metavar='path', type=str, nargs='+',
+    parser.add_argument('-t', '--txt-dir', type=str, default='',
+                        help='directory to write the txt files, used for diff between releases')
+    parser.add_argument('path', type=str, nargs='+',
                         help='path to the faction (should contain at list equipments.yml, units1.yml, upgrades1.yml)')
 
     args = parser.parse_args()
 
     for faction in args.path:
         print("Building faction {}".format(faction))
-        generateFaction(faction)
+        generateFaction(faction, args.txt_dir)
 
 
 if __name__ == "__main__":
