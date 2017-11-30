@@ -1,0 +1,212 @@
+weapons:
+  Assault Bomb:
+    attacks: 1
+    special: [Blast(6), Limited]
+  Attack Beast:
+    attacks: 1
+    ap: 1
+  Bazooka:
+    range: 18
+    attacks: 2
+    ap: 2
+    special: [Blast(3)]
+  Boarding Gun:
+    range: 24
+    attacks: 3
+    ap: 1
+  Boarding Plank:
+    special: [Impact(3), Boarding]
+  Bomb:
+    range: 6
+    attacks: 1
+    ap: 6
+    special: [Blast(6), Limited]
+  Bomb Beast:
+    range: 18
+    attacks: 1
+    ap: 4
+    special: [Deadly, Limited, Sniper]
+  Bomb Hammer:
+    attacks: 1
+    ap: 4
+    special: [Deadly]
+  Bubble Cannon:
+    range: 36
+    attacks: 1
+    ap: D3
+    special: [Blast(6)]
+  CCW:
+    attacks: 2
+  Cannon AT:
+    range: 36
+    attacks: 1
+    ap: 4
+    special: [Deadly]
+  Cannon HE:
+    range: 36
+    attacks: 1
+    special: [Blast(3)]
+  Carbine:
+    range: 18
+    attacks: 2
+  Custom Plasma Cannon:
+    range: 36
+    attacks: 1
+    ap: 4
+    special: [Blast(3)]
+  Custom Plasma Pistol:
+    range: 12
+    attacks: 1
+    ap: 4
+  Custom Plasma Rifle:
+    range: 24
+    attacks: 1
+    ap: 4
+  Death Cannon:
+    range: 48
+    attacks: 1
+    ap: 6
+    special: [Blast(9)]
+  Deathstorm Minigun:
+    range: 36
+    attacks: 10
+    ap: 2
+  Energy Fist:
+    attacks: 3
+    ap: 4
+  Energy Sword:
+    attacks: 2
+    ap: 2
+  Flame Bomb:
+    range: 6
+    attacks: 1
+    ap: 1
+    special: [Blast(6), Limited]
+  Flame Missile:
+    range: 24
+    attacks: 1
+    ap: 1
+    special: [Blast(3), Limited]
+  Heavy Cannon:
+    range: 24
+    attacks: 1
+    ap: 3
+    special: [Blast(6)]
+  Heavy Flamethrower Add-on:
+    range: 12
+    attacks: 6
+    ap: 1
+    special: [Limited]
+  Heavy Mortar:
+    range: 48
+    attacks: 1
+    ap: 1
+    special: [Blast(3), Indirect]
+  Lightning Cannon:
+    range: 36
+    attacks: 1
+    ap: 3
+  Machete:
+    attacks: 3
+  Mega Chainsaw:
+    attacks: 4
+    ap: 8
+    special: [Deadly]
+  Mega Fist:
+    attacks: 4
+    ap: 6
+  Mini-Claw:
+    attacks: 2
+    ap: 3
+  Mini-MG:
+    range: 18
+    attacks: 3
+    ap: 1
+  Railgun:
+    range: 48
+    attacks: 2
+    ap: 3
+  Rocket Launcher:
+    range: 24
+    attacks: 1
+    ap: 4
+    special: [Deadly]
+  Rocket Launcher Add-on:
+    range: 24
+    attacks: 1
+    ap: 4
+    special: [Deadly, Limited]
+  Sawblade:
+    attacks: 3
+    ap: 6
+  Shock Gun:
+    range: 48
+    attacks: 1
+    ap: D6
+    special: [Blast(6)]
+  Smasher Cannon:
+    range: 36
+    attacks: 1
+    ap: D6
+  Super Gatling Gun:
+    range: 48
+    attacks: 20
+    ap: 3
+  Super Machinegun:
+    range: 36
+    attacks: 3
+    ap: 2
+  Super Rocket:
+    range: 48
+    attacks: 1
+    ap: 4
+    special: [Blast(6), Limited]
+  Syringe:
+    attacks: 2
+    special: [Poison(3)]
+  Teleport Pistol:
+    range: 12
+    attacks: 1
+    ap: 4
+    special: [Blast(3), Rending]
+  Tractor Beam:
+    range: 36
+    attacks: 1
+    ap: 4
+    special: [Anti-Air]
+  Walker Claw:
+    attacks: 2
+    ap: 6
+  Wrecking Ball:
+    special: [Impact(3)]
+wargear:
+  Battle Ram:
+    special: [Strider]
+  Bike:
+    special: [Fast, Stealth]
+    weapons: [Linked Mini-MG]
+  Cyborg Body:
+    special: [Regeneration]
+  Energy Field: {text: The hero and his unit get Stealth}
+  Extra Space:
+    special: [Transport+10]
+  Force Field:
+    special: [Regeneration]
+  Heavy Armor:
+    special: [Defense+1]
+  Orc Herder:
+    special: [Fearless]
+  Power Armor:
+    special: [Defense+3]
+  Psy Training:
+    special: [Psychic+1]
+  Red Paint Job:
+    special: [Very Fast]
+  Tracked:
+    special: [Strider]
+  Transport Space:
+    special: [Transport+11]
+factionRules:
+  Doctor: 30
+  Repair: 30
+  WAR!: 30

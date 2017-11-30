@@ -1,0 +1,152 @@
+A:
+- text: Replace one Pistol
+  remove: [Pistols]
+  add:
+  - [Carbine]
+  - [Linked Carbine]
+- text: Replace one CCW
+  remove: [CCWs]
+  add:
+  - [Energy Sword]
+  - [Energy Fist]
+- text: Take one Carbine Add-on
+  add:
+  - [Heavy Flamethrower Add-on]
+  - [Rocket Launcher Add-on]
+B:
+- text: Upgrade with any
+  add:
+  - [Attack Beast]
+  - [Cyborg Body]
+  - [Bike]
+- text: Upgrade with one
+  add:
+  - [Heavy Armor]
+  - [Power Armor]
+C:
+- text: Replace Pistol
+  remove: [Pistol]
+  add:
+  - [Custom Plasma Pistol]
+  - [Custom Plasma Rifle]
+  - [Energy Field]
+  - [Rocket Launcher]
+  - [Teleport Pistol]
+  - [Shock Gun]
+- text: Replace CCW
+  add:
+  - [Sawblade]
+D:
+- text: Upgrade all models with
+  all: true
+  add:
+  - [Heavy Armor]
+- text: Replace all Pistols
+  all: true
+  add:
+  - [Carbines]
+- text: Replace one Pistol
+  add:
+  - [Rocket Launcher]
+  - [Heavy Machinegun]
+E:
+- text: Upgrade all models with
+  all: true
+  add:
+  - [Heavy Armor]
+- text: Replace any Pistol
+  remove: [Pistols]
+  add:
+  - [Carbine]
+  - [Linked Carbine]
+- text: Replace any CCW
+  remove: [CCWs]
+  add:
+  - [Energy Sword]
+  - [Energy Fist]
+- text: Any model may take one Carbine attachement
+  add:
+  - [Heavy Flamethrower Add-on]
+  - [Rocket Launcher Add-on]
+F:
+- text: Upgrade Psychic
+  add:
+  - [Psy Training]
+G:
+- text: Replace all Flamethrowers
+  all: true
+  remove: [Flamethrowers]
+  add:
+  - [Rocket Launcher]
+  - [Railgun]
+- text: Replace up to two Rocket Launchers and CCWs
+  pre-remove: [Flamethrowers]
+  pre-add: [Rocket Launcher]
+  remove: [Rocket Launcher, CCWs]
+  add:
+  - [Bomb Hammer]
+- text: Upgrade with up to three
+  add:
+  - [Bomb Beast]
+H:
+- text: Replace up to two Pistols
+  remove: [Pistols]
+  add:
+  - [Flamethrower]
+  - [Rocket Launcher]
+  - [Heavy Machinegun]
+I:
+- text: Upgrade with
+  all: true
+  add:
+  - [Orc Herder]
+J:
+- text: Replace any Carbine and Energy Fist
+  remove: [Carbines, Energy Fists]
+  add:
+  - [2x Sawblades]
+- text: Replace any Carbine
+  remove: [Carbines]
+  add:
+  - [Linked Carbine]
+- text: Any model may take one Carbine attachement
+  add:
+  - [Heavy Flamethrower Add-on]
+  - [Rocket Launcher Add-on]
+K:
+- text: Replace Custom Plasma Rifle
+  remove: [Custom Plasma Rifle]
+  add:
+  - [Linked Rocket Launcher]
+  - [Linked Heavy Machinegun]
+- text: Upgrade with any
+  add:
+  - [Assault Bomb]
+  - [Sawblade]
+L:
+- text: Replace one CCW
+  remove: [CCWs]
+  add:
+  - [Energy Sword]
+  - [Energy Fist]
+M:
+- text: Replace any CCW
+  remove: [Machetes]
+  add:
+  - [Energy Sword]
+  - [Energy Fist]
+N:
+- text: Replace one Pistol
+  remove: [Pistols]
+  add:
+  - [Carbine]
+  - [Linked Carbine]
+- text: Replace one Machete
+  remove: [Machete]
+  add:
+  - [Energy Sword]
+  - [Energy Fist]
+- text: Take one Carbine Add-on
+  add:
+  - [Heavy Flamethrower Add-on]
+  - [Rocket Launcher Add-on]

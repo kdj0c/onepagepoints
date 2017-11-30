@@ -1,0 +1,30 @@
+title: Orc Marauders v1.4
+psychics1:
+  2:
+    Headbang: Target enemy model within 24" must take a morale test. If failed it
+      takes 1 wound.
+  3:
+    Psychic WAR!: Target friendly unit within 6" gets +1A in melee until the end of
+      the round.
+    Teleport: Target enemy unit within 18" loses the effect of cover until the end
+      of the round.
+  6:
+    Crackling Bolt (6+): Target enemy unit within 24" takes D3 automatic hits with
+      AP(2).
+    Death Bolt (6+): Target enemy unit within 18" takes 1 automatic hit with AP(6)
+      and Deadly.
+    Psychic Vomit: Target enemy unit within 12" takes D6 automatic hits with AP(3).
+specialRules1:
+  Bad Shot: This model shoots at Quality 5+.
+  Doctor: The hero and his unit get Regeneration.
+  Good Shot: This model shoots at Quality 4+.
+  Repair: Once per turn, if this unit is inside or within 2" of a Vehicle, then it
+    may try to repair it. Roll one die, on a 4+ the vehicle heal one wound.
+  WAR!: When the hero is activated nominate 3 friendly Infantry units within 12",
+    which move +3" on Advance and +6" on Rush/Charge actions until the end of the
+    round.
+specialRules2:
+  Bad Shot: This model shoots at Quality 5+.
+  Boarding: This weapon can be used only whilst transporting units
+  Good Shot: This model shoots at Quality 4+.
+  Very Fast: This model moves 12" when using Advance and 24" when using Rush/Charge.
