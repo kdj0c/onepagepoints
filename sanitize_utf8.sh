@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for f in `find . -name "*.yml" -o -name "*.tex"` ; do
+for f in `find . -name "*.yml" -o -name "*.tex" -o -name "*.csv"` ; do
   echo "Processing ${f}"
   mv "${f}" "${f}_"
   iconv -f utf8 -t ascii//TRANSLIT "${f}_" -o "${f}"

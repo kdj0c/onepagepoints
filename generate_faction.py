@@ -25,7 +25,7 @@ import yaml
 import argparse
 import string
 import os
-from collections import OrderedDict
+from indentyaml import YamlWeapon, YamlUnit, represent_omap, represent_omap_flow
 
 """
 This scripts helps to generate the yaml files for a faction.
@@ -88,9 +88,8 @@ def parse_equipment(equipment):
                 special.remove('Linked')
             name = ' '.join(name.split()[1:])
 
-        name = '"' + name + '"'
         if name not in alljweapons:
-            alljweapons[name] = OrderedDict([('range', wprange), ('attacks', attacks), ('ap', armorPiercing), ('special', special)])
+            alljweapons[name] = YamlWeapon({'range': wprange, 'attacks': attacks, 'ap': armorPiercing, 'special': special})
 
     return weapons
 
@@ -108,22 +107,26 @@ def parse_special(special):
 
 def parse_units(name, data):
     global alljweapons
-    column_order = ['name', 'count', 'qua', 'def', 'equipment', 'special', 'upgrades']
+    column_order = ['name', 'count', 'quality', 'defense', 'equipment', 'special', 'upgrades']
     alljunits = []
-    for row in data[1:]:
+    for row in data:
         dunit = {}
         if len(row) < len(column_order):
             continue
 
         for i, col in enumerate(column_order):
-            dunit[col] = row[i]
+            if row[i].isnumeric():
+                dunit[col] = int(row[i])
+            else:
+                dunit[col] = row[i]
 
-        equipment = parse_equipment(dunit['equipment'])
-
-        ju = OrderedDict([('name', dunit['name']), ('count', dunit['count']), ('quality', dunit['qua']), ('defense', dunit['def']), ('equipment', equipment), ('special', parse_special(dunit['special'])), ('upgrades', parse_upgrades(dunit['upgrades']))])
-        alljunits.append(ju)
+        dunit['equipment'] = parse_equipment(dunit['equipment'])
+        dunit['special'] = parse_special(dunit['special'])
+        dunit['upgrades'] = parse_upgrades(dunit['upgrades'])
+        alljunits.append(YamlUnit(dunit))
 
     with open(name + '.yml', 'w') as f:
+        yaml.add_representer(YamlUnit, represent_omap)
         f.write(yaml.dump(alljunits))
 
 
@@ -159,6 +162,7 @@ def main():
             parse_weapons(data)
 
     with open('equipments.yml', 'w') as f:
+        yaml.add_representer(YamlWeapon, represent_omap_flow)
         data = {"weapons": alljweapons,
                 "wargear": {},
                 "factionRules": {}}
