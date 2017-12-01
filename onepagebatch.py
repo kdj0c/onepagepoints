@@ -230,14 +230,14 @@ def generateFaction(faction, txtdir):
     armory = Armory()
 
     if os.path.exists(os.path.join('Common', 'equipments.yml')):
-        jequipments = read_yaml('equipments.yml', 'Common')
-        armory.add([Weapon(name, w.get('range', 0), w['attacks'], w.get('ap', 0), w.get('special', [])) for name, w in jequipments['weapons'].items()])
+        yequipments = read_yaml('equipments.yml', 'Common')
+        armory.add([Weapon(name, **w) for name, w in yequipments['weapons'].items()])
 
-    jequipments = read_yaml("equipments.yml", faction)
-    armory.add([Weapon(name, w.get('range', 0), w['attacks'], w.get('ap', 0), w.get('special', [])) for name, w in jequipments['weapons'].items()])
-    armory.add([WarGear(name, wargear.get('special', []), armory.get(wargear.get('weapons', [])), wargear.get('text', '')) for name, wargear in jequipments['wargear'].items()])
+    yequipments = read_yaml("equipments.yml", faction)
+    armory.add([Weapon(name, **w) for name, w in yequipments['weapons'].items()])
+    armory.add([WarGear.from_dict(name, wargear, armory) for name, wargear in yequipments['wargear'].items()])
 
-    factionRules = jequipments['factionRules']
+    factionRules = yequipments['factionRules']
 
     allFiles = os.listdir(faction)
     data_txt = ''

@@ -74,7 +74,7 @@ def dice_mean(value):
     else:
         sides, add = rem, 0
 
-    mean = (int(sides) + 1 ) / 2.0
+    mean = (int(sides) + 1) / 2.0
     if n:
         mean *= int(n)
     return mean + int(add)
@@ -83,11 +83,16 @@ def dice_mean(value):
 # WargGear can include special rules for model, and weapons
 # Like a jetbike gives "fast" rules and a Linked ShardGun
 class WarGear:
-    def __init__(self, name='Unknown Gear', specialRules=[], weapons=[], text=''):
+    def __init__(self, name='Unknown Gear', special=[], weapons=[], text=''):
         self.name = name
-        self.specialRules = specialRules
+        self.specialRules = special
         self.weapons = weapons
         self.text = text
+
+    @classmethod
+    def from_dict(self, name, data, armory):
+        data['weapons'] = armory.get(data.get('weapons', []))
+        return self(name, **data)
 
     def Profile(self):
         if self.text:
@@ -107,12 +112,12 @@ class WarGear:
 
 # Class for weapons
 class Weapon:
-    def __init__(self, name='Unknown Weapon', range=0, attacks=0, armorPiercing=0, weaponRules=[]):
+    def __init__(self, name='Unknown Weapon', range=0, attacks=0, ap=0, special=[]):
         self.name = name
         self.range = range
         self.attacks = attacks
-        self.armorPiercing = armorPiercing
-        self.weaponRules = weaponRules
+        self.armorPiercing = ap
+        self.weaponRules = special
         self.specialRules = []
         self.cost = 0
 
@@ -239,9 +244,9 @@ class Armory(dict):
 
 
 class Unit:
-    def __init__(self, name='Unknown Unit', count=1, quality=4, defense=2, equipments=[], specialRules=[], upgrades=[]):
+    def __init__(self, name='Unknown Unit', count=1, quality=4, defense=2, equipments=[], special=[], upgrades=[]):
         self.name = name
-        self.specialRules = specialRules
+        self.specialRules = special
         self.equipments = equipments
         self.quality = quality
         self.basedefense = defense
@@ -265,7 +270,8 @@ class Unit:
 
     @classmethod
     def from_dict(self, data, armory):
-        return self(data['name'], data['count'], data['quality'], data['defense'], armory.get(data['equipment']), data['special'], data['upgrades'])
+        data['equipments'] = armory.get(data.pop('equipment'))
+        return self(**data)
 
     def Update(self):
         self.wargearSp = [sp for equ in self.equipments for sp in equ.specialRules]
@@ -345,7 +351,7 @@ class Unit:
         specialRules = self.specialRules + self.wargearSp
 
         if 'Vehicle' in specialRules or 'Monster' in specialRules:
-            smallStomp = Weapon('Monster Stomp', weaponRules=['Impact(3)'])
+            smallStomp = Weapon('Monster Stomp', special=['Impact(3)'])
             self.spEquipments.append(smallStomp)
             if 'Fear' not in specialRules:
                 specialRules.append('Fear')
