@@ -62,6 +62,24 @@ def range_cost(wrange, speed):
     return c
 
 
+# Handle D3+1 or 2D6+2 values
+# return the mean to calculate the cost
+def dice_mean(value):
+    if isinstance(value, int):
+        return value
+
+    n, rem = value.split('D')
+    if '+' in rem:
+        sides, add = rem.split('+')
+    else:
+        sides, add = rem, 0
+
+    mean = (int(sides) + 1 ) / 2.0
+    if n:
+        mean *= int(n)
+    return mean + int(add)
+
+
 # WargGear can include special rules for model, and weapons
 # Like a jetbike gives "fast" rules and a Linked ShardGun
 class WarGear:
@@ -92,7 +110,7 @@ class Weapon:
     def __init__(self, name='Unknown Weapon', range=0, attacks=0, armorPiercing=0, weaponRules=[]):
         self.name = name
         self.range = range
-        self.attacks = str(attacks)
+        self.attacks = attacks
         self.armorPiercing = armorPiercing
         self.weaponRules = weaponRules
         self.specialRules = []
@@ -128,12 +146,8 @@ class Weapon:
         simpact = 0
         rending = 0
         wrange = self.range
-        ap = self.armorPiercing
-        # Handle D3 or D6 attacks
-        if self.attacks.isdigit():
-            attacks = int(self.attacks)
-        elif self.attacks.startswith('D'):
-            attacks = (float(self.attacks[1:]) + 1.0) / 2.0
+        ap = dice_mean(self.armorPiercing)
+        attacks = dice_mean(self.attacks)
 
         for s in self.weaponRules:
             if s == 'Deadly':
@@ -142,7 +156,7 @@ class Weapon:
                 quality -= 1
             elif s == 'Rending':
                 # rending is 1/6 of having AP(8)
-                rending = (1 / 6) * (ap_cost(8) - ap_cost(self.armorPiercing))
+                rending = (1 / 6) * (ap_cost(8) - ap_cost(ap))
             elif s == 'Flux':
                 # Flux is statistically like having quality +2
                 quality -= 2
