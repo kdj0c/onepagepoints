@@ -158,7 +158,7 @@ weapons:
   Vibration Cannon:
     range: 48
     attacks: 1
-    special: [Vibration]
+    ap: D6
   Walker Stomp:
     attacks: 2
     ap: 1

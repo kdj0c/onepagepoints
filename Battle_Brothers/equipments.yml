@@ -56,19 +56,20 @@ weapons:
   Gravity Add-on:
     range: 18
     attacks: 1
-    special: [Gravity, Limited]
+    ap: D3+1
+    special: [Limited]
   Gravity Cannon:
     range: 24
     attacks: 4
-    special: [Gravity]
+    ap: D3+1
   Gravity Pistol:
     range: 12
     attacks: 1
-    special: [Gravity]
+    ap: D3+1
   Gravity Rifle:
     range: 18
     attacks: 1
-    special: [Gravity]
+    ap: D3+1
   Grenade Launcher AT:
     range: 24
     attacks: 1
