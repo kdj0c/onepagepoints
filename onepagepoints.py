@@ -239,13 +239,14 @@ class Armory(dict):
 
 
 class Unit:
-    def __init__(self, name='Unknown Unit', count=1, quality=4, defense=2, equipments=[], specialRules=[]):
+    def __init__(self, name='Unknown Unit', count=1, quality=4, defense=2, equipments=[], specialRules=[], upgrades=[]):
         self.name = name
         self.specialRules = specialRules
         self.equipments = equipments
         self.quality = quality
         self.basedefense = defense
         self.count = count
+        self.upgrades = upgrades
 
         self.Update()
 
@@ -264,7 +265,7 @@ class Unit:
 
     @classmethod
     def from_dict(self, data, armory):
-        return self(data['name'], data['count'], data['quality'], data['defense'], armory.get(data['equipment']), data['special'])
+        return self(data['name'], data['count'], data['quality'], data['defense'], armory.get(data['equipment']), data['special'], data['upgrades'])
 
     def Update(self):
         self.wargearSp = [sp for equ in self.equipments for sp in equ.specialRules]

@@ -83,110 +83,87 @@ def PrettyEquipments(equipments):
     return [pCount(c) + e.name + ' ' + e.Profile() for e, c in equWithCount]
 
 
-# Calculate the cost of an upgrade on a unit
-# If the upgrade is only for one model, set the unit count to 1
-# remove equipment, add new equipment and calculate the new cost.
-def calculate_upgrade_cost(unit, to_preremove, to_preadd, to_remove, to_add, all):
-    global armory
+class Upgrade:
+    def __init__(self, batch):
+        self.all = batch.get('all', False)
+        self.text = batch['text']
+        self.preremove = batch.get('pre-remove', {})
+        self.preadd = batch.get('pre-add', {})
+        self.remove = batch.get('remove', {})
+        self.add = batch['add']
+        self.rawcost = []
 
-    new_unit = copy.copy(unit)
-    if not all:
-        new_unit.SetCount(1)
+    # Calculate the cost of an upgrade on a unit
+    # If the upgrade is only for one model, set the unit count to 1
+    # remove equipment, add new equipment and calculate the new cost.
+    def Cost_unit(self, unit):
+        global armory
 
-    new_unit.RemoveEquipments(armory.get(to_preremove))
-    new_unit.AddEquipments(armory.get(to_preadd))
+        base_unit = copy.copy(unit)
+        if not self.all:
+            base_unit.SetCount(1)
 
-    prev_cost = new_unit.cost + getFactionCost(unit)
+        base_unit.RemoveEquipments(armory.get(self.preremove))
+        base_unit.AddEquipments(armory.get(self.preadd))
+        prev_cost = base_unit.cost + getFactionCost(base_unit)
+        base_unit.RemoveEquipments(armory.get(self.remove))
 
-    new_unit.RemoveEquipments(armory.get(to_remove))
+        costs = []
+        for upgrade in self.add:
+            new_unit = copy.copy(base_unit)
+            new_unit.AddEquipments(armory.get(upgrade))
 
-    costs = []
-    for upgrade in to_add:
-        add_unit = copy.copy(new_unit)
-        add_unit.AddEquipments(armory.get(upgrade))
+            up_cost = new_unit.cost + getFactionCost(new_unit) - prev_cost
+            costs.append(up_cost)
 
-        up_cost = add_unit.cost + getFactionCost(add_unit) - prev_cost
-        costs.append(up_cost)
-    return costs
+        # print('Cost for unit {}: {}'.format(unit.name, costs))
+        return costs
 
-
-def calculate_upgrade_group_cost(unit, upgrade_group):
-    for upgrade_batch in upgrade_group:
-        all = upgrade_batch.get('all', False)
-        to_preremove = upgrade_batch.get('pre-remove', {})
-        to_preadd = upgrade_batch.get('pre-add', {})
-        to_remove = upgrade_batch.get('remove', {})
-        to_add = upgrade_batch['add']
-        costs = calculate_upgrade_cost(unit, to_preremove, to_preadd, to_remove, to_add, all)
-        if 'cost' in upgrade_batch:
-            upgrade_batch['cost'].append(costs)
-        else:
-            upgrade_batch['cost'] = [costs]
-
-
-def calculate_unit_cost(junit, jupgrades):
-    global armory
-
-    unit = Unit.from_dict(junit, armory)
-
-    up = junit['upgrades']
-    for upgrade_group in junit['upgrades']:
-        if upgrade_group in jupgrades:
-            calculate_upgrade_group_cost(unit, jupgrades[upgrade_group])
-        else:
-            print("Missing upgrade_group {0} in upgrades.yml".format(upgrade_group))
+    # an upgrade group cost is calculated for all units who have access to this
+    # upgrade group, so calculate the mean
+    def Cost(self, units):
+        u_count = len(units)
+        cost = [0] * len(self.add)
+        for unit in units:
+            cost = [x + y for x, y in zip(cost, self.Cost_unit(unit))]
+        self.cost = [int(round(c / u_count)) for c in cost]
+        # print('Cost for all units: {}'.format(self.cost))
+        return self.cost
 
 
-# an upgrade group cost is calculated for all units who have access to this
-# upgrade group, so calculate the mean
-# will transform [[11, 13], [7, 10]] in [9, 12]
-def calculate_mean_upgrade_cost(costs):
-    count = len(costs)
-    ret = [0] * len(costs[0])
-    for cu in costs:
-        for i, c in enumerate(cu):
-            ret[i] += c / count
-
-    ret = [int(round(c)) for c in ret]
-    return ret
+class UpgradeGroup(list):
+    def __init__(self, name, ydata):
+        self.name = name
+        super().__init__([Upgrade(upgrade) for upgrade in ydata])
 
 
-def get_unit_stat(junit):
-    global armory
-
-    unit = Unit.from_dict(junit, armory)
-    cost = unit.cost + getFactionCost(unit)
-
+def get_unit_stat(unit):
     data = ['{0} {1} {2}+'.format(prettyName(unit), str(unit.quality), str(unit.basedefense))]
     data += [', '.join(PrettyEquipments(unit.equipments))]
     data += [", ".join(unit.specialRules)]
-    data += [", ".join(junit['upgrades'])]
-    data += [points(cost)]
-
+    data += [", ".join(unit.upgrades)]
+    data += [points(unit.cost + getFactionCost(unit))]
     return '\n'.join([d for d in data if d])
 
 
-def get_units_stats(junits):
-    return '\n\n'.join([get_unit_stat(junit) for junit in junits])
+def get_units_stats(units):
+    return '\n\n'.join([get_unit_stat(unit) for unit in units])
 
 
-def get_unit_line(junit):
-    global armory
-
-    unit = Unit.from_dict(junit, armory)
+def get_unit_line(unit):
     cost = unit.cost + getFactionCost(unit)
     equ = ", ".join(['\mbox{' + e + '}' for e in PrettyEquipmentsTex(unit.equipments)])
     sp = ", ".join(unit.specialRules)
-    up = ", ".join(junit['upgrades'])
+    up = ", ".join(unit.upgrades)
     return ' & '.join([prettyName(unit), str(unit.quality), str(unit.basedefense) + '+', equ, sp, up, points(cost)])
 
 
-def get_units_tex(junits):
-    return '\\\\ \n'.join([get_unit_line(junit) for junit in junits])
+def get_units_tex(units):
+    return '\\\\ \n'.join([get_unit_line(unit) for unit in units])
 
 
-def get_units_txt(junits):
-    return '\n'.join([get_unit_line(junit) for junit in junits])
+def get_units_txt(units):
+    return '\n'.join([get_unit_line(unit) for unit in units])
 
 
 def get_upgrade_linetxt(equ, cost):
@@ -195,20 +172,19 @@ def get_upgrade_linetxt(equ, cost):
 
 
 def get_upgrade_grouptxt(group, upgrades):
-
     data = ''
     preamble = group + ' | '
 
     ret = []
     for up in upgrades:
-        ret += [preamble + up['text'] + ':']
-        ret += [get_upgrade_linetxt(addEqu, up['cost'][i]) for i, addEqu in enumerate(up['add'])]
+        ret += [preamble + up.text + ':']
+        ret += [get_upgrade_linetxt(addEqu, up.cost[i]) for i, addEqu in enumerate(up.add)]
         preamble = ''
     return data + '\n'.join(ret) + '\n'
 
 
-def get_upgrade_txt(jupgrades):
-    return '\n'.join([get_upgrade_grouptxt(group, upgrades) for group, upgrades in jupgrades.items()])
+def get_upgrade_txt(upgrades):
+    return '\n'.join([get_upgrade_grouptxt(group.name, group) for group in upgrades])
 
 
 def get_upgrade_line(equ, cost):
@@ -223,14 +199,14 @@ def get_upgrade_group(group, upgrades):
 
     ret = []
     for up in upgrades:
-        ret += ['\\multicolumn{2}{p{\\dimexpr \\linewidth - 2pt \\relax}}{\\bf ' + preamble + up['text'] + ': } ']
-        ret += [get_upgrade_line(addEqu, up['cost'][i]) for i, addEqu in enumerate(up['add'])]
+        ret += ['\\multicolumn{2}{p{\\dimexpr \\linewidth - 2pt \\relax}}{\\bf ' + preamble + up.text + ': } ']
+        ret += [get_upgrade_line(addEqu, up.cost[i]) for i, addEqu in enumerate(up.add)]
         preamble = ''
     return data + ' \\\\ \n'.join(ret) + '}\n'
 
 
-def get_upgrade_tex(jupgrades):
-    return ''.join([get_upgrade_group(group, upgrades) for group, upgrades in jupgrades.items()])
+def get_upgrade_tex(upgrades):
+    return ''.join([get_upgrade_group(group.name, group) for group in upgrades])
 
 
 def write_file(filename, path, data):
@@ -270,20 +246,22 @@ def generateFaction(faction, txtdir):
         unitFile = 'units' + str(i) + '.yml'
         upgradeFile = 'upgrades' + str(i) + '.yml'
         if unitFile in allFiles and upgradeFile in allFiles:
-            junits = read_yaml(unitFile, faction)
-            jupgrades = read_yaml(upgradeFile, faction)
+            yunits = read_yaml(unitFile, faction)
+            yupgrades = read_yaml(upgradeFile, faction)
 
-            for junit in junits:
-                calculate_unit_cost(junit, jupgrades)
-            for upgrades in jupgrades.values():
-                for up in upgrades:
-                    up['cost'] = calculate_mean_upgrade_cost(up['cost'])
+            units = [Unit.from_dict(yunit, armory) for yunit in yunits]
+            upgrades = [UpgradeGroup(group, up_group) for group, up_group in yupgrades.items()]
 
-            write_file(unitFile[:-3] + 'tex', faction, get_units_tex(junits))
-            write_file(upgradeFile[:-3] + 'tex', faction, get_upgrade_tex(jupgrades))
+            for group in upgrades:
+                affected_units = [unit for unit in units if group.name in unit.upgrades]
+                for upgrade in group:
+                    upgrade.Cost(affected_units)
 
-            data_txt += '\n\n' + get_units_stats(junits)
-            data_txt += '\n\n' + get_upgrade_txt(jupgrades)
+            write_file(unitFile[:-3] + 'tex', faction, get_units_tex(units))
+            write_file(upgradeFile[:-3] + 'tex', faction, get_upgrade_tex(upgrades))
+
+            data_txt += '\n\n' + get_units_stats(units)
+            data_txt += '\n\n' + get_upgrade_txt(upgrades)
 
     if txtdir == '':
         txtdir = faction
