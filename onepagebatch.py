@@ -60,23 +60,6 @@ def prettyName(unit):
     return unit.name
 
 
-# Latex uses ~ to prevent line break
-def no_line_break(s):
-    return s.replace(' ', '~')
-
-
-def prettyProfile(equipment):
-    if isinstance(equipment, Weapon):
-        return no_line_break(equipment.Profile())
-    return equipment.Profile()
-
-
-# Return a pretty string for latex of the list of equipments
-def PrettyEquipmentsTex(equipments):
-    equWithCount = list(OrderedDict.fromkeys([(equ, equipments.count(equ)) for equ in equipments]))
-    return [pCount(c) + no_line_break(e.name) + ' ' + prettyProfile(e) for e, c in equWithCount]
-
-
 # Return a pretty string of the list of equipments
 def PrettyEquipments(equipments):
     equWithCount = list(OrderedDict.fromkeys([(equ, equipments.count(equ)) for equ in equipments]))
@@ -175,9 +158,23 @@ class DumpTxt:
 
 
 class DumpTex:
+    # Latex uses ~ to prevent line break
+    def no_line_break(self, s):
+        return s.replace(' ', '~')
+
+    def prettyProfile(self, equipment):
+        if isinstance(equipment, Weapon):
+            return self.no_line_break(equipment.Profile())
+        return equipment.Profile()
+
+    # Return a pretty string for latex of the list of equipments
+    def PrettyEquipments(self, equipments):
+        equWithCount = list(OrderedDict.fromkeys([(equ, equipments.count(equ)) for equ in equipments]))
+        return [pCount(c) + self.no_line_break(e.name) + ' ' + self.prettyProfile(e) for e, c in equWithCount]
+
     def _getUnit(self, unit):
         cost = unit.cost + getFactionCost(unit)
-        equ = ", ".join(['\mbox{' + e + '}' for e in PrettyEquipmentsTex(unit.equipments)])
+        equ = ", ".join(['\mbox{' + e + '}' for e in self.PrettyEquipments(unit.equipments)])
         sp = ", ".join(unit.specialRules)
         up = ", ".join(unit.upgrades)
         return ' & '.join([prettyName(unit), str(unit.quality), str(unit.basedefense) + '+', equ, sp, up, points(cost)])
@@ -187,7 +184,7 @@ class DumpTex:
 
     def _getUpLine(self, equ, cost):
         global armory
-        return ', '.join(PrettyEquipmentsTex(armory.get(equ))) + ' & ' + points(cost)
+        return ', '.join(self.PrettyEquipments(armory.get(equ))) + ' & ' + points(cost)
 
     def _getUpGroup(self, group, upgrades):
         data = '\\UpgradeTable{ '
@@ -201,6 +198,66 @@ class DumpTex:
 
     def getUpgrades(self, upgrades):
         return ''.join([self._getUpGroup(group.name, group) for group in upgrades])
+
+
+class DumpHtml:
+    def __init__(self):
+        with open('Template/header.html') as f:
+            self.header = f.read()
+        with open('Template/footer.html') as f:
+            self.footer = f.read()
+        self.data = ""
+
+    def no_line_break(self, s):
+        return s.replace(' ', '&nbsp;')
+
+    def points(self, n):
+        return self.no_line_break(points(n))
+
+    def to_cells(self, cells):
+        return '\n'.join(['    <td>' + cell + '</td>' for cell in cells])
+
+    def to_hdr(self, cells):
+        return '\n'.join(['    <th>' + cell + '</th>' for cell in cells])
+
+    def to_row(self, rows):
+        return '\n'.join(['  <tr>\n' + row + '\n  </tr>' for row in rows])
+
+    def _getUnit(self, unit):
+        data = [prettyName(unit), str(unit.quality), str(unit.basedefense) + '+']
+        data += [',<br> '.join(PrettyEquipments(unit.equipments))]
+        data += [", ".join(unit.specialRules)]
+        data += [", ".join(unit.upgrades)]
+        data += [self.points(unit.cost + getFactionCost(unit))]
+        return self.to_cells(data)
+
+    def getUnits(self, units):
+        table_header = ['Name [size]', 'Qua', 'Def', 'Equipment', 'Special Rules', 'Upgrades', 'Cost']
+        self.data += '<br>\n<table>\n'
+        rows = [self.to_hdr(table_header)]
+        rows.extend([self._getUnit(unit) for unit in units])
+        self.data += self.to_row(rows)
+        self.data += '</table>\n'
+
+    def _getUpLine(self, equ, cost):
+        global armory
+        return self.to_cells(PrettyEquipments(armory.get(equ)) + [self.points(cost)])
+
+    def _getUpGroup(self, group, upgrades):
+        preamble = group + ' | '
+
+        ret = []
+        for up in upgrades:
+            ret.append(self.to_hdr([preamble + up.text + ':', '']))
+            ret.extend([self._getUpLine(addEqu, up.cost[i]) for i, addEqu in enumerate(up.add)])
+            preamble = ''
+        return '<br>\n<table class=ut1>\n' + self.to_row(ret) + '\n</table>\n'
+
+    def addUpgrades(self, upgrades):
+        self.data += '\n'.join([self._getUpGroup(group.name, group) for group in upgrades])
+
+    def getHtml(self):
+        return self.header + self.data + self.footer
 
 
 def write_file(filename, path, data):
@@ -236,6 +293,7 @@ def generateFaction(faction, txtdir):
     allFiles = os.listdir(faction)
     txt = DumpTxt()
     tex = DumpTex()
+    html = DumpHtml()
 
     for i in ['', 1, 2, 3, 4, 5]:
         unitFile = 'units' + str(i) + '.yml'
@@ -255,12 +313,15 @@ def generateFaction(faction, txtdir):
             write_file(unitFile[:-3] + 'tex', faction, tex.getUnits(units))
             write_file(upgradeFile[:-3] + 'tex', faction, tex.getUpgrades(upgrades))
 
+            html.getUnits(units)
+            html.addUpgrades(upgrades)
             txt.addUnits(units)
             txt.addUpgrades(upgrades)
 
     if txtdir == '':
         txtdir = faction
     write_file(faction + '.txt', txtdir, txt.getTxt())
+    write_file(faction + '.html', 'out', html.getHtml())
 
 
 def main():
