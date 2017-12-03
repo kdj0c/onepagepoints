@@ -24,21 +24,21 @@
   quality: 5
   defense: 4
   equipment: [Pulse Shotguns]
-  special: [Good shot]
+  special: [Good Shot]
   upgrades: [B, D]
 - name: Spotter Squad
   count: 5
   quality: 5
   defense: 3
   equipment: [Pulse Carbines, Spotting Lasers]
-  special: [Good shot, Scout]
+  special: [Good Shot, Scout]
   upgrades: [B, E]
 - name: Stealth Suits
   count: 3
   quality: 5
   defense: 5
   equipment: [Gatling Carbines]
-  special: [Ambush, Good shot, Scout, Stealth]
+  special: [Ambush, Good Shot, Scout, Stealth]
   upgrades: [B, G]
 - name: Battle Suits
   count: 3
@@ -52,14 +52,14 @@
   quality: 5
   defense: 3
   equipment: [Pulse Rifles]
-  special: [Ambush, Flying, Good shot]
+  special: [Ambush, Flying, Good Shot]
   upgrades: [F]
 - name: Gun Drones
   count: 5
   quality: 5
   defense: 3
   equipment: [Linked Pulse Carbines]
-  special: [Ambush, Flying, Good shot]
+  special: [Ambush, Flying, Good Shot]
   upgrades: []
 - name: Jackals
   count: 5
