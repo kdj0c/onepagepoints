@@ -223,6 +223,9 @@ class DumpHtml:
     def to_row(self, rows):
         return '\n'.join(['  <tr>\n' + row + '\n  </tr>' for row in rows])
 
+    def to_li(self, lis):
+        return '\n'.join([' <li>\n' + li + '\n </li>' for li in lis])
+
     def _getUnit(self, unit):
         data = [prettyName(unit), str(unit.quality), str(unit.basedefense) + '+']
         data += [',<br> '.join(PrettyEquipments(unit.equipments))]
@@ -233,7 +236,7 @@ class DumpHtml:
 
     def getUnits(self, units):
         table_header = ['Name [size]', 'Qua', 'Def', 'Equipment', 'Special Rules', 'Upgrades', 'Cost']
-        self.data += '<br>\n<table>\n'
+        self.data += '<table>\n'
         rows = [self.to_hdr(table_header)]
         rows.extend([self._getUnit(unit) for unit in units])
         self.data += self.to_row(rows)
@@ -251,10 +254,12 @@ class DumpHtml:
             ret.append(self.to_hdr([preamble + up.text + ':', '']))
             ret.extend([self._getUpLine(addEqu, up.cost[i]) for i, addEqu in enumerate(up.add)])
             preamble = ''
-        return '<br>\n<table class=ut1>\n' + self.to_row(ret) + '\n</table>\n'
+        return '<table class=ut1>\n' + self.to_row(ret) + '\n</table>\n'
 
     def addUpgrades(self, upgrades):
-        self.data += '\n'.join([self._getUpGroup(group.name, group) for group in upgrades])
+        self.data += '<ul>\n'
+        self.data += self.to_li([self._getUpGroup(group.name, group) for group in upgrades])
+        self.data += '</ul>\n'
 
     def getHtml(self):
         return self.header + self.data + self.footer

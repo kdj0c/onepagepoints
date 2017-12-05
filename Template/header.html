@@ -8,9 +8,33 @@ body
 font-family:carlito,sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
+ul {
+  column-count: 3;
+  column-gap: 0;
+}
+li {
+  display: inline-block;
+}
+@media all and (max-width: 1500px)
+{
+  ul {
+    column-count: 2;
+  }
+}
+@media all and (max-width: 1000px)
+{
+  ul {
+    column-count: 1;
+  }
+}
+
 table.ut1 {
     border-collapse: collapse;
-    width: 500px;
+    width: 480px;
     table-layout: fixed;
 }
 table.ut1 th:nth-child(2) {
@@ -22,7 +46,10 @@ table.ut1 td:nth-child(2) {
 
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 1000px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 th, td {
     text-align: left;
