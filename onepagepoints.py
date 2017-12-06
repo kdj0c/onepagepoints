@@ -252,6 +252,7 @@ class Unit:
         self.basedefense = defense
         self.count = count
         self.upgrades = upgrades
+        self.factionCost = 0
 
         self.Update()
 
@@ -306,6 +307,10 @@ class Unit:
         self.count = count
         self.Cost()
 
+    def SetFactionCost(self, cost):
+        self.factionCost = cost
+        self.Cost()
+
     def AttackCost(self):
         self.attackCost = 0
 
@@ -334,7 +339,7 @@ class Unit:
         self.AttackCost()
         self.OtherCost()
 
-        self.cost = self.defenseCost + self.attackCost + self.otherCost
+        self.cost = self.defenseCost + self.attackCost + self.otherCost + self.factionCost
         return self.cost
 
     def parseSpecialRules(self):
