@@ -27,6 +27,7 @@ import yaml
 import os
 import copy
 import argparse
+import pathlib
 from collections import OrderedDict
 
 
@@ -358,24 +359,25 @@ class DumpHtml:
 
 
 def write_file(filename, path, data):
+    pathlib.Path(path).mkdir(parents=True, exist_ok=True)
     fname = os.path.join(path, filename)
     with open(fname, "w") as f:
         print('  Writing {}'.format(fname))
         f.write(data)
 
 
-def generateFaction(factionName):
+def generateFaction(factionName, build_dir):
     faction = Faction(factionName)
 
-    write_file(factionName + '.txt', 'out/txt', DumpTxt().getTxt(faction))
-    write_file(factionName + '.html', 'out', DumpHtml().getHtml(faction))
-    write_file(factionName + '.tex', 'out/tex', DumpTex().getTex(faction))
+    write_file(factionName + '.txt', os.path.join(build_dir, 'txt'), DumpTxt().getTxt(faction))
+    write_file(factionName + '.html', build_dir, DumpHtml().getHtml(faction))
+    write_file(factionName + '.tex', os.path.join(build_dir, 'tex'), DumpTex().getTex(faction))
 
 
 def main():
     parser = argparse.ArgumentParser(description='This script will compute the Unit costs and upgrade costs for a faction, and write the .tex files for LaTeX')
-    parser.add_argument('-t', '--txt-dir', type=str, default='',
-                        help='directory to write the txt files, used for diff between releases')
+    parser.add_argument('-b', '--build-dir', type=str, default='build',
+                        help='directory to write the output files')
     parser.add_argument('path', type=str, nargs='+',
                         help='path to the faction (should contain at list equipments.yml, units1.yml, upgrades1.yml)')
 
@@ -384,7 +386,7 @@ def main():
     for faction in args.path:
         faction = faction.strip('/')
         print("Building faction {}".format(faction))
-        generateFaction(faction)
+        generateFaction(faction, args.build_dir)
 
 
 if __name__ == "__main__":
