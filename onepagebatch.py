@@ -131,6 +131,9 @@ class Faction():
             return yaml.load(f.read())
 
     def _parse_yaml(self):
+        yfaction = self._read_yaml('faction.yml', self.name)
+        self.title = yfaction['title']
+
         if os.path.exists(os.path.join('Common', 'equipments.yml')):
             yequipments = self._read_yaml('equipments.yml', 'Common')
             self.armory.add([Weapon(name, **w) for name, w in yequipments['weapons'].items()])
@@ -143,9 +146,9 @@ class Faction():
 
         allFiles = os.listdir(self.name)
 
-        for i in ['', 1, 2, 3, 4, 5]:
-            unitFile = 'units' + str(i) + '.yml'
-            upgradeFile = 'upgrades' + str(i) + '.yml'
+        for i in ['', '1', '2', '3', '4', '5']:
+            unitFile = 'units' + i + '.yml'
+            upgradeFile = 'upgrades' + i + '.yml'
             if unitFile in allFiles and upgradeFile in allFiles:
                 yunits = self._read_yaml(unitFile, self.name)
                 yupgrades = self._read_yaml(upgradeFile, self.name)
@@ -160,7 +163,9 @@ class Faction():
                     affected_units = [unit for unit in units if group.name in unit.upgrades]
                     for upgrade in group:
                         upgrade.Cost(affected_units)
-                self.pages.append((units, upgrades))
+                spRules = yfaction.get('specialRules' + i, None)
+                psychics = yfaction.get('psychics' + i, None)
+                self.pages.append((units, upgrades, spRules, psychics))
 
     # Get hardcoded cost for per-faction special rules.
     def getFactionCost(self, unit):
@@ -200,7 +205,7 @@ class DumpTxt:
         self.data += [self._getUpGroup(group.name, group) for group in upgrades]
 
     def getTxt(self, faction):
-        for units, upgrades in faction.pages:
+        for units, upgrades, specialRules, psychics in faction.pages:
             self.addUnits(units)
             self.addUpgrades(upgrades)
         return '\n\n'.join(self.data)
@@ -253,13 +258,29 @@ class DumpTex:
     def addUpgrades(self, upgrades):
         self.data += ''.join([self._getUpGroup(group.name, group) for group in upgrades])
 
+    def addSpecialRules(self, sp):
+        if not sp:
+            return
+        self.data += '\\specialrules\n'
+        self.data += '\n'.join(['\\sprule{' + k + '}{' + v + '}' for k, v in sp.items()]) + '\n'
+
+    def addPsychics(self, psychics):
+        if not psychics:
+            return
+        self.data += '\\startpsychic{\n'
+        for quality, spells in psychics.items():
+            self.data += '\n'.join(['\\psychic{' + k + '}{' + str(quality) + '+}{' + v + '}\n' for k, v in spells.items()])
+        self.data += '}\n'
+
     def getTex(self, faction):
-        self.data = '\\mytitle{TAO Coalition v1.5}\n'
+        self.data = '\\mytitle{' + faction.title + '}\n'
         self.data += '\\begin{document}\n'
-        for units, upgrades in faction.pages:
+        for units, upgrades, specialRules, psychics in faction.pages:
             self.addUnits(units)
             self.data += '\\begin{multicols*}{3}[]\n'
             self.addUpgrades(upgrades)
+            self.addSpecialRules(specialRules)
+            self.addPsychics(psychics)
             self.data += '\\end{multicols*}\n'
             self.data += '\\pagebreak\n'
         self.data += '\\end{document}'
@@ -328,9 +349,11 @@ class DumpHtml:
         self.data += '</ul>\n'
 
     def getHtml(self, faction):
-        for units, upgrades in faction.pages:
+        self.data += '<h1>Grimdark Future ' + faction.title + '</h1>'
+        for units, upgrades, specialRules, psychics in faction.pages:
             self.addUnits(units)
             self.addUpgrades(upgrades)
+
         return self.header + self.data + self.footer
 
 
@@ -359,6 +382,7 @@ def main():
     args = parser.parse_args()
 
     for faction in args.path:
+        faction = faction.strip('/')
         print("Building faction {}".format(faction))
         generateFaction(faction)
 
