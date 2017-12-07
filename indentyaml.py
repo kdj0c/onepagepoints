@@ -63,12 +63,24 @@ class YamlFactionRules(dict):
         return [(key, self[key]) for key in self]
 
 
+class YamlFaction(dict):
+    def to_omap(self):
+        data = [('title', self.pop('title'))]
+        return data + [(key, self[key]) for key in sorted(self)]
+
+
 def represent_omap(dumper, data):
     return dumper.represent_mapping(u'tag:yaml.org,2002:map', data.to_omap())
 
 
 def represent_omap_flow(dumper, data):
     return dumper.represent_mapping(u'tag:yaml.org,2002:map', data.to_omap(), flow_style=False)
+
+
+def format_faction(data):
+    yaml.add_representer(YamlFaction, represent_omap)
+    newdata = YamlFaction(data)
+    return yaml.dump(newdata)
 
 
 def format_equipments(data):
@@ -115,12 +127,13 @@ def format_file(filename, path, format_func):
             f.write(newdata)
 
 
-def format_faction(faction):
+def indent(faction):
     yamlFiles = [f for f in os.listdir(faction) if f.endswith('.yml')]
-
     for f in yamlFiles:
         if f == 'equipments.yml':
             format_file(f, faction, format_equipments)
+        elif f == 'faction.yml':
+            format_file(f, faction, format_faction)
         elif f.startswith('unit'):
             format_file(f, faction, format_units)
         elif f.startswith('upgrades'):
@@ -136,7 +149,7 @@ def main():
     args = parser.parse_args()
 
     for path in args.path:
-        format_faction(path)
+        indent(path)
 
 
 if __name__ == "__main__":

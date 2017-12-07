@@ -1,0 +1,16 @@
+title: Robot Legions v1.2
+psychics:
+  3: {Thunderbolt Bolts: Target enemy unit within 12" takes 1 automatic hit with AP(5).}
+  4: {Fire Bots: Target enemy unit within 12" takes 2D3 automatic hits.}
+  5: {Meteor Bots: Target enemy unit within 12" takes D3 automatic hits with AP(4).}
+  6: {Arrow Bots: Target enemy unit within 12" takes 1 automatic hit with AP(10) and
+      Deadly., Assault Bots: Target enemy unit within 12" takes 3D3 automatic hits
+      with AP(2)., Star Bots: Target enemy unit within 12" takes 4D3 automatic hits.}
+specialRules: {Bot Fabricator: 'Once per turn. if this unit is within 6" of a Bot
+    Swarm unit, you may roll one die. On a 4+, add 2 Bot Swarm model to that unit.',
+  Flux: For each unmodified result of 6 you roll to hit the target takes two additional
+    hits., Hunter: On a round in which this unit arrives from Ambush it gets AP(+4).,
+  Regen-Protocol: The hero gets the Regeneration special rule. The hero and his unit
+    may ignore wounds from Regeneration on 4+., Repair-Protocol: 'Once per turn, if
+    this unit is within 2" of a Vehicle, then it may try to repair it. Roll one die,
+    on a 4+ the vehicle heals one wound.'}
