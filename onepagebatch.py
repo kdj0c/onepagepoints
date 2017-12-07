@@ -238,54 +238,54 @@ class DumpTex:
         return ' & '.join([prettyName(unit), str(unit.quality), str(unit.basedefense) + '+', equ, sp, up, points(cost)])
 
     def addUnits(self, units):
-        self.data += '\\UnitTable{'
-        self.data += '\\\\ \n'.join([self._addUnit(unit) for unit in units])
-        self.data += '}\n'
+        self.data.append('\\UnitTable{')
+        self.data.append('\\\\\n'.join([self._addUnit(unit) for unit in units]) + '}')
 
     def _getUpLine(self, equ, cost):
         return ', '.join(self.PrettyEquipments(equ)) + ' & ' + points(cost)
 
     def _getUpGroup(self, group, upgrades):
-        data = '\\UpgradeTable{ '
+        self.data.append('\\UpgradeTable{')
+        data = []
         preamble = group + ' | '
-        ret = []
         for up in upgrades:
-            ret += ['\\multicolumn{2}{p{\\dimexpr \\linewidth - 2pt \\relax}}{\\bf ' + preamble + up.text + ': } ']
-            ret += [self._getUpLine(addEqu, up.cost[i]) for i, addEqu in enumerate(up.add)]
+            data += ['\\multicolumn{2}{p{\\dimexpr \\linewidth - 2pt \\relax}}{\\bf ' + preamble + up.text + ': }']
+            data += [self._getUpLine(addEqu, up.cost[i]) for i, addEqu in enumerate(up.add)]
             preamble = ''
-        return data + ' \\\\ \n'.join(ret) + '}\n'
+        self.data.append('\\\\\n'.join(data) + '}')
 
     def addUpgrades(self, upgrades):
-        self.data += ''.join([self._getUpGroup(group.name, group) for group in upgrades])
+        for group in upgrades:
+            self._getUpGroup(group.name, group)
 
     def addSpecialRules(self, sp):
         if not sp:
             return
-        self.data += '\\specialrules\n'
-        self.data += '\n'.join(['\\sprule{' + k + '}{' + v + '}' for k, v in sp.items()]) + '\n'
+        self.data.append('\\specialrules')
+        self.data += ['\\sprule{' + k + '}{' + v + '}' for k, v in sp.items()]
 
     def addPsychics(self, psychics):
         if not psychics:
             return
-        self.data += '\\startpsychic{\n'
+        self.data.append('\\startpsychic{')
         for quality, spells in psychics.items():
-            self.data += '\n'.join(['\\psychic{' + k + '}{' + str(quality) + '+}{' + v + '}\n' for k, v in spells.items()])
-        self.data += '}\n'
+            self.data += ['\\psychic{' + k + '}{' + str(quality) + '+}{' + v + '}' for k, v in spells.items()]
+        self.data.append('}')
 
     def getTex(self, faction):
-        self.data = '\\mytitle{' + faction.title + '}\n'
-        self.data += '\\begin{document}\n'
+        self.data = ['\\mytitle{' + faction.title + '}']
+        self.data.append('\\begin{document}')
         for units, upgrades, specialRules, psychics in faction.pages:
             self.addUnits(units)
-            self.data += '\\begin{multicols*}{3}[]\n'
+            self.data.append('\\begin{multicols*}{3}[]')
             self.addUpgrades(upgrades)
             self.addSpecialRules(specialRules)
             self.addPsychics(psychics)
-            self.data += '\\end{multicols*}\n'
-            self.data += '\\pagebreak\n'
-        self.data += '\\end{document}'
+            self.data.append('\\end{multicols*}')
+            self.data.append('\\pagebreak')
+        self.data.append('\\end{document}')
 
-        return self.header + self.data
+        return self.header + '\n'.join(self.data)
 
 
 class DumpHtml:
