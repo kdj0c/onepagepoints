@@ -206,6 +206,8 @@ class DumpTxt:
         self.data += [self._getUpGroup(group.name, group) for group in upgrades]
 
     def addPsychics(self, psychics):
+        if not psychics:
+            return
         data = [name + '(' + str(power) + '+): ' + desc for power, spell in psychics.items() for name, desc in spell.items()]
         self.data.append('\n'.join(data))
 
@@ -213,7 +215,7 @@ class DumpTxt:
         for units, upgrades, specialRules, psychics in faction.pages:
             self.addUnits(units)
             self.addUpgrades(upgrades)
-            self.data.append('\n'.join([k + ': ' + v for k,v in specialRules.items()]))
+            self.data.append('\n'.join([k + ': ' + v for k, v in specialRules.items()]))
             self.addPsychics(psychics)
         return '\n\n'.join(self.data)
 
@@ -363,6 +365,8 @@ class DumpHtml:
         self.data += self.to_li([self._getUpGroup(group.name, group) for group in upgrades]) + '\n'
 
     def addSpecialRules(self, specialRules):
+        if not specialRules:
+            return
         self.data += '<h3>Special Rules</h3>\n'
         self.data += self.to_li(['<b>' + name + ':</b> ' + desc for name, desc in specialRules.items()]) + '\n'
 
@@ -371,6 +375,8 @@ class DumpHtml:
         return self.to_row([cell]) + '\n'
 
     def addPsychics(self, psychics):
+        if not psychics:
+            return
         self.data += '<h3>Psychic Spells</h3>\n'
         table = ''.join([self._getSpell(name, power, desc) for power, spell in psychics.items() for name, desc in spell.items()])
         self.data += self.to_li(['<table class=psy>\n' + table + '</table>']) + '\n'
