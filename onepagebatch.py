@@ -297,13 +297,49 @@ class DumpTex:
         return self.header + '\n'.join(self.data)
 
 
+class HtmlTag:
+    def __init__(self, tag, content, tagparm=''):
+        self.tag = tag
+        self.content = content
+        self.set_indent(0)
+        self.leaf = isinstance(content, str)
+        if tagparm:
+            self.tagparm = ' ' + tagparm
+        else:
+            self.tagparm = ''
+
+    def __str__(self):
+        def get_str(c, indent):
+            if isinstance(c, str):
+                return indent + c
+            return str(c)
+
+        indent = ' ' * self.indent
+        if isinstance(self.content, list):
+            content = '\n'.join(get_str(c, indent) for c in self.content)
+        else:
+            content = self.content
+
+        if self.leaf:
+            return '{3}<{0}{1}>{2}</{0}>'.format(self.tag, self.tagparm, content, indent)
+        return '{3}<{0}{1}>\n{2}\n{3}</{0}>'.format(self.tag, self.tagparm, content, indent)
+
+    def set_indent(self, level):
+        self.indent = level
+        if isinstance(self.content, HtmlTag):
+            self.content.set_indent(level + 1)
+        if isinstance(self.content, list):
+            for c in self.content:
+                if isinstance(c, HtmlTag):
+                    c.set_indent(level + 1)
+
+
 class DumpHtml:
     def __init__(self):
         with open('Template/header.html') as f:
             self.header = f.read()
         with open('Template/footer.html') as f:
             self.footer = f.read()
-        self.data = ""
 
     def no_line_break(self, s):
         return s.replace(' ', '&nbsp;')
@@ -311,86 +347,62 @@ class DumpHtml:
     def points(self, n):
         return self.no_line_break(points(n))
 
-    def to_cells(self, cells):
-        return '\n'.join(['    <td>' + cell + '</td>' for cell in cells])
-
-    def to_hdr(self, cells):
-        return '\n'.join(['    <th>' + cell + '</th>' for cell in cells])
-
-    def to_row(self, rows):
-        return '\n'.join(['  <tr>\n' + row + '\n  </tr>' for row in rows])
-
-    def to_li(self, lis):
-        return '\n'.join([' <li>\n' + li + '\n </li>' for li in lis])
-
-    def get_table(self, table, tclass=None, header=None):
-        if tclass:
-            data = '<table class={}>\n'.format(tclass)
-        else:
-            data = '<table>\n'
-        if header:
-            data += self.to_row(self.to_hdr(header))
-        data += self.to_row([self.to_cells(row) for row in table])
-        return data + '</table>'
-
     def _addUnit(self, unit):
-        data = [prettyName(unit), str(unit.quality), str(unit.basedefense) + '+']
-        data += [',<br> '.join(PrettyEquipments(unit.equipments))]
-        data += [", ".join(unit.specialRules)]
-        data += [", ".join(unit.upgrades)]
-        data += [self.points(unit.cost)]
-        return self.to_cells(data)
+        cells = [prettyName(unit), str(unit.quality), str(unit.basedefense) + '+',
+                 ',<br> '.join(PrettyEquipments(unit.equipments)),
+                 ", ".join(unit.specialRules),
+                 ", ".join(unit.upgrades),
+                 self.points(unit.cost)]
+        return [HtmlTag('td', cell) for cell in cells]
 
     def addUnits(self, units):
         table_header = ['Name [size]', 'Qua', 'Def', 'Equipment', 'Special Rules', 'Upgrades', 'Cost']
-        self.data += '<table>\n'
-        rows = [self.to_hdr(table_header)]
-        rows.extend([self._addUnit(unit) for unit in units])
-        self.data += self.to_row(rows)
-        self.data += '</table>\n'
+        rows = [HtmlTag('tr', [HtmlTag('th', title) for title in table_header])]
+        rows.extend([HtmlTag('tr', self._addUnit(unit)) for unit in units])
+        return HtmlTag('table', rows)
 
     def _getUpLine(self, equ, cost):
-        return self.to_cells([',<br>'.join(PrettyEquipments(equ))] + [self.points(cost)])
+        cells = [',<br>'.join(PrettyEquipments(equ)), self.points(cost)]
+        return [HtmlTag('td', cell) for cell in cells]
 
     def _getUpGroup(self, group, upgrades):
         preamble = group + ' | '
-        ret = []
+        rows = []
         for up in upgrades:
-            ret.append(self.to_hdr([preamble + up.text + ':', '']))
-            ret.extend([self._getUpLine(addEqu, up.cost[i]) for i, addEqu in enumerate(up.add)])
+            rows.append(HtmlTag('tr', [HtmlTag('th', preamble + up.text + ':'), HtmlTag('th', '')]))
+            rows.extend(HtmlTag('tr', self._getUpLine(addEqu, up.cost[i])) for i, addEqu in enumerate(up.add))
             preamble = ''
-        return '<table class=ut1>\n' + self.to_row(ret) + '\n</table>'
+        return HtmlTag('table', rows, 'class=ut1')
 
     def addUpgrades(self, upgrades):
-        self.data += self.to_li([self._getUpGroup(group.name, group) for group in upgrades]) + '\n'
+        return [HtmlTag('li', self._getUpGroup(group.name, group)) for group in upgrades]
 
     def addSpecialRules(self, specialRules):
         if not specialRules:
-            return
-        self.data += '<h3>Special Rules</h3>\n'
-        self.data += self.to_li(['<b>' + name + ':</b> ' + desc for name, desc in specialRules.items()]) + '\n'
+            return []
+        lines = [HtmlTag('h3', 'Special Rules')]
+        lines.extend([HtmlTag('li', [HtmlTag('b', name + ': '), desc]) for name, desc in specialRules.items()])
+        return lines
 
     def _getSpell(self, name, power, desc):
-        cell = self.to_cells(['<b>' + name + ' (' + str(power) + '+):</b> ' + desc])
-        return self.to_row([cell]) + '\n'
+        cell = [HtmlTag('b', name + ' (' + str(power) + '+): '), desc]
+        return HtmlTag('tr', HtmlTag('td', cell))
 
     def addPsychics(self, psychics):
         if not psychics:
-            return
-        self.data += '<h3>Psychic Spells</h3>\n'
-        table = ''.join([self._getSpell(name, power, desc) for power, spell in psychics.items() for name, desc in spell.items()])
-        self.data += self.to_li(['<table class=psy>\n' + table + '</table>']) + '\n'
+            return []
+        lines = [HtmlTag('h3', 'Psychic Spells')]
+        rows = [self._getSpell(name, power, desc) for power, spell in psychics.items() for name, desc in spell.items()]
+        lines.append(HtmlTag('li', HtmlTag('table', rows, 'class=psy')))
+        return lines
 
     def getHtml(self, faction):
-        self.data += '<h1>Grimdark Future ' + faction.title + '</h1>\n'
+        body = [HtmlTag('h1', 'Grimdark Future ' + faction.title)]
         for units, upgrades, specialRules, psychics in faction.pages:
-            self.addUnits(units)
-            self.data += '<ul>\n'
-            self.addUpgrades(upgrades)
-            self.addSpecialRules(specialRules)
-            self.addPsychics(psychics)
-            self.data += '</ul>\n'
-        return self.header + self.data + self.footer
+            body.append(self.addUnits(units))
+            ul = self.addUpgrades(upgrades) + self.addSpecialRules(specialRules) + self.addPsychics(psychics)
+            body.append(HtmlTag('ul', ul))
+        return self.header + str(HtmlTag('body', body)) + self.footer
 
 
 def write_file(filename, path, data):
