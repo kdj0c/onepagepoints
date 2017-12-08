@@ -7,7 +7,6 @@ FACTIONS := Battle_Brothers Tao Robot_Legions High_Elf_Fleets
 OUT := build
 
 PDF := $(addprefix $(OUT)/,$(addsuffix .pdf,$(FACTIONS)))
-$(info $(PDF))
 PYTHONS := $(wildcard *.py)
 COMMON := $(wildcard Common/*.yml)
 

@@ -205,10 +205,16 @@ class DumpTxt:
     def addUpgrades(self, upgrades):
         self.data += [self._getUpGroup(group.name, group) for group in upgrades]
 
+    def addPsychics(self, psychics):
+        data = [name + '(' + str(power) + '+): ' + desc for power, spell in psychics.items() for name, desc in spell.items()]
+        self.data.append('\n'.join(data))
+
     def getTxt(self, faction):
         for units, upgrades, specialRules, psychics in faction.pages:
             self.addUnits(units)
             self.addUpgrades(upgrades)
+            self.data.append('\n'.join([k + ': ' + v for k,v in specialRules.items()]))
+            self.addPsychics(psychics)
         return '\n\n'.join(self.data)
 
 
@@ -315,6 +321,16 @@ class DumpHtml:
     def to_li(self, lis):
         return '\n'.join([' <li>\n' + li + '\n </li>' for li in lis])
 
+    def get_table(self, table, tclass=None, header=None):
+        if tclass:
+            data = '<table class={}>\n'.format(tclass)
+        else:
+            data = '<table>\n'
+        if header:
+            data += self.to_row(self.to_hdr(header))
+        data += self.to_row([self.to_cells(row) for row in table])
+        return data + '</table>'
+
     def _addUnit(self, unit):
         data = [prettyName(unit), str(unit.quality), str(unit.basedefense) + '+']
         data += [',<br> '.join(PrettyEquipments(unit.equipments))]
@@ -332,29 +348,42 @@ class DumpHtml:
         self.data += '</table>\n'
 
     def _getUpLine(self, equ, cost):
-        return self.to_cells(PrettyEquipments(equ) + [self.points(cost)])
+        return self.to_cells([',<br>'.join(PrettyEquipments(equ))] + [self.points(cost)])
 
     def _getUpGroup(self, group, upgrades):
         preamble = group + ' | '
-
         ret = []
         for up in upgrades:
             ret.append(self.to_hdr([preamble + up.text + ':', '']))
             ret.extend([self._getUpLine(addEqu, up.cost[i]) for i, addEqu in enumerate(up.add)])
             preamble = ''
-        return '<table class=ut1>\n' + self.to_row(ret) + '\n</table>\n'
+        return '<table class=ut1>\n' + self.to_row(ret) + '\n</table>'
 
     def addUpgrades(self, upgrades):
-        self.data += '<ul>\n'
-        self.data += self.to_li([self._getUpGroup(group.name, group) for group in upgrades])
-        self.data += '</ul>\n'
+        self.data += self.to_li([self._getUpGroup(group.name, group) for group in upgrades]) + '\n'
+
+    def addSpecialRules(self, specialRules):
+        self.data += '<h3>Special Rules</h3>\n'
+        self.data += self.to_li(['<b>' + name + ':</b> ' + desc for name, desc in specialRules.items()]) + '\n'
+
+    def _getSpell(self, name, power, desc):
+        cell = self.to_cells(['<b>' + name + ' (' + str(power) + '+):</b> ' + desc])
+        return self.to_row([cell]) + '\n'
+
+    def addPsychics(self, psychics):
+        self.data += '<h3>Psychic Spells</h3>\n'
+        table = ''.join([self._getSpell(name, power, desc) for power, spell in psychics.items() for name, desc in spell.items()])
+        self.data += self.to_li(['<table class=psy>\n' + table + '</table>']) + '\n'
 
     def getHtml(self, faction):
-        self.data += '<h1>Grimdark Future ' + faction.title + '</h1>'
+        self.data += '<h1>Grimdark Future ' + faction.title + '</h1>\n'
         for units, upgrades, specialRules, psychics in faction.pages:
             self.addUnits(units)
+            self.data += '<ul>\n'
             self.addUpgrades(upgrades)
-
+            self.addSpecialRules(specialRules)
+            self.addPsychics(psychics)
+            self.data += '</ul>\n'
         return self.header + self.data + self.footer
 
 
