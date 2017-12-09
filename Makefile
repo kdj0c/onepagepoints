@@ -23,7 +23,7 @@ TXT_TEMPDIR := $(OUT)/txt
 # so out/Faction.pdf will depend on Faction/*.yml *.py Common/*.yml template/*.tex
 # and Faction will depend on out/Faction.pdf
 define build_pdf =
-$(OUT)/$(1).pdf: $(2) $(PYTHONS) $(COMMON) $(TEX_TEMPLATE) | $(TEX_TEMPDIR)
+$(OUT)/$(1).pdf: $(2) $(PYTHONS) $(COMMON) $(TEX_TEMPLATE) $(HTML_TEMPLATE) | $(TEX_TEMPDIR)
 	@python3 onepagebatch.py -b $(OUT) $(1)
 	@echo Generating $$@
 	@cd $(TEX_TEMPDIR) && xelatex -interaction=batchmode -halt-on-error $(1).tex 2>&1 > /dev/null

@@ -356,10 +356,10 @@ class DumpHtml:
         return [HtmlTag('td', cell) for cell in cells]
 
     def addUnits(self, units):
-        table_header = ['Name [size]', 'Qua', 'Def', 'Equipment', 'Special Rules', 'Upgrades', 'Cost']
+        table_header = ['Name [size]', 'Qua', 'Def', 'Equipment', 'Special Rules', 'Upg', 'Cost']
         rows = [HtmlTag('tr', [HtmlTag('th', title) for title in table_header])]
         rows.extend([HtmlTag('tr', self._addUnit(unit)) for unit in units])
-        return HtmlTag('table', rows)
+        return HtmlTag('table', rows, 'class=unit')
 
     def _getUpLine(self, equ, cost):
         cells = [',<br>'.join(PrettyEquipments(equ)), self.points(cost)]
