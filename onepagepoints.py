@@ -165,6 +165,8 @@ class Weapon:
             elif s == 'Flux':
                 # Flux is statistically like having quality +2
                 quality -= 2
+            elif s.startswith('Poison'):
+                ap += int(s[7:-1]) / 2
             elif s.startswith('Blast'):
                 sfactor *= int(s[6:-1])
             elif s.startswith('Impact'):
@@ -367,17 +369,23 @@ class Unit:
             if 'Fear' not in specialRules:
                 specialRules.append('Fear')
 
-        if 'Very Fast' in specialRules:
-            self.speed = 24
-        if 'Fast' in specialRules:
-            self.speed = 18
+        if 'Airdrop' in specialRules:
+            self.speed = 0
         if 'Slow' in specialRules:
             self.speed = 8
+        if 'Fast' in specialRules:
+            self.speed = 18
+        if 'Very Fast' in specialRules:
+            self.speed = 24
         if 'Stealth' in specialRules:
             # Stealth is like +0.5 def, because it works only against ranged attack
             self.defense += 0.5
         if 'Good Shot' in specialRules:
             self.attackQuality = 4
+        if 'Bad Shot' in specialRules:
+            self.attackQuality = 5
+        if 'Furious' in specialRules:
+            self.globalAdd = 1
         if 'Fearless' in specialRules:
             self.defenseQuality -= 1
 
@@ -402,10 +410,12 @@ class Unit:
             self.speed = 24
 
         for s in specialRules:
-            if s.startswith('Tough'):
+            if s.startswith('Tough('):
                 self.tough = int(s[6:-1])
-            elif s.startswith('Transport'):
+            elif s.startswith('Transport('):
                 self.passengers = int(s[10:-1])
+            elif s.startswith('Transport+'):
+                self.passengers += int(s[10:])
             elif s.startswith('Psychic('):
                 self.globalAdd += int(s[8:-1]) * 7
             elif s.startswith('Psychic+'):
