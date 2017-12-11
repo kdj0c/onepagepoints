@@ -29,6 +29,7 @@ from collections import OrderedDict
 """
 This scripts helps to indent the yaml files for each faction
 equipments.yml (list of weapons and wargear)
+faction.yml (list of psychics and special rules)
 unitsX.yml (list of units for page X)
 upgradesX.yml (list of upgrades available for each unit in page X)
 """
@@ -80,7 +81,7 @@ def represent_omap_flow(dumper, data):
 def format_faction(data):
     yaml.add_representer(YamlFaction, represent_omap)
     newdata = YamlFaction(data)
-    return yaml.dump(newdata)
+    return yaml.dump(newdata, default_flow_style=False)
 
 
 def format_equipments(data):
