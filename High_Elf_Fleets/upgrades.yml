@@ -1,0 +1,229 @@
+- units: [Elven King]
+  upgrades:
+  - text: Replace Shield
+    remove: [Shield]
+    add:
+    - [Energy Blade]
+  - text: Replace Shard Pistol and Shield
+    remove: [Shard Pistol, Shield]
+    add:
+    - [Shard Carbine]
+    - [Web Spinner]
+    - [Laser Blaster]
+    - [Fusion Rifle]
+  - text: Upgrade with one
+    add:
+    - [Banshee Helmet]
+    - [Spider Suit]
+    - [Hawk Wings]
+    - [Jetbike]
+- units: [High Seer]
+  upgrades:
+  - text: Update with
+    add:
+    - [Psy Helmet]
+  - text: Replace Energy Dagger
+    remove: [Energy Dagger]
+    add:
+    - [Energy Spear]
+  - text: Upgrade with
+    add:
+    - [Jetbike]
+- units: [Seer Council]
+  upgrades:
+  - text: Replace any Energy Dagger
+    remove: [Energy Daggers]
+    add:
+    - [Energy Spears]
+  - text: Upgrade all models with
+    all: true
+    add:
+    - [Jetbike]
+- units: [Defenders Squad]
+  upgrades:
+  - text: Add one Gun Platform, equipped with
+    add:
+    - [Star Cannon]
+    - [Shard Cannon]
+    - [Scatter Laser]
+    - [Missile Launcher AT, Missile Launcher HE]
+    - [Laser Lance]
+- units: [Storm Squad]
+  upgrades:
+  - text: Replace up to two Shard Pistols
+    remove: [Shard Pistols]
+    add:
+    - [Flamethrower]
+    - [Fusion Rifle]
+  - text: Replace up to two CCWs
+    remove: [CCWs]
+    add:
+    - [Energy Sword]
+- units: [Avengers Squad]
+  upgrades:
+  - text: Replace one Shard Carbine
+    remove: [Shard Carbines]
+    add:
+    - [Shard Pistol, Energy Sword]
+    - [Shard Pistol, Dire Sword]
+    - [Shard Pistol, Shield]
+    - [Linked Shard Carbine]
+- units: [Banshee Squad]
+  upgrades:
+  - text: Replace one Energy Sword
+    remove: [Energy Swords]
+    add:
+    - [Tri-Sling]
+    - [Execution Sword]
+  - text: Replace one Shard Pistol and Energy Sword
+    remove: [Energy Swords, Shard Pistols]
+    add:
+    - [2x Mirror Swords]
+- units: [Scorpion Squad]
+  upgrades:
+  - text: Replace one Shard Pistol
+    remove: [Shard Pistols]
+    add:
+    - [Scorpion Fist]
+  - text: Replace one Energy Sword
+    remove: [Energy Swords]
+    add:
+    - [Biting Sword]
+  - text: Replace one Shard Pistol and Energy Sword
+    remove: [Energy Swords, Shard Pistols]
+    add:
+    - [2x Energy Swords]
+- units: [Hawk Squad]
+  upgrades:
+  - text: Replace one Laser Blaster
+    remove: [Laser Blasters]
+    add:
+    - [Hawk Laser]
+    - [Laser Rifle]
+  - text: Upgrade one model with
+    add:
+    - [Energy Sword]
+- units: [Spider Squad]
+  upgrades:
+  - text: Replace one Web Spinner
+    remove: [Web Spinners]
+    add:
+    - [Linked Web Spinners]
+    - [Web Spinner Rifle]
+  - text: Upgrade one model with
+    add:
+    - [2x Energy Swords]
+- units: [Dragon Squad]
+  upgrades:
+  - text: Replace one Fusion Rifle
+    remove: [Fusion Rifles]
+    add:
+    - [Heavy Flamethrower]
+    - [Fusion Pike]
+- units: [Reaper Squad]
+  upgrades:
+  - text: Replace any Swarm Missiles
+    remove: [Swarm Missiles]
+    add:
+    - [Shot Missiles]
+  - text: Replace one Swarm Missile
+    remove: [Swarm Missiles]
+    add:
+    - [Shard Cannon]
+    - [Tempest Missiles]
+- units: [Wraith Suit Squad]
+  upgrades:
+  - text: Replace all Energy Swords and Shields
+    all: true
+    remove: [Energy Swords, Shields]
+    add:
+    - [Wraith Cannon]
+    - [2x Energy Swords]
+    - [Distortion Scythes]
+- units: [Jetbike Squad]
+  upgrades:
+  - text: Replace one Linked Shardgun
+    remove: [Linked Shardguns]
+    add:
+    - [Shard Cannon]
+- units: [Jetspear Squad]
+  upgrades:
+  - text: Replace one Pulse Lance
+    remove: [Pulse Lances]
+    add:
+    - [Energy Sword]
+- units: [Anti-Gravity APC, Anti-Gravity Tank, Heavy Jetbike]
+  upgrades:
+  - text: Replace Linked Shardgun
+    remove: [Linked Shardgun]
+    add:
+    - [Shard Cannon]
+- units: [Anti-Gravity APC]
+  upgrades:
+  - text: Replace Linked Star Cannon
+    remove: [Linked Star Cannon]
+    add:
+    - [Linked Shard Cannon]
+    - [Linked Scatter Laser]
+    - [Linked Missile Launcher AT, Linked Missile Launcher HE]
+    - [Linked Laser Lance]
+- units: [Anti-Gravity APC, Anti-Gravity Tank, Heavy Jetbike, Combat Walker]
+  upgrades:
+  - text: Upgrade with any
+    add:
+    - [Hologram Field]
+    - [Pulse Laser]
+- units: [Anti-Gravity Tank, Heavy Jetbike, Combat Walker]
+  upgrades:
+  - text: Replace any Star Cannon
+    remove: [Star Cannon]
+    add:
+    - [Shard Cannon]
+    - [Scatter Laser]
+    - [Missile Launcher AT, Missile Launcher HE]
+    - [Laser Lance]
+- units: [Anti-Gravity Tank]
+  upgrades:
+  - text: Replace Star Cannon
+    remove: [Star Cannon]
+    add:
+    - [Prism Cannon]
+    - [Doom Cannon AT, Doom Cannon HE]
+- units: [Wraith Walker]
+  upgrades:
+  - text: Replace any Shardgun
+    remove: [Shardguns]
+    add:
+    - [Flamethrower]
+  - text: Upgrade with up to two
+    add:
+    - [Star Cannon]
+    - [Shard Cannon]
+    - [Scatter Laser]
+    - [Missile Launcher AT, Missile Launcher HE]
+    - [Laser Lance]
+- units: [Support Artillery]
+  upgrades:
+  - text: Replace Vibration Cannon
+    remove: [Vibration Cannon]
+    add:
+    - [Distortion Cannon]
+    - [Shadow Cannon]
+- units: [Hunter Plane]
+  upgrades:
+  - text: Replace 2x Star Cannons
+    remove: [2x Star Cannons]
+    add:
+    - [2x Laser Lances]
+- units: [Wraith Titan]
+  upgrades:
+  - text: Replace Ghost Sword and Shield
+    remove: [Ghost Sword, Shield]
+    add:
+    - [2x Heavy Wraith Cannons]
+    - [Sun Cannon, Shield]
+  - text: Upgrade with up to two
+    add:
+    - [Star Cannon]
+    - [Shard Cannon]
+    - [Scatter Laser]

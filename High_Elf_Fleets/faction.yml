@@ -1,4 +1,30 @@
 title: High Elf Fleets v1.2
+pages:
+- - Elven King
+  - High Seer
+  - Seer Council
+  - Avatar of Flames
+  - Defenders Squad
+  - Storm Squad
+  - Avengers Squad
+  - Ranger Squad
+  - Banshee Squad
+  - Scorpion Squad
+  - Hawk Squad
+  - Spider Squad
+  - Dragon Squad
+  - Reaper Squad
+  - Wraith Suit Squad
+  - Jetbike Squad
+  - Jetspear Squad
+- - Anti-Gravity APC
+  - Anti-Gravity Tank
+  - Heavy Jetbike
+  - Combat Walker
+  - Wraith Walker
+  - Support Artillery
+  - Hunter Plane
+  - Wraith Titan
 psychics1:
   2:
     Hide: Target friendly unit within 12" gets Stealth until the end of the round.

@@ -4,116 +4,147 @@
   defense: 5
   equipment: [Shard Pistol, Shield]
   special: [Fast, Hero, Tough(3)]
-  upgrades: [A]
 - name: High Seer
   count: 1
   quality: 3
   defense: 4
   equipment: [Shard Pistol, Energy Dagger]
   special: [Fast, Hero, Tough(3), Psychic(2)]
-  upgrades: [B]
 - name: Seer Council
   count: 3
   quality: 4
   defense: 4
   equipment: [Shard Pistols, Energy Daggers]
   special: [Council, Fast, Hero, Tough(3)]
-  upgrades: [C]
 - name: Avatar of Flames
   count: 1
   quality: 2
   defense: 8
   equipment: [Gaze of Doom, Flaming Sword]
   special: [Fast, Hero, Monster, Tough(6)]
-  upgrades: []
 - name: Defenders Squad
   count: 10
   quality: 4
   defense: 3
   equipment: [Shardguns]
   special: [Fast]
-  upgrades: [D]
 - name: Storm Squad
   count: 10
   quality: 4
   defense: 3
   equipment: [Shard Pistols, CCWs]
   special: [Fast]
-  upgrades: [E]
 - name: Avengers Squad
   count: 5
   quality: 4
   defense: 4
   equipment: [Shard Carbines]
   special: [Fast]
-  upgrades: [F]
 - name: Ranger Squad
   count: 5
   quality: 4
   defense: 3
   equipment: [Sniper Rifles]
   special: [Fast, Scout, Stealth, Strider]
-  upgrades: []
 - name: Banshee Squad
   count: 5
   quality: 4
   defense: 4
   equipment: [Shard Pistols, Energy Swords]
   special: [Fast, Fear]
-  upgrades: [G]
 - name: Scorpion Squad
   count: 5
   quality: 4
   defense: 5
   equipment: [Shard Pistols, Energy Swords]
   special: [Fast, Scout, Stealth, Strider]
-  upgrades: [H]
 - name: Hawk Squad
   count: 5
   quality: 4
   defense: 4
   equipment: [Laser Blasters]
   special: [Ambush, Fast, Flying]
-  upgrades: [I]
 - name: Spider Squad
   count: 5
   quality: 4
   defense: 5
   equipment: [Web Spinners]
   special: [Ambush, Fast, Teleport]
-  upgrades: [J]
 - name: Dragon Squad
   count: 5
   quality: 4
   defense: 5
   equipment: [Fusion Rifles]
   special: [Fast]
-  upgrades: [K]
 - name: Reaper Squad
   count: 5
   quality: 4
   defense: 5
   equipment: [Swarm Missiles]
   special: [Slow]
-  upgrades: [L]
 - name: Wraith Suit Squad
   count: 5
   quality: 3
   defense: 8
   equipment: [Energy Swords, Shields]
   special: [Fearless]
-  upgrades: [M]
 - name: Jetbike Squad
   count: 3
   quality: 4
   defense: 3
   equipment: [Linked Shardguns]
   special: [Strider, Very Fast]
-  upgrades: [N]
 - name: Jetspear Squad
   count: 3
   quality: 4
   defense: 3
   equipment: [Pulse Lances, Linked Shardguns]
   special: [Strider, Very Fast]
-  upgrades: [O]
+- name: Anti-Gravity APC
+  count: 1
+  quality: 3
+  defense: 8
+  equipment: [Linked Star Cannon, Linked Shardgun]
+  special: [Strider, Tough(6), Transport(11), Vehicle, Very Fast]
+- name: Anti-Gravity Tank
+  count: 1
+  quality: 3
+  defense: 8
+  equipment: [Star Cannon, Linked Shardgun]
+  special: [Strider, Tough(6), Vehicle, Very Fast]
+- name: Heavy Jetbike
+  count: 1
+  quality: 3
+  defense: 6
+  equipment: [Star Cannon, Linked Shardgun]
+  special: [Strider, Tough(3), Vehicle, Very Fast]
+- name: Combat Walker
+  count: 1
+  quality: 3
+  defense: 6
+  equipment: [2x Star Cannon, Walker Stomp]
+  special: [Fast, Scout, Tough(3), Vehicle]
+- name: Wraith Walker
+  count: 1
+  quality: 3
+  defense: 10
+  equipment: [2x Shardguns, Ghost Sword]
+  special: [Fearless, Tough(3), Vehicle]
+- name: Support Artillery
+  count: 1
+  quality: 3
+  defense: 9
+  equipment: [Vibration Cannon]
+  special: [Slow, Tough(3), Vehicle]
+- name: Hunter Plane
+  count: 1
+  quality: 3
+  defense: 6
+  equipment: [2x Star Cannons, Pulse Laser]
+  special: [Flyer, Tough(3), Vehicle]
+- name: Wraith Titan
+  count: 1
+  quality: 3
+  defense: 10
+  equipment: [Ghost Sword, Shield]
+  special: [Fearless, Titan, Tough(6), Vehicle]
