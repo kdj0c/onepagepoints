@@ -1,0 +1,138 @@
+- name: Captain
+  count: 1
+  quality: 3
+  defense: 6
+  equipment: [Assault Rifle]
+  special: [Fearless, Hero, Tactics, Tough(3)]
+- name: Champion
+  count: 1
+  quality: 3
+  defense: 6
+  equipment: [Assault Rifle]
+  special: [Chant, Fearless, Hero, Tough(3)]
+- name: Engineer
+  count: 1
+  quality: 3
+  defense: 7
+  equipment: [Pistol, Energy Fist]
+  special: [Fearless, Hero, Repair, Tough(3)]
+- name: Psychic
+  count: 1
+  quality: 3
+  defense: 6
+  equipment: [Assault Rifle]
+  special: [Fearless, Hero, Psychic(1), Tough(3)]
+- name: Battle Brothers
+  count: 5
+  quality: 3
+  defense: 6
+  equipment: [Assault Rifles]
+  special: [Fearless]
+- name: Assault Brothers
+  count: 5
+  quality: 3
+  defense: 6
+  equipment: [Pistols, CCWs]
+  special: [Fearless]
+- name: Support Brothers
+  count: 5
+  quality: 3
+  defense: 6
+  equipment: [Heavy Flamethrowers]
+  special: [Fearless]
+- name: Pathfinders
+  count: 5
+  quality: 3
+  defense: 5
+  equipment: [Assault Rifles]
+  special: [Fearless, Scout, Strider]
+- name: Destroyers
+  count: 5
+  quality: 3
+  defense: 7
+  equipment: [Storm Rifles, Energy Fists]
+  special: [Ambush, Fearless]
+- name: Heavy Exo-Suits
+  count: 3
+  quality: 3
+  defense: 7
+  equipment: [Linked Heavy Machineguns, Heavy Fists]
+  special: [Fearless, Slow, Tough(3)]
+- name: Brother Bikers
+  count: 3
+  quality: 3
+  defense: 6
+  equipment: [Linked Assault Rifles]
+  special: [Fast, Fearless]
+- name: Pathfinder Bikers
+  count: 3
+  quality: 3
+  defense: 5
+  equipment: [Linked Assault Rifles]
+  special: [Fast, Fearless, Scout]
+- name: Support Bike
+  count: 1
+  quality: 3
+  defense: 6
+  equipment: [Linked Assault Rifle, Heavy Machinegun]
+  special: [Fast, Fearless, Tough(3)]
+- name: APC
+  count: 1
+  quality: 3
+  defense: 7
+  equipment: [Storm Rifle]
+  special: [Fast, Fearless, Tough(3), Transport(11), Vehicle]
+- name: Attack APC
+  count: 1
+  quality: 3
+  defense: 7
+  equipment: [Linked Heavy Flamethrower]
+  special: [Fast, Fearless, Tough(3), Transport(6), Vehicle]
+- name: Drop Pod
+  count: 1
+  quality: 3
+  defense: 8
+  equipment: [Storm Rifle]
+  special: [Airdrop, Fearless, Large Cargo, Tough(6), Transport(11), Vehicle]
+- name: Battle Tank
+  count: 1
+  quality: 3
+  defense: 8
+  equipment: [Autocannon]
+  special: [Fast, Fearless, Tough(6), Vehicle]
+- name: Heavy Battle Tank
+  count: 1
+  quality: 3
+  defense: 10
+  equipment: [2x Assault Rifle Arrays, Linked Heavy Machinegun]
+  special: [Fast, Fearless, Tough(9), Transport(11), Vehicle]
+- name: Attack Speeder
+  count: 1
+  quality: 3
+  defense: 6
+  equipment: [Heavy Flamethrower]
+  special: [Ambush, Fast, Fearless, Strider, Tough(3), Vehicle]
+- name: Attack Walker
+  count: 1
+  quality: 3
+  defense: 8
+  equipment: [Storm Rifle, Walker Fist, Assault Rifle Array]
+  special: [Fearless, Tough(6), Vehicle]
+- name: Talon Gunship
+  count: 1
+  quality: 3
+  defense: 7
+  equipment: [Linked Minigun, Linked Heavy Machinegun]
+  special: [Fearless, Flyer, Tough(3), Vehicle]
+- name: Hawk Interceptor
+  count: 1
+  quality: 3
+  defense: 7
+  equipment: [Laser Talon, Linked Minigun, Linked Heavy Machinegun]
+  special: [Fearless, Flyer, Tough(3), Vehicle]
+- name: Raven Heavy Gunship
+  count: 1
+  quality: 3
+  defense: 8
+  equipment: [Linked Minigun, Linked Heavy Machinegun, 4x Storm Missile]
+  special: [Fearless, Flyer, Rear Grapples, Tough(6), Transport(11), Vehicle]

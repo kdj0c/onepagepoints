@@ -1,4 +1,28 @@
 title: Battle Brothers v1.4
+pages:
+- - Captain
+  - Champion
+  - Engineer
+  - Psychic
+  - Battle Brothers
+  - Assault Brothers
+  - Support Brothers
+  - Pathfinders
+  - Destroyers
+  - Heavy Exo-Suits
+  - Brother Bikers
+  - Pathfinder Bikers
+  - Support Bike
+- - APC
+  - Attack APC
+  - Drop Pod
+  - Battle Tank
+  - Heavy Battle Tank
+  - Attack Speeder
+  - Attack Walker
+  - Talon Gunship
+  - Hawk Interceptor
+  - Raven Heavy Gunship
 psychics1:
   2:
     Protective Dome: Target friendly unit within 12" gets Stealth until the end of

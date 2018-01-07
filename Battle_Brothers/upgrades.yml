@@ -1,0 +1,295 @@
+- units: [Captain, Champion, Psychic, Battle Brothers, Assault Brothers, Pathfinders]
+  upgrades:
+  - text: Replace one Assault Rifle
+    remove: [Assault Rifles]
+    add:
+    - [Pistol, CCW]
+  - text: Replace one Pistol
+    pre-remove: [Assault Rifles]
+    pre-add: [Pistol, CCW]
+    remove: [Pistol]
+    add:
+    - [Plasma Pistol]
+    - [Gravity Pistol]
+    - [Storm Rifle]
+  - text: Replace one CCW
+    pre-remove: [Assault Rifles]
+    pre-add: [Pistol, CCW]
+    remove: [CCW]
+    add:
+    - [Energy Sword]
+    - [Energy Fist]
+  - text: Take one Assault Rifle Attachement
+    add:
+    - [Gravity Add-on]
+    - [Plasma Add-on]
+    - [Flamethrower Add-on]
+    - [Fusion Add-on]
+- units: [Captain, Champion, Psychic]
+  upgrades:
+  - text: Upgrade with one
+    add:
+    - [Jetpacks]
+    - [Bike]
+    - [Destroyer Armor]
+- units: [Psychic]
+  upgrades:
+  - text: Upgrade with one
+    add:
+    - [Psy Training]
+- units: [Battle Brothers]
+  upgrades:
+  - text: Upgrade all models with
+    all: true
+    add:
+    - [Veterans]
+    - [Battle Standard]
+    - [Medic]
+  - text: Replace one assault Rifle
+    remove: [Assault Rifles]
+    add:
+    - [Gravity Rifle]
+    - [Plasma Rifle]
+    - [Flamethrower]
+    - [Heavy Flamethrower]
+    - [Heavy Machinegun]
+    - [Heavy Fusion Rifle]
+    - [Gravity Cannon]
+    - [Plasma Cannon]
+    - [Missile Launcher AT, Missile Launcher HE]
+    - [Laser Cannon]
+- units: [Assault Brothers]
+  upgrades:
+  - text: Upgrade all models with any
+    all: true
+    add:
+    - [Veterans]
+    - [Jetpacks]
+  - text: Replace up to two Pistols
+    remove: [Pistols]
+    add:
+    - [Plasma Pistol]
+    - [Flamethrower]
+- units: [Pathfinders]
+  upgrades:
+  - text: Upgrade all models with
+    all: true
+    add:
+    - [Stealth Cloaks]
+  - text: Replace any Assault Rifle
+    remove: [Assault Rifles]
+    add:
+    - [Pistol, CCW]
+    - [Shotgun]
+    - [Sniper Rifle]
+  - text: Replace one Assault Rifle
+    remove: [Assault Rifles]
+    add:
+    - [Heavy Machinegun]
+    - [Missile Launcher AT, Missile Launcher HE]
+- units: [Destroyers]
+  upgrades:
+  - text: Replace all Storm Rifles and Energy Fists
+    all: true
+    remove: [Storm Rifles, Energy Fists]
+    add:
+    - [Energy Hammer, Shields]
+    - [2x Energy Claws]
+  - text: Replace one Storm Rifle
+    remove: [Storm Rifles]
+    add:
+    - [Heavy Flamethrower]
+    - [Minigun]
+  - text: Upgrade one model with
+    add:
+    - [Cyclone Missiles AT, Cyclone Missiles HE]
+  - text: Replace one Energy Fist with
+    remove: [Energy Fists]
+    add:
+    - [Energy Sword]
+- units: [Heavy Exo-Suits]
+  upgrades:
+  - text: Replace all Linked Heavy Machineguns and Heavy Fists
+    all: true
+    remove: [Linked Heavy Machineguns, Heavy Fists]
+    add:
+    - [Linked Flamethrowers, Drills]
+  - text: Replace any Linked Flamethrower
+    pre-remove: [Linked Heavy Machineguns, Heavy Fists]
+    pre-add: [Linked Flamethrowers, Drills]
+    remove: [Linked Flamethrowers]
+    add:
+    - [Linked Fusion Rifle]
+  - text: Replace any Linked Flamethrower
+    add:
+    - [Linked Gravity Cannon]
+    - [Linked Laser Cannon]
+  - text: Upgrade any model with one
+    add:
+    - [Assault Rifle Array]
+    - [Missile Launcher AT, Missile Launcher HE]
+- units: [Brother Bikers]
+  upgrades:
+  - text: Upgrade up to two models with one
+    add:
+    - [Gravity Rifle]
+    - [Plasma Rifle]
+    - [Flamethrower]
+    - [Fusion Rifle]
+  - text: Upgrade one model with
+    add:
+    - [Assault Rifle]
+- units: [Pathfinder Bikers]
+  upgrades:
+  - text: Replace any Linked Assault Rifle
+    remove: [Linked Assault Rifles]
+    add:
+    - [Grenade Launcher HE, Grenade Launcher AT]
+  - text: Upgrade one model with
+    add:
+    - [Assault Rifle]
+- units: [Support Bike]
+  upgrades:
+  - text: Replace Heavy Machinegun
+    remove: [Heavy Machinegun]
+    add:
+    - [Heavy Fusion Rifle]
+- units: [Support Brothers]
+  upgrades:
+  - text: Replace any Heavy Flamethrower
+    remove: [Heavy Flamethrowers]
+    add:
+    - [Heavy Machinegun]
+    - [Heavy Fusion Rifle]
+    - [Gravity Cannon]
+    - [Plasma Cannon]
+    - [Missile Launcher AT, Missile Launcher HE]
+    - [Laser Cannon]
+- units: [APC, Attack APC, Battle Tank, Heavy Battle Tank]
+  upgrades:
+  - text: Upgrade with any
+    add:
+    - [Dozer Blade]
+    - [Storm Rifle]
+    - [Hunter Missile]
+- units: [Attack APC]
+  upgrades:
+  - text: Replace Linked Heavy Flamethrower
+    remove: [Linked Heavy Flamethrower]
+    add:
+    - [Linked Heavy Machinegun]
+    - [Linked Minigun]
+    - [Laser Cannon, Linked Plasma Rifle]
+    - [Linked Laser Cannon]
+- units: [Drop Pod]
+  upgrades:
+  - text: Replace Storm Rifle
+    remove: [Storm Rifle]
+    add:
+    - [Death Launcher]
+- units: [Battle Tank]
+  upgrades:
+  - text: Replace Autocannon
+    remove: [Autocannon]
+    add:
+    - [Spear Missile Launcher]
+    - [Linked Laser Cannon]
+    - [Linked Storm Cannon]
+    - [Wind Missile Launcher]
+    - [Demolition Cannon]
+  - text: Upgrade with one
+    add:
+    - [2x Heavy Machineguns]
+    - [2x Laser Cannons]
+- units: [Heavy Battle Tank]
+  upgrades:
+  - text: Replace 2x Assault Rifle Arrays
+    remove: [2x Assault Rifle Arrays]
+    add:
+    - [2x Flamethrower Cannons]
+    - [2x Linked Laser Cannon]
+  - text: Replace Linked Heavy Machinegun
+    remove: [Linked Heavy Machinegun]
+    add:
+    - [Linked Minigun]
+  - text: Upgrade with
+    add:
+    - [Heavy Fusion Rifle]
+- units: [Talon Gunship]
+  upgrades:
+  - text: Replace Linked Heavy Machinegun
+    remove: [Linked Heavy Machinegun]
+    add:
+    - [Linked Laser Cannon]
+    - [Typhoon Missiles AT, Typhoon Missiles HE]
+- units: [Attack Speeder]
+  upgrades:
+  - text: Replace Heavy Flamethrower
+    remove: [Heavy Flamethrower]
+    add:
+    - [Heavy Machinegun]
+    - [Heavy Fusion Rifle]
+    - [Minigun]
+  - text: Upgrade with one
+    add:
+    - [Heavy Flamethrower]
+    - [Heavy Machinegun]
+    - [Minigun]
+    - [Heavy Fusion Rifle]
+    - [Typhoon Missiles AT, Typhoon Missiles HE]
+  - text: Upgrade with
+    add:
+    - [Open Sides]
+- units: [Attack Walker]
+  upgrades:
+  - text: Replace any Storm Rifle
+    remove: [Storm Rifles]
+    add:
+    - [Fusion Rifle]
+    - [Heavy Flamethrower]
+  - text: Replace Walker Fist and Storm Rifle
+    remove: [Walker Fist, Storm Rifles]
+    add:
+    - [Missile Launcher AT, Missile Launcher HE]
+    - [Linked Autocannon]
+  - text: Replace Assault Rifle Array
+    remove: [Assault Rifle Array]
+    add:
+    - [Linked Heavy Flamethrower]
+    - [Linked Heavy Machinegun]
+    - [Heavy Fusion Rifle]
+    - [Minigun]
+    - [Walker Fist, Storm Rifle]
+    - [Plasma Cannon]
+    - [Linked Autocannon]
+    - [Linked Laser Cannon]
+  - text: Upgrade with any
+    add:
+    - [Veterans]
+    - [Hunter Missile]
+- units: [Hawk Interceptor]
+  upgrades:
+  - text: Replace Laser Talon
+    remove: [Laser Talon]
+    add:
+    - [Storm Cannon]
+  - text: Replace Linked Heavy Machinegun
+    remove: [Linked Heavy Machinegun]
+    add:
+    - [Hammer Missiles]
+    - [Typhoon Missiles AT, Typhoon Missiles HE]
+- units: [Raven Heavy Gunship]
+  upgrades:
+  - text: Replace Linked Minigun
+    remove: [Linked Minigun]
+    add:
+    - [Linked Plasma Cannon]
+    - [Linked Laser Cannon]
+  - text: Replace Linked Heavy Machinegun
+    remove: [Linked Heavy Machinegun]
+    add:
+    - [Linked Heavy Fusion Rifle]
+    - [Typhoon Missiles AT, Typhoon Missiles HE]
+  - text: Upgrade with
+    add:
+    - [2x Assault Rifle Arrays]
