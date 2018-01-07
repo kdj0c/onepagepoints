@@ -1,0 +1,194 @@
+- units: [Battlesuit Captain, Battle Suits]
+  upgrades:
+  - text: Upgrade any model with up to three
+    add:
+    - [Pulse Rifle]
+    - [Plasma Rifle]
+    - [Flamethrower]
+    - [Gatling Carbine]
+    - [Frag Pod]
+    - [Ion Carbine]
+    - [Fusion Carbine]
+    - [Missile Pod]
+    - [High Output Gatling Carbine]
+- units: [Battlesuit Captain, Grunt Captain, Grunt Squad, Spotter Squad, Stealth Suits, Battle Suits]
+  upgrades:
+  - text: Upgrade any model with one
+    add:
+    - [Recon Drone]
+    - [Inhibitor Drone]
+    - [Spotter Drone]
+    - [Gun Drone]
+    - [Shield Drone]
+    - [Accelerator Drone]
+    - [Missile Drone]
+- units: [Sage]
+  upgrades:
+  - text: Replace Sacred Spear
+    remove: [Sacred Spear]
+    add:
+    - [Dual-Spear]
+    - [Dual Combat Baton]
+- units: [Grunt Squad]
+  upgrades:
+  - text: Replace all Pulse Shotguns
+    all: true
+    remove: [Pulse Shotguns]
+    add:
+    - [Pulse Rifles]
+    - [Pulse Carbines]
+  - text: Upgrade all models with
+    all: true
+    add:
+    - [EMP Grenades]
+  - text: Add one support turret with
+    add:
+    - [Missile Pod]
+    - [Smart Missiles]
+- units: [Spotter Squad]
+  upgrades:
+  - text: Replace up to three Pulse Carbines
+    remove: [Pulse Carbines]
+    add:
+    - [Rail Rifle]
+    - [Ion Rifle]
+- units: [Sniper Drones]
+  upgrades:
+  - text: Replace all Pulse Rifles
+    all: true
+    remove: [Pulse Rifles]
+    add:
+    - [Sniper Pulse Rifles]
+- units: [Stealth Suits]
+  upgrades:
+  - text: Replace one Gatling Carbine
+    remove: [Gatling Carbines]
+    add:
+    - [Fusion Carbine]
+- units: [Jackals]
+  upgrades:
+  - text: Replace all Assault Rifles
+    all: true
+    remove: [Assault Rifles]
+    add:
+    - [Marksman Rifles]
+  - text: Replace one Assault Rifle
+    remove: [Assault Rifles]
+    add:
+    - [Pulse Rifle]
+    - [Pulse Carbine]
+  - text: Upgrade all models with
+    all: true
+    add:
+    - [Jackal's Bayonets]
+  - text: Upgrade one model with
+    add:
+    - [Ritual Dagger]
+- units: [Battlesuit Captain]
+  upgrades:
+  - text: Replace Captain Suit Fists
+    remove: [Captain Suit Fists]
+    add:
+    - [Captain Energy Sword]
+- units: [Battle Suits]
+  upgrades:
+  - text: Replace all Suit Fists
+    all: true
+    remove: [Suit Fists]
+    add:
+    - [Energy Swords]
+- units: [Hover Transport, Hover Tank]
+  upgrades:
+  - text: Replace 2x Linked Pulse Carbines
+    remove: [2x Linked Pulse Carbines]
+    add:
+    - [Linked Gatling Carbine]
+    - [Linked Smart Missiles]
+- units: [Hover Transport, Hover Tank, Hover Attack Bike, Heavy Battle Suit, Razor Fighter, Sun Bomber]
+  upgrades:
+  - text: Upgrade with up to two
+    add:
+    - [Homing Missile]
+- units: [Hover Transport, Hover Tank, Hover Attack Bike]
+  upgrades:
+  - text: Upgrade with any
+    add:
+    - [Distortion Engine]
+    - [Anti-Charge System]
+- units: [Hover Tank]
+  upgrades:
+  - text: Replace Railgun
+    remove: [Railgun]
+    add:
+    - [6x Homing Missiles]
+    - [Sub-Railgun]
+    - [Ion Cannon]
+- units: [Hover Attack Bike]
+  upgrades:
+  - text: Replace Gatling Carbine
+    remove: [Gatling Carbine]
+    add:
+    - [Fusion Carbine]
+- units: [Heavy Stealth Suit]
+  upgrades:
+  - text: Replace Ion Carbine
+    remove: [Ion Carbine]
+    add:
+    - [Heavy Fusion Carbine]
+  - text: Replace Linked Flamethrower
+    remove: [Linked Flamethrower]
+    add:
+    - [Linked Gatling Carbine]
+    - [Linked Fusion Carbine]
+  - text: Upgrade with up to two
+    add:
+    - [Stealth Drone]
+- units: [Heavy Battle Suit]
+  upgrades:
+  - text: Replace Linked Heavy Rail Rifle
+    remove: [Linked Heavy Rail Rifle]
+    add:
+    - [Linked Heavy Missile Pod]
+  - text: Replace Linked Plasma Rifle
+    remove: [Linked Plasma Rifle]
+    add:
+    - [Linked Smart Missiles]
+  - text: Upgrade with up to two
+    add:
+    - [Gun Drone]
+    - [Shield Drone]
+    - [Missile Drone]
+- units: [Razor Fighter]
+  upgrades:
+  - text: Replace Gatling Carbine
+    remove: [Gatling Carbine]
+    add:
+    - [Missile Pod]
+- units: [Sun Bomber]
+  upgrades:
+  - text: Replace Missile Pod
+    remove: [Missile Pod]
+    add:
+    - [Linked Missile Pod]
+- units: [Tide Titan]
+  upgrades:
+  - text: Replace Heavy Gatling Carbine
+    remove: [Heavy Gatling Carbine]
+    add:
+    - [Heavy Ion Cannon]
+  - text: Replace Linked Plasma Rifle
+    remove: [Linked Plasma Rifle]
+    add:
+    - [Linked Fusion Carbine]
+    - [Linked Smart Missiles]
+- units: [Surge Titan]
+  upgrades:
+  - text: Replace Pulse Cannon
+    remove: [Pulse Cannon]
+    add:
+    - [Heavy Pulse Cannon]
+  - text: Replace Linked Flamethrower
+    remove: [Linked Flamethrower]
+    add:
+    - [Linked Frag Pod]
+    - [Heavy Gatling Carbine]

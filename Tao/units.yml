@@ -4,88 +4,130 @@
   defense: 6
   equipment: [Captain Suit Fists]
   special: [Ambush, Flying, Hero, Tough(3)]
-  upgrades: [A, B, I]
 - name: Grunt Captain
   count: 1
   quality: 4
   defense: 4
   equipment: [Pulse Rifle, Ritual Dagger]
   special: [Hero, Tough(3), Volley Fire]
-  upgrades: [B]
 - name: Sage
   count: 1
   quality: 4
   defense: 2
   equipment: [Sacred Spear]
   special: [Hero, Inspiring, Tough(3)]
-  upgrades: [C]
 - name: Grunt Squad
   count: 5
   quality: 5
   defense: 4
   equipment: [Pulse Shotguns]
   special: [Good Shot]
-  upgrades: [B, D]
 - name: Spotter Squad
   count: 5
   quality: 5
   defense: 3
   equipment: [Pulse Carbines, Spotting Lasers]
   special: [Good Shot, Scout]
-  upgrades: [B, E]
 - name: Stealth Suits
   count: 3
   quality: 5
   defense: 5
   equipment: [Gatling Carbines]
   special: [Ambush, Good Shot, Scout, Stealth]
-  upgrades: [B, G]
 - name: Battle Suits
   count: 3
   quality: 4
   defense: 6
   equipment: [Suit Fists]
   special: [Ambush, Flying, Tough(3)]
-  upgrades: [A, B, J]
 - name: Sniper Drones
   count: 3
   quality: 5
   defense: 3
   equipment: [Pulse Rifles]
   special: [Ambush, Flying, Good Shot]
-  upgrades: [F]
 - name: Gun Drones
   count: 5
   quality: 5
   defense: 3
   equipment: [Linked Pulse Carbines]
   special: [Ambush, Flying, Good Shot]
-  upgrades: []
 - name: Jackals
   count: 5
   quality: 5
   defense: 2
   equipment: [Assault Rifles]
   special: [Scout, Strider]
-  upgrades: [H]
 - name: Jackal Hounds
   count: 5
   quality: 5
   defense: 2
   equipment: [Claws]
   special: [Fast, Scout, Strider]
-  upgrades: []
 - name: Jackal Beast Riders
   count: 3
   quality: 5
   defense: 4
   equipment: [Autocannons]
   special: [Scout, Strider, Tough(3)]
-  upgrades: []
 - name: Locusts
   count: 5
   quality: 4
   defense: 3
   equipment: [Neutron Carbines]
   special: [Ambush, Flying]
-  upgrades: []
+- name: Hover Transport
+  count: 1
+  quality: 4
+  defense: 7
+  equipment: [Gatling Carbine, 2x Linked Pulse Carbines]
+  special: [Fast, Strider, Tough(3), Transport(11), Vehicle]
+- name: Hover Tank
+  count: 1
+  quality: 4
+  defense: 8
+  equipment: [Railgun, 2x Linked Pulse Carbines]
+  special: [Fast, Strider, Tough(6), Vehicle]
+- name: Hover Attack Bike
+  count: 1
+  quality: 4
+  defense: 6
+  equipment: [Gatling Carbine, 2x Linked Pulse Carbines]
+  special: [Fast, Strider, Tough(3), Vehicle]
+- name: Heavy Stealth Suit
+  count: 1
+  quality: 4
+  defense: 7
+  equipment: [Heavy Suit Fists, Linked Flamethrower, Ion Carbine]
+  special: [Ambush, Flying, Tough(3), Stealth, Vehicle]
+- name: Heavy Battle Suit
+  count: 1
+  quality: 4
+  defense: 7
+  equipment: [Suit Fists, Linked Plasma Rifle, Linked Heavy Rail Rifle]
+  special: [Tough(3), Vehicle]
+- name: Razor Fighter
+  count: 1
+  quality: 4
+  defense: 6
+  equipment: [Gatling Carbine, Ion Tailgun]
+  special: [Flyer, Tough(3), Vehicle]
+- name: Sun Bomber
+  count: 1
+  quality: 4
+  defense: 6
+  equipment: [Missile Pod, Pulse Bombs, 2x Linked Ion Rifle]
+  special: [Flyer, Tough(3), Vehicle]
+- name: Tide Titan
+  count: 1
+  quality: 4
+  defense: 9
+  equipment: [Titan Stomp, Linked Plasma Rifle, Heavy Gatling Carbine]
+  special: [Titan, Tough(6), Vehicle]
+- name: Surge Titan
+  count: 1
+  quality: 4
+  defense: 8
+  equipment: [Titan Stomp, Linked Flamethrower, Cluster Rockets, Pulse Cannon, Linked
+      Smart Missiles, 4x Destroyer Missiles]
+  special: [Titan, Tough(9), Vehicle]

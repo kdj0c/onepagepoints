@@ -1,4 +1,27 @@
 title: Tao Coalition v1.5
+pages:
+- - Battlesuit Captain
+  - Grunt Captain
+  - Sage
+  - Grunt Squad
+  - Spotter Squad
+  - Stealth Suits
+  - Battle Suits
+  - Sniper Drones
+  - Gun Drones
+  - Jackals
+  - Jackal Hounds
+  - Jackal Beast Riders
+  - Locusts
+- - Hover Transport
+  - Hover Tank
+  - Hover Attack Bike
+  - Heavy Stealth Suit
+  - Heavy Battle Suit
+  - Razor Fighter
+  - Sun Bomber
+  - Tide Titan
+  - Surge Titan
 specialRules1:
   Accelerator: This unit's pulse shotguns, pulse carbines and pulse rifles get +6"
     range.
