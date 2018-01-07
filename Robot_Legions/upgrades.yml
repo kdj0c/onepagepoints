@@ -1,72 +1,82 @@
-A:
-- text: Upgrade with one
-  add:
-  - [Wrist-Mounted Flamer]
-  - [Wrist-Mounted Laser Cannon]
-- text: Replace Energy Staff
-  remove: [Energy Staff]
-  add:
-  - [Energy Sword]
-  - [Gauss Sword]
-  - [Energy Scythe]
-B:
-- text: Upgrade with any
-  add:
-  - [Gloom Protocol]
-  - [Dread Protocol]
-  - [Nightmare Protocol]
-  - [Solar Protocol]
-  - [Darkness Protocol]
-  - [Flame Protocol]
-C:
-- text: Replace all Energy Rods
-  all: true
-  remove: [Energy Rods]
-  add:
-  - [Energy Blades, Shields]
-  - [Anti-Matter Pistols, Gauss Blades]
-  - [Energy Halberd]
-- text: Upgrade all models with
-  all: true
-  add:
-  - [Jetpacks]
-D:
-- text: Replace all Gauss Rifles
-  all: true
-  remove: [Gauss Rifles]
-  add:
-  - [Flux Rifles]
-E:
-- text: Replace one Gauss Cannon
-  remove: [Gauss Cannons]
-  add:
-  - [Heavy Gauss Cannon]
-F:
-- text: Upgrade any model with one
-  add:
-  - [Whip Coil]
-  - [Anti-Matter Pistol]
-  - [Death Gaze]
-G:
-- text: Replace any Linked Gauss Rifle
-  remove: [Linked Gauss Rifles]
-  add:
-  - [Linked Flux Rifle]
-  - [Anti-Matter Rifle]
-H:
-- text: Replace Gauss Cannon
-  remove: [Gauss Cannon]
-  add:
-  - [Flux Cannon]
-I:
-- text: Upgrade with any
-  add:
-  - [Repair Protocol]
-  - [Anti-Matter Rifle]
-  - [Bot Fabricator]
-J:
-- text: Replace Heavy Gauss Cannon
-  remove: [Heavy Gauss Cannon]
-  add:
-  - [Anti-Matter Cannon]
-  - [Fusion Ray]
+- units: [Overseer, Annihilator Overseer]
+  upgrades:
+  - text: Upgrade with one
+    add:
+    - [Wrist-Mounted Flamer]
+    - [Wrist-Mounted Laser Cannon]
+  - text: Replace Energy Staff
+    remove: [Energy Staff]
+    add:
+    - [Energy Sword]
+    - [Gauss Sword]
+    - [Energy Scythe]
+- units: [Technomancer]
+  upgrades:
+  - text: Upgrade with any
+    add:
+    - [Gloom Protocol]
+    - [Dread Protocol]
+    - [Nightmare Protocol]
+    - [Solar Protocol]
+    - [Darkness Protocol]
+    - [Flame Protocol]
+- units: [Guardians]
+  upgrades:
+  - text: Replace all Energy Rods
+    all: true
+    remove: [Energy Rods]
+    add:
+    - [Energy Blades, Shields]
+    - [Anti-Matter Pistols, Gauss Blades]
+    - [Energy Halberd]
+  - text: Upgrade all models with
+    all: true
+    add:
+    - [Jetpacks]
+- units: [Eternals]
+  upgrades:
+  - text: Replace all Gauss Rifles
+    all: true
+    remove: [Gauss Rifles]
+    add:
+    - [Flux Rifles]
+- units: [Annihilators]
+  upgrades:
+  - text: Replace one Gauss Cannon
+    remove: [Gauss Cannons]
+    add:
+    - [Heavy Gauss Cannon]
+- units: [Robot Snakes]
+  upgrades:
+  - text: Upgrade any model with one
+    add:
+    - [Whip Coil]
+    - [Anti-Matter Pistol]
+    - [Death Gaze]
+- units: [Hover Bikes]
+  upgrades:
+  - text: Replace any Linked Gauss Rifle
+    remove: [Linked Gauss Rifles]
+    add:
+    - [Linked Flux Rifle]
+    - [Anti-Matter Rifle]
+- units: [Support Platform]
+  upgrades:
+  - text: Replace Gauss Cannon
+    remove: [Gauss Cannon]
+    add:
+    - [Flux Cannon]
+- units: [Spider Robot]
+  upgrades:
+  - text: Upgrade with any
+    add:
+    - [Repair Protocol]
+    - [Anti-Matter Rifle]
+    - [Bot Fabricator]
+- units: [Spider Walker]
+  upgrades:
+  - text: Replace Heavy Gauss Cannon
+    remove: [Heavy Gauss Cannon]
+    add:
+    - [Anti-Matter Cannon]
+    - [Fusion Ray]

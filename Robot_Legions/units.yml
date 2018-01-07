@@ -4,151 +4,129 @@
   defense: 7
   equipment: [Energy Staff]
   special: [Hero, Regeneration, Slow, Tough(3)]
-  upgrades: [A]
 - name: Annihilator Overseer
   count: 1
   quality: 3
   defense: 8
   equipment: [Energy Staff]
   special: [Ambush, Hero, Regeneration, Strider, Tough(3)]
-  upgrades: [A]
 - name: Technomancer
   count: 1
   quality: 3
   defense: 5
   equipment: [Energy Staff]
   special: [Hero, Regen-Protocol, Slow, Tough(3)]
-  upgrades: [B]
 - name: Nanobot Wraith-Shard
   count: 1
   quality: 3
   defense: 8
   equipment: [Spirit Attack]
   special: [Ambush, Fear, Fearless, Flying, Hero, Psychic(3), Regeneration, Tough(3)]
-  upgrades: []
 - name: Warriors
   count: 5
   quality: 3
   defense: 5
   equipment: [Gauss Rifles]
   special: [Regeneration, Slow]
-  upgrades: []
 - name: Guardians
   count: 5
   quality: 3
   defense: 6
   equipment: [Energy Rods]
   special: [Regeneration, Slow]
-  upgrades: [C]
 - name: Eternals
   count: 5
   quality: 3
   defense: 6
   equipment: [Gauss Rifles]
   special: [Regeneration, Slow]
-  upgrades: [D]
 - name: Flesh-Eaters
   count: 5
   quality: 3
   defense: 5
   equipment: [Metal Claws]
   special: [Ambush, Fear, Regeneration, Scout, Slow]
-  upgrades: []
 - name: Snipers
   count: 5
   quality: 3
   defense: 6
   equipment: [Sniper Carbines]
   special: [Ambush, Hunter, Regeneration, Slow]
-  upgrades: []
 - name: Bot Swarms
   count: 3
   quality: 6
   defense: 2
   equipment: [Swarm Attacks]
   special: [Fearless, Strider, Tough(3)]
-  upgrades: []
 - name: Hover Bikes
   count: 3
   quality: 3
   defense: 5
   equipment: [Linked Gauss Rifles]
   special: [Regeneration, Strider]
-  upgrades: [G]
 - name: Annihilators
   count: 3
   quality: 3
   defense: 7
   equipment: [Gauss Cannons]
   special: [Ambush, Regeneration, Strider, Tough(3)]
-  upgrades: [E]
 - name: Robot Snakes
   count: 3
   quality: 3
   defense: 7
   equipment: [Metal Fangs]
   special: [Fearless, Regeneration, Strider, Tough(3)]
-  upgrades: [F]
 - name: Transport Tank
   count: 1
   quality: 3
   defense: 7
   equipment: [Gauss Rifle Array]
   special: [Strider, Tough(3), Transport(11), Vehicle]
-  upgrades: []
 - name: Doom Tank
   count: 1
   quality: 3
   defense: 7
   equipment: [Gauss Rifle Array, Doom Cannon]
   special: [Strider, Tough(3), Vehicle]
-  upgrades: []
 - name: Support Platform
   count: 1
   quality: 3
   defense: 7
   equipment: [Gauss Cannon, Linked Flux Cannon]
   special: [Slow, Strider, Tough(3), Vehicle]
-  upgrades: [H]
 - name: Spider Walker
   count: 1
   quality: 3
   defense: 7
   equipment: [Walker Stomp, Heavy Gauss Cannon]
   special: [Strider, Tough(3), Vehicle]
-  upgrades: [J]
 - name: Spider Robot
   count: 1
   quality: 4
   defense: 8
   equipment: [Spider Fangs]
   special: [Strider, Tough(3), Vehicle]
-  upgrades: [I]
 - name: Night Transport
   count: 1
   quality: 3
   defense: 7
   equipment: [Linked Flux Cannon]
   special: [Flyer, Tough(3), Transport(11), Vehicle]
-  upgrades: []
 - name: Doom Fighter
   count: 1
   quality: 3
   defense: 7
   equipment: [Death Beam, Linked Flux Cannon]
   special: [Flyer, Tough(3), Vehicle]
-  upgrades: []
 - name: Death Fortress
   count: 1
   quality: 3
   defense: 10
   equipment: [4x Gauss Machinegun, Heavy Anti-Matter Cannon]
   special: [Ambush, Slow, Strider, Titan, Tough(9), Transport(21), Vehicle]
-  upgrades: []
 - name: Fortress of Destruction
   count: 1
   quality: 3
   defense: 10
   equipment: [4x Heavy Flux Cannon, EMP Pulse]
   special: [Ambush, Slow, Strider, Titan, Tough(12), Vehicle]
-  upgrades: []
