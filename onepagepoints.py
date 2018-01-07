@@ -246,14 +246,14 @@ class Armory(dict):
 
 
 class Unit:
-    def __init__(self, name='Unknown Unit', count=1, quality=4, defense=2, equipments=[], special=[], upgrades=[]):
+    def __init__(self, name='Unknown Unit', count=1, quality=4, defense=2, equipments=[], special=[]):
         self.name = name
         self.specialRules = special
         self.equipments = equipments
         self.quality = quality
         self.basedefense = defense
         self.count = count
-        self.upgrades = upgrades
+        self.upgrades = []
         self.factionCost = 0
 
         self.Update()

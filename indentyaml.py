@@ -37,7 +37,7 @@ upgradesX.yml (list of upgrades available for each unit in page X)
 
 class YamlUnit(dict):
     def to_omap(self):
-        order = ["name", "count", "quality", "defense", "equipment", "special", "upgrades"]
+        order = ["name", "count", "quality", "defense", "equipment", "special"]
         return [(key, self[key]) for key in order]
 
 
@@ -104,12 +104,14 @@ def format_units(data):
     return yaml.dump(newdata)
 
 
+def upgrade_group(group):
+    return {'units': group['units'],
+            'upgrades': [YamlUpgrade(up) for up in group['upgrades']]}
+
+
 def format_upgrades(data):
     yaml.add_representer(YamlUpgrade, represent_omap)
-    newdata = {}
-    for group, gdata in data.items():
-        newdata[group] = [YamlUpgrade(up) for up in gdata]
-
+    newdata = [upgrade_group(group) for group in data]
     return yaml.dump(newdata)
 
 

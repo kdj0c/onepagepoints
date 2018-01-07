@@ -28,6 +28,7 @@ import os
 import copy
 import argparse
 import pathlib
+from string import ascii_uppercase
 from collections import OrderedDict
 
 
@@ -111,9 +112,13 @@ class Upgrade:
 
 
 class UpgradeGroup(list):
-    def __init__(self, name, ydata, faction):
-        self.name = name
-        super().__init__([Upgrade(upgrade, faction) for upgrade in ydata])
+    def __init__(self, ydata, faction):
+        if 'units' not in ydata:
+            print('Upgrade group Error, should have a "units" section {}'.format(ydata))
+            return
+        self.units = ydata['units']
+        super().__init__([Upgrade(upgrade, faction) for upgrade in ydata['upgrades']])
+        self.name = ''
 
 
 class Faction():
@@ -147,26 +152,40 @@ class Faction():
 
         allFiles = os.listdir(self.name)
 
-        for i in ['', '1', '2', '3', '4', '5']:
-            unitFile = 'units' + i + '.yml'
-            upgradeFile = 'upgrades' + i + '.yml'
-            if unitFile in allFiles and upgradeFile in allFiles:
-                yunits = self._read_yaml(unitFile, self.name)
-                yupgrades = self._read_yaml(upgradeFile, self.name)
+        yunits = self._read_yaml('units.yml', self.name)
+        yupgrades = self._read_yaml('upgrades.yml', self.name)
 
-                units = [Unit.from_dict(yunit, self.armory) for yunit in yunits]
-                upgrades = [UpgradeGroup(group, up_group, self) for group, up_group in yupgrades.items()]
+        units = [Unit.from_dict(yunit, self.armory) for yunit in yunits]
+        upgrades = [UpgradeGroup(up_group, self) for up_group in yupgrades]
 
-                for unit in units:
-                    unit.SetFactionCost(self.getFactionCost(unit))
+        for unit in units:
+            unit.SetFactionCost(self.getFactionCost(unit))
 
-                for group in upgrades:
-                    affected_units = [unit for unit in units if group.name in unit.upgrades]
-                    for upgrade in group:
-                        upgrade.Cost(affected_units)
-                spRules = yfaction.get('specialRules' + i, None)
-                psychics = yfaction.get('psychics' + i, None)
-                self.pages.append((units, upgrades, spRules, psychics))
+        for g, group in enumerate(upgrades):
+            affected_units = [unit for unit in units if unit.name in group.units]
+            if len(affected_units) < len(group.units):
+                print('Error units in ugrade group not found {}'.format(group.units))
+                return
+            for unit in affected_units:
+                unit.upgrades.append(group)
+            for upgrade in group:
+                upgrade.Cost(affected_units)
+
+        pages = yfaction.get('pages')
+        if len(pages) == 1:
+            spRules = yfaction.get('specialRules', None)
+            psychics = yfaction.get('psychics', None)
+
+        for p, page in enumerate(pages):
+            # TODO order should come from pages, not from units
+            punits = [unit for unit in units if unit.name in page]
+            pugrades = [group for group in upgrades if set(group.units) & set(page)]
+            for g, group in enumerate(pugrades):
+                group.name = ascii_uppercase[g]
+            spRules = yfaction.get('specialRules' + str(p + 1), None)
+            psychics = yfaction.get('psychics' + str(p + 1), None)
+
+            self.pages.append((punits, pugrades, spRules, psychics))
 
     # Get hardcoded cost for per-faction special rules.
     def getFactionCost(self, unit):
@@ -181,7 +200,7 @@ class DumpTxt:
         data = ['{0} {1} {2}+'.format(prettyName(unit), str(unit.quality), str(unit.basedefense))]
         data += [', '.join(PrettyEquipments(unit.equipments))]
         data += [", ".join(unit.specialRules)]
-        data += [", ".join(unit.upgrades)]
+        data += [", ".join([group.name for group in unit.upgrades])]
         data += [points(unit.cost)]
         return '\n'.join([d for d in data if d])
 
@@ -243,7 +262,7 @@ class DumpTex:
         cost = unit.cost
         equ = ", ".join(['\mbox{' + e + '}' for e in self.PrettyEquipments(unit.equipments)])
         sp = ", ".join(unit.specialRules)
-        up = ", ".join(unit.upgrades)
+        up = ", ".join([group.name for group in unit.upgrades])
         return ' & '.join([prettyName(unit), str(unit.quality), str(unit.basedefense) + '+', equ, sp, up, points(cost)])
 
     def addUnits(self, units):
@@ -351,7 +370,7 @@ class DumpHtml:
         cells = [prettyName(unit), str(unit.quality), str(unit.basedefense) + '+',
                  ',<br> '.join(PrettyEquipments(unit.equipments)),
                  ", ".join(unit.specialRules),
-                 ", ".join(unit.upgrades),
+                 ", ".join([group.name for group in unit.upgrades]),
                  self.points(unit.cost)]
         return [HtmlTag('td', cell) for cell in cells]
 
