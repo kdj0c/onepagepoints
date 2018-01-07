@@ -1,4 +1,34 @@
 title: Orc Marauders v1.4
+pages:
+- - Warlord
+  - Doctor
+  - Mechanic
+  - Shaman
+  - Goblin Herd
+  - Orcs
+  - Jetpack Orcs
+  - Commando Orcs
+  - Specialist Orcs
+  - Boss Mob
+  - Orc Pirates
+  - Power Armor Orcs
+  - Orc Bikers
+  - Boss Bikers
+  - Orc Helicopter
+- - Truck
+  - Looted Tank
+  - Battle Truck
+  - Goblin Walker
+  - Orc Walker
+  - Attack Buggy
+  - Goblin Artillery
+  - Blaster Plane
+  - Flame Bomber
+  - Blitz Bomber
+  - Attack Plane
+  - Cunning Titan
+  - Brutal Titan
+  - Stomping Titan
 psychics1:
   2:
     Headbang: Target enemy model within 24" must take a morale test. If failed it

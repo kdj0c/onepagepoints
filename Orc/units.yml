@@ -1,80 +1,159 @@
+- name: Warlord
+  count: 1
+  quality: 3
+  defense: 4
+  equipment: [Pistol, Machete]
+  special: [Bad Shot, Furious, Hero, Tough(3), WAR!]
+- name: Doctor
+  count: 1
+  quality: 3
+  defense: 3
+  equipment: [Syringe]
+  special: [Doctor, Furious, Hero, Tough(3)]
+- name: Mechanic
+  count: 1
+  quality: 3
+  defense: 3
+  equipment: [Pistol, CCW]
+  special: [Bad Shot, Furious, Hero, Repair, Tough(3)]
+- name: Shaman
+  count: 1
+  quality: 3
+  defense: 3
+  equipment: [Energy Sword]
+  special: [Furious, Hero, Psychic(1), Tough(3)]
+- name: Goblin Herd
+  count: 10
+  quality: 6
+  defense: 2
+  equipment: [Pistols]
+  special: [Good Shot]
+- name: Orcs
+  count: 10
+  quality: 4
+  defense: 3
+  equipment: [Pistols, CCWs]
+  special: [Bad Shot, Furious]
+- name: Jetpack Orcs
+  count: 5
+  quality: 4
+  defense: 3
+  equipment: [Pistols, CCWs]
+  special: [Ambush, Bad Shot, Flying, Furious]
+- name: Commando Orcs
+  count: 5
+  quality: 4
+  defense: 3
+  equipment: [Pistols, CCWs]
+  special: [Bad Shot, Furious, Scout, Stealth, Strider]
+- name: Specialist Orcs
+  count: 5
+  quality: 4
+  defense: 3
+  equipment: [Flamethrowers, CCWs]
+  special: [Bad Shot, Furious]
+- name: Boss Mob
+  count: 5
+  quality: 3
+  defense: 3
+  equipment: [Pistols, Machetes]
+  special: [Bad Shot, Furious, Tough(3)]
+- name: Orc Pirates
+  count: 5
+  quality: 3
+  defense: 3
+  equipment: [Boarding Guns, Machetes]
+  special: [Bad Shot, Furious, Tough(3)]
+- name: Power Armor Orcs
+  count: 3
+  quality: 3
+  defense: 7
+  equipment: [Carbines, Energy Fists]
+  special: [Bad Shot, Furious, Slow, Tough(3)]
+- name: Orc Bikers
+  count: 3
+  quality: 4
+  defense: 3
+  equipment: [Linked Mini-MGs, CCWs]
+  special: [Bad Shot, Fast, Furious]
+- name: Boss Bikers
+  count: 3
+  quality: 3
+  defense: 3
+  equipment: [Linked Mini-MGs, Machetes]
+  special: [Bad Shot, Fast, Furious, Tough(3)]
+- name: Orc Helicopter
+  count: 1
+  quality: 4
+  defense: 6
+  equipment: [Custom Plasma Rifle, CCW]
+  special: [Bad Shot, Fast, Furious, Scout, Strider, Tough(3)]
 - name: Truck
   count: 1
   quality: 4
   defense: 6
   equipment: [Heavy Machinegun]
   special: [Bad Shot, Fast, Tough(3), Transport(11), Vehicle]
-  upgrades: [A, B]
 - name: Looted Tank
   count: 1
   quality: 4
   defense: 7
   equipment: []
   special: [Bad Shot, Fast, Tough(6), Vehicle]
-  upgrades: [A, D]
 - name: Battle Truck
   count: 1
   quality: 4
   defense: 9
   equipment: []
   special: [Bad Shot, Fast, Tough(6), Transport(11), Vehicle]
-  upgrades: [A, C]
 - name: Goblin Walker
   count: 1
   quality: 5
   defense: 7
   equipment: [Custom Plasma Rifle, Mini-Claw]
   special: [Good Shot, Tough(3), Vehicle]
-  upgrades: [E]
 - name: Orc Walker
   count: 1
   quality: 3
   defense: 8
   equipment: [2x Walker Claws, 2x Custom Plasma Rifles]
   special: [Bad Shot, Furious, Tough(6), Vehicle]
-  upgrades: [F]
 - name: Attack Buggy
   count: 1
   quality: 4
   defense: 6
   equipment: [Heavy Flamethrower]
   special: [Bad Shot, Fast, Tough(3), Vehicle]
-  upgrades: [H]
 - name: Goblin Artillery
   count: 1
   quality: 6
   defense: 9
   equipment: [Lightning Cannon]
   special: [Good Shot, Slow, Tough(3), Vehicle]
-  upgrades: [G]
 - name: Blaster Plane
   count: 1
   quality: 4
   defense: 6
   equipment: [Smasher Cannon]
   special: [Bad Shot, Flyer, Tough(3), Vehicle]
-  upgrades: [J]
 - name: Flame Bomber
   count: 1
   quality: 4
   defense: 6
   equipment: [Heavy Machinegun, Linked Super Machinegun, 2x Flame Bombs]
   special: [Bad Shot, Flyer, Tough(3), Vehicle]
-  upgrades: [K]
 - name: Blitz Bomber
   count: 1
   quality: 4
   defense: 6
   equipment: [Heavy Machinegun, Linked Super Machinegun, 2x Bombs]
   special: [Bad Shot, Flyer, Tough(3), Vehicle]
-  upgrades: ['']
 - name: Attack Plane
   count: 1
   quality: 4
   defense: 6
   equipment: [2x Linked Super Machineguns]
   special: [Bad Shot, Flyer, Tough(3), Vehicle]
-  upgrades: [I]
 - name: Cunning Titan
   count: 1
   quality: 3
@@ -82,14 +161,12 @@
   equipment: [Mega Fist, Custom Plasma Rifle, 2x Rocket Launcher, 2x Linked Heavy
       Machineguns, Custom Plasma Cannon]
   special: [Bad Shot, Furious, Titan, Tough(9), Vehicle, Transport(6)]
-  upgrades: [L]
 - name: Brutal Titan
   count: 1
   quality: 3
   defense: 9
   equipment: [Mega Fist, Heavy Flamethrower, Deathstorm Minigun, 2x Rocket Launcher]
   special: [Bad Shot, Furious, Titan, Tough(9), Vehicle, Transport(6)]
-  upgrades: ['']
 - name: Stomping Titan
   count: 1
   quality: 3
@@ -97,4 +174,3 @@
   equipment: [Mega Chainsaw, Super Gatling Gun, Heavy Flamethrower, 3x Heavy Machineguns,
     Death Cannon, Linked Heavy Machinegun]
   special: [Bad Shot, Furious, Titan, Tough(12), Vehicle, Transport(21)]
-  upgrades: [M]

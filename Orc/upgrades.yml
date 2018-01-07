@@ -1,0 +1,280 @@
+- units: [Mechanic, Orcs, Jetpack Orcs, Commando Orcs, Specialist Orcs]
+  upgrades:
+  - text: Replace one Pistol
+    remove: [Pistols]
+    add:
+    - [Carbine]
+    - [Linked Carbine]
+  - text: Replace one CCW
+    remove: [CCWs]
+    add:
+    - [Energy Sword]
+    - [Energy Fist]
+  - text: Take one Carbine Add-on
+    add:
+    - [Heavy Flamethrower Add-on]
+    - [Rocket Launcher Add-on]
+- units: [Warlord, Doctor, Mechanic]
+  upgrades:
+  - text: Upgrade with any
+    add:
+    - [Attack Beast]
+    - [Cyborg Body]
+    - [Bike]
+  - text: Upgrade with one
+    add:
+    - [Heavy Armor]
+    - [Power Armor]
+- units: [Mechanic]
+  upgrades:
+  - text: Replace Pistol
+    remove: [Pistol]
+    add:
+    - [Custom Plasma Pistol]
+    - [Custom Plasma Rifle]
+    - [Energy Field]
+    - [Rocket Launcher]
+    - [Teleport Pistol]
+    - [Shock Gun]
+  - text: Replace CCW
+    remove: [CCW]
+    add:
+    - [Sawblade]
+- units: [Orcs]
+  upgrades:
+  - text: Upgrade all models with
+    all: true
+    add:
+    - [Heavy Armor]
+  - text: Replace all Pistols
+    all: true
+    add:
+    - [Carbines]
+  - text: Replace one Pistol
+    add:
+    - [Rocket Launcher]
+    - [Heavy Machinegun]
+- units: [Boss Mob]
+  upgrades:
+  - text: Upgrade all models with
+    all: true
+    add:
+    - [Heavy Armor]
+  - text: Replace any Pistol
+    remove: [Pistols]
+    add:
+    - [Carbine]
+    - [Linked Carbine]
+  - text: Replace any CCW
+    remove: [CCWs]
+    add:
+    - [Energy Sword]
+    - [Energy Fist]
+  - text: Any model may take one Carbine attachement
+    add:
+    - [Heavy Flamethrower Add-on]
+    - [Rocket Launcher Add-on]
+- units: [Shaman]
+  upgrades:
+  - text: Upgrade Psychic
+    add:
+    - [Psy Training]
+- units: [Specialist Orcs]
+  upgrades:
+  - text: Replace all Flamethrowers
+    all: true
+    remove: [Flamethrowers]
+    add:
+    - [Rocket Launcher]
+    - [Railgun]
+  - text: Replace up to two Rocket Launchers and CCWs
+    pre-remove: [Flamethrowers]
+    pre-add: [Rocket Launcher]
+    remove: [Rocket Launcher, CCWs]
+    add:
+    - [Bomb Hammer]
+  - text: Upgrade with up to three
+    add:
+    - [Bomb Beast]
+- units: [Commando Orcs]
+  upgrades:
+  - text: Replace up to two Pistols
+    remove: [Pistols]
+    add:
+    - [Flamethrower]
+    - [Rocket Launcher]
+    - [Heavy Machinegun]
+- units: [Goblin Herd]
+  upgrades:
+  - text: Upgrade with
+    all: true
+    add:
+    - [Orc Herder]
+- units: [Power Armor Orcs]
+  upgrades:
+  - text: Replace any Carbine and Energy Fist
+    remove: [Carbines, Energy Fists]
+    add:
+    - [2x Sawblades]
+  - text: Replace any Carbine
+    remove: [Carbines]
+    add:
+    - [Linked Carbine]
+  - text: Any model may take one Carbine attachement
+    add:
+    - [Heavy Flamethrower Add-on]
+    - [Rocket Launcher Add-on]
+- units: [Orc Helicopter]
+  upgrades:
+  - text: Replace Custom Plasma Rifle
+    remove: [Custom Plasma Rifle]
+    add:
+    - [Linked Rocket Launcher]
+    - [Linked Heavy Machinegun]
+  - text: Upgrade with any
+    add:
+    - [Assault Bomb]
+    - [Sawblade]
+- units: [Orc Bikers]
+  upgrades:
+  - text: Replace one CCW
+    remove: [CCWs]
+    add:
+    - [Energy Sword]
+    - [Energy Fist]
+- units: [Boss Bikers]
+  upgrades:
+  - text: Replace any CCW
+    remove: [Machetes]
+    add:
+    - [Energy Sword]
+    - [Energy Fist]
+- units: [Warlord]
+  upgrades:
+  - text: Replace one Pistol
+    remove: [Pistols]
+    add:
+    - [Carbine]
+    - [Linked Carbine]
+  - text: Replace one Machete
+    remove: [Machete]
+    add:
+    - [Energy Sword]
+    - [Energy Fist]
+  - text: Take one Carbine Add-on
+    add:
+    - [Heavy Flamethrower Add-on]
+    - [Rocket Launcher Add-on]
+- units: [Truck, Looted Tank, Battle Truck]
+  upgrades:
+  - text: Upgrade with any
+    add:
+    - [Red Paint Job]
+    - [Battle Ram]
+    - [Boarding Plank]
+    - [Wrecking Ball]
+- units: [Truck]
+  upgrades:
+  - text: Replace Heavy Machinegun
+    remove: [Heavy Machinegun]
+    add:
+    - [Rocket Launcher]
+- units: [Battle Truck]
+  upgrades:
+  - text: Upgrade with one
+    add:
+    - [Extra Space]
+    - [Heavy Cannon]
+  - text: Upgrade with one
+    add:
+    - [Lightning Cannon]
+    - [Cannon AT, Cannon HE]
+    - [Heavy Mortar]
+  - text: Upgrade with up to four
+    add:
+    - [Heavy Machinegun]
+    - [Rocket Launcher]
+- units: [Looted Tank]
+  upgrades:
+  - text: Upgrade with one
+    add:
+    - [Transport Space]
+    - [Heavy Cannon]
+  - text: Upgrade with one
+    add:
+    - [Heavy Flamethrower]
+    - [Heavy Machinegun]
+    - [Rocket Launcher]
+  - text: Upgrade with up to four
+    add:
+    - [Heavy Machinegun]
+    - [Rocket Launcher]
+- units: [Goblin Walker]
+  upgrades:
+  - text: Replace Custom Plasma Rifle
+    remove: [Custom Plasma Rifle]
+    add:
+    - [Heavy Flamethrower]
+    - [Rocket Launcher]
+    - [Heavy Machinegun]
+    - [Bazooka]
+- units: [Orc Walker]
+  upgrades:
+  - text: Replace any Custom Plasma Rifle
+    remove: [Custom Plasma Rifles]
+    add:
+    - [Heavy Flamethrower]
+    - [Rocket Launcher]
+    - [Heavy Machinegun]
+    - [Walker Claws]
+- units: [Goblin Artillery]
+  upgrades:
+  - text: Replace Lightning Cannon
+    remove: [Lightning Cannon]
+    add:
+    - [Smasher Cannon]
+    - [Tractor Beam]
+    - [Cannon AT, Cannon HE]
+    - [Heavy Mortar]
+    - [Custom Plasma Cannon]
+    - [Bubble Cannon]
+- units: [Attack Buggy]
+  upgrades:
+  - text: Replace Heavy Flamethrower
+    remove: [Heavy Flamethrower]
+    add:
+    - [Linked Heavy Machinegun]
+    - [Linked Rocket Launcher]
+  - text: Upgrade with any
+    add:
+    - [Red Paint Job]
+    - [Tracked]
+- units: [Attack Plane]
+  upgrades:
+  - text: Upgrade with any
+    add:
+    - [Linked Super Machinegun]
+- units: [Blaster Plane]
+  upgrades:
+  - text: Replace Linked Teleport Rifle
+    add:
+    - [Linked Custom Plasma Cannon]
+  - text: Upgrade with any
+    add:
+    - [Force Field]
+    - [Linked Super Machinegun]
+- units: [Flame Bomber]
+  upgrades:
+  - text: Upgrade with up to six
+    add:
+    - [Flame Missile]
+- units: [Cunning Titan]
+  upgrades:
+  - text: Upgrade with
+    add:
+    - [Force Field]
+- units: [Stomping Titan]
+  upgrades:
+  - text: Upgrade with up to two
+    add:
+    - [Super Rocket]
