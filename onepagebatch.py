@@ -230,7 +230,7 @@ class DumpTxt:
         data = [name + '(' + str(power) + '+): ' + desc for power, spell in psychics.items() for name, desc in spell.items()]
         self.data.append('\n'.join(data))
 
-    def getTxt(self, faction):
+    def get(self, faction):
         for units, upgrades, specialRules, psychics in faction.pages:
             self.addUnits(units)
             self.addUpgrades(upgrades)
@@ -300,7 +300,7 @@ class DumpTex:
             self.data += ['\\psychic{' + k + '}{' + str(quality) + '+}{' + v + '}' for k, v in spells.items()]
         self.data.append('}')
 
-    def getTex(self, faction):
+    def get(self, faction):
         self.data = ['\\mytitle{' + faction.title + '}']
         self.data.append('\\begin{document}')
         for units, upgrades, specialRules, psychics in faction.pages:
@@ -415,7 +415,7 @@ class DumpHtml:
         lines.append(HtmlTag('li', HtmlTag('table', rows, 'class=psy')))
         return lines
 
-    def getHtml(self, faction):
+    def get(self, faction):
         body = [HtmlTag('h1', 'Grimdark Future ' + faction.title)]
         for units, upgrades, specialRules, psychics in faction.pages:
             body.append(self.addUnits(units))
@@ -424,20 +424,32 @@ class DumpHtml:
         return self.header + str(HtmlTag('body', body)) + self.footer
 
 
-def write_file(filename, path, data):
+def gen2(extension):
+    if extension == 'html':
+        return DumpHtml()
+    if extension == 'tex':
+        return DumpTex()
+    if extension == 'txt':
+        return DumpTxt()
+    return None
+
+
+def write_file(faction, build_dir, ext):
+    data = gen2(ext).get(faction)
+    path = os.path.join(build_dir, ext)
     pathlib.Path(path).mkdir(parents=True, exist_ok=True)
-    fname = os.path.join(path, filename)
+    fname = os.path.join(path, faction.name + '.' + ext)
     with open(fname, "w") as f:
         print('  Writing {}'.format(fname))
         f.write(data)
 
 
-def generateFaction(factionName, build_dir):
+def generateFaction(factionName, build_dir='.', outputs=['html']):
+    factionName = factionName.strip('/')
+    print("Building faction " + factionName)
     faction = Faction(factionName)
-
-    write_file(factionName + '.txt', os.path.join(build_dir, 'txt'), DumpTxt().getTxt(faction))
-    write_file(factionName + '.html', build_dir, DumpHtml().getHtml(faction))
-    write_file(factionName + '.tex', os.path.join(build_dir, 'tex'), DumpTex().getTex(faction))
+    for ext in outputs:
+        write_file(faction, build_dir, ext)
 
 
 def main():
@@ -445,14 +457,12 @@ def main():
     parser.add_argument('-b', '--build-dir', type=str, default='build',
                         help='directory to write the output files')
     parser.add_argument('path', type=str, nargs='+',
-                        help='path to the faction (should contain at list equipments.yml, units1.yml, upgrades1.yml)')
+                        help='path to the faction (should contain at list equipments.yml, units.yml, upgrades.yml)')
 
     args = parser.parse_args()
 
-    for faction in args.path:
-        faction = faction.strip('/')
-        print("Building faction {}".format(faction))
-        generateFaction(faction, args.build_dir)
+    for factionName in args.path:
+        generateFaction(factionName, args.build_dir, ['txt', 'html', 'tex'])
 
 
 if __name__ == "__main__":
